@@ -1,0 +1,14 @@
+javaFileSave?[Yes/No] = no;
+batFileSave?[Yes/No] = no;
+txtFileSave?[Yes/No] = no;
+ActiveAnalysis?[Yes/No] = yes;
+classFileSave?[Yes/No] = no;
+javaFileName = java_ScriptFile;
+batFileName = bat_ScriptFile;
+txtFileName = txt_ScriptFile;
+javaFilePath = C:\Users\fabia\Desktop\Matics Aftermath\14\;
+batFilePath = C:\Users\fabia\Desktop\Matics Aftermath\14\;
+txtFilePath = C:\Users\fabia\Desktop\Matics Aftermath\14\;
+Language = en;
+Theme[-1 -> 33]//TODO = 23;
+TitleBar[theme/windows] = theme;

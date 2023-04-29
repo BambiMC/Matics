@@ -1,0 +1,27 @@
+jlink --no-header-files --no-man-pages --compress=2 --add-modules java.base,java.datatransfer,java.desktop --output jre-14
+
+
+jlink --no-header-files --no-man-pages --compress=2 --add-modules $($(jdeps OUTPUT11.jar) -join "," -replace "@[0-9]*") --output jre-14
+
+
+jlink --no-header-files --no-man-pages --compress=2 --add-modules $($(java --list-modules) -join "," -replace "@0123456789.*") --output jre-14
+
+
+java.base@14.0.2,java.compiler@14.0.2,java.datatransfer@14.0.2,java.desktop@14.0.2,java.instrument@14.0.2,java.logging@14.0.2,java.management@14.0.2,java.management.rmi@14.0.2,java.naming@14.0.2,java.net.http@14.0.2,java.prefs@14.0.2,java.rmi@14.0.2,java.scripting@14.0.2,java.se@14.0.2,java.security.jgss@14.0.2,java.security.sasl@14.0.2,java.smartcardio@14.0.2,java.sql@14.0.2,java.sql.rowset@14.0.2,java.transaction.xa@14.0.2,java.xml@14.0.2,java.xml.crypto@14.0.2,jdk.accessibility@14.0.2,jdk.aot@14.0.2,jdk.attach@14.0.2,jdk.charsets@14.0.2,jdk.compiler@14.0.2,jdk.crypto.cryptoki@14.0.2,jdk.crypto.ec@14.0.2,jdk.crypto.mscapi@14.0.2,jdk.dynalink@14.0.2,jdk.editpad@14.0.2,jdk.hotspot.agent@14.0.2,jdk.httpserver@14.0.2,jdk.incubator.foreign@14.0.2,jdk.incubator.jpackage@14.0.2,jdk.internal.ed@14.0.2,jdk.internal.jvmstat@14.0.2,jdk.internal.le@14.0.2,jdk.internal.opt@14.0.2,jdk.internal.vm.ci@14.0.2,jdk.internal.vm.compiler@14.0.2,jdk.internal.vm.compiler.management@14.0.2,jdk.jartool@14.0.2,jdk.javadoc@14.0.2,jdk.jcmd@14.0.2,jdk.jconsole@14.0.2,jdk.jdeps@14.0.2,jdk.jdi@14.0.2,jdk.jdwp.agent@14.0.2,jdk.jfr@14.0.2,jdk.jlink@14.0.2,jdk.jshell@14.0.2,jdk.jsobject@14.0.2,jdk.jstatd@14.0.2,jdk.localedata@14.0.2,jdk.management@14.0.2,jdk.management.agent@14.0.2,jdk.management.jfr@14.0.2,jdk.naming.dns@14.0.2,jdk.naming.rmi@14.0.2,jdk.net@14.0.2,jdk.nio.mapmode@14.0.2,jdk.rmic@14.0.2,jdk.scripting.nashorn@14.0.2,jdk.scripting.nashorn.shell@14.0.2,jdk.sctp@14.0.2,jdk.security.auth@14.0.2,jdk.security.jgss@14.0.2,jdk.unsupported@14.0.2,jdk.unsupported.desktop@14.0.2,jdk.xml.dom@14.0.2,jdk.zipfs@14.0.2
+
+
+
+jlink --no-header-files --no-man-pages --compress=2 --add-modules java.base,java.compiler,java.datatransfer,java.desktop,java.instrument,java.logging,java.management,java.management.rmi,java.naming,java.net.http,java.prefs,java.rmi,java.scripting,java.se,java.security.jgss,java.security.sasl,java.smartcardio,java.sql,java.sql.rowset,java.transaction.xa,java.xml,java.xml.crypto,jdk.accessibility,jdk.aot,jdk.attach,jdk.charsets,jdk.compiler,jdk.crypto.cryptoki,jdk.crypto.ec,jdk.crypto.mscapi,jdk.dynalink,jdk.editpad,jdk.hotspot.agent,jdk.httpserver,jdk.incubator.foreign,jdk.incubator.jpackage,jdk.internal.ed,jdk.internal.jvmstat,jdk.internal.le,jdk.internal.opt,jdk.internal.vm.ci,jdk.internal.vm.compiler,jdk.internal.vm.compiler.management,jdk.jartool,jdk.javadoc,jdk.jcmd,jdk.jconsole,jdk.jdeps,jdk.jdi,jdk.jdwp.agent,jdk.jfr,jdk.jlink,jdk.jshell,jdk.jsobject,jdk.jstatd,jdk.localedata,jdk.management,jdk.management.agent,jdk.management.jfr,jdk.naming.dns,jdk.naming.rmi,jdk.net,jdk.nio.mapmode,jdk.rmic,jdk.scripting.nashorn,jdk.scripting.nashorn.shell,jdk.sctp,jdk.security.auth,jdk.security.jgss,jdk.unsupported,jdk.unsupported.desktop,jdk.xml.dom,jdk.zipfs --output jre-14
+
+
+jlink --no-header-files --no-man-pages --compress=2 --add-modules java.base,java.datatransfer,java.desktop --output jre-14
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+fact() {String
+syntheticalNEW = null; if(
+synthetical == false){
+syntheticalNEW = "> kommt natürlich auf der Erde vor";}else{
+syntheticalNEW = "> kommt nicht natürlich auf der Erde vor";} String 
+radioactivNEW = null; if(
+radioactiv == false){
+radioactivNEW = "> Dieses Element ist zu 100% stabil";}else{
+radioactivNEW = "> Unter normalen Umständen können radioaktive Isotope dieses Elements vorhanden sein";} JOptionPane.showMessageDialog(null,"\u226B\u226BALLGEMEIN \u226B\u226B\n> Name: "+ 
+name +"\n> Kurzsymbol: " + 
+shortsymbol +"\n    > Protonen: "+ 
+proton +"\n    > Elektronen: "+ 
+proton +"\n    > **Neutronen: "+ 
+neutron +"\n> Oberkategorie: "+ 
+maincategory +"\n> Unterkategorie: "+ 
+specialcategory +"\n    > Hauptgruppe: "+ 
+maingroup +"\n    > Periode: "+ 
+period +"\n\n\u226B\u226BPHYSIKALISCHE EIGENSCHAFTEN \u226B\u226B\n> Aussehen: "+ 
+look +"\n> *Aggregatszustand: "+ 
+aggregate +"\n> *Struktur: "+ 
+structure +"\n    > Härte: "+ 
+hardness +" Mohs\n    > *Volumen: "+ 
+volume +" m\u00B3/Mol\n"+ 
+radioactivNEW +"\n\n\u226B\u226BCHEMISCHE EIGENSCHAFTEN \u226B\u226B\n"+ 
+syntheticalNEW +"\n    > Vorkommen auf der Erde: "+ 
+massonearth +" \u0025\n    > Masse: "+ 
+massu +" u\n> Ionisierungsenergie: "+ 
+ionization +" eV\n> *Dichte: "+ 
+density +" g/cm\u00B3\n    > Schmelzpunkt: "+ 
+smeltpoint +" \u00B0C\n    > Siedepunkt: "+ 
+boilingpoint +" \u00B0C\n> ***Elektronegativität: "+ 
+electronegativity +"\n> Wikipedia: "+  
+license +"\n    > Flammenfarbe: "+ 
+flame +"\n\n* = Unter Normalbedingungen 20 \u00B0C, 1013 hPa\n** = Berechnet nach = Masse(gerundet) - Ordnungszahl\n*** = Nach der Pauling-Skala");}

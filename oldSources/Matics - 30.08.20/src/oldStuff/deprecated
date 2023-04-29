@@ -1,0 +1,609 @@
+
+
+
+        		//Process p0 = Runtime.getRuntime().exec("javac " + file.getAbsolutePath());
+        		//Process p1 = Runtime.getRuntime().exec("cd " + filedestination);
+           		//Process p2 = Runtime.getRuntime().exec("java " + real2  + " > " + file2.getAbsolutePath());
+           		
+           		//Runtime.getRuntime().exec("javac " + file.getAbsolutePath()   +" & "+   "cd " + filedestination   +" & "+   "java " + real2  + " > " + file2.getAbsolutePath());
+
+
+
+
+
+
+try {
+        		System.out.println("file(path): " + file.getAbsolutePath() + "\nfile(file): " + file.getAbsoluteFile());
+				
+
+        		
+        	
+        		try {
+        		Process pxx;
+        		pxx = Runtime.getRuntime().exec("echo Hello World > \"C:\\Users\\fabia\\Dropbox\\EntwicklungsOrdner\\SimpleMatics\\ausgabe.txt \"");
+        		System.out.println("error1");
+        		System.out.println("echo Hello World > \"C:\\Users\\fabia\\Dropbox\\EntwicklungsOrdner\\SimpleMatics\\ausgabe.txt \"");
+					pxx.waitFor();
+				} catch (InterruptedException e) {
+					System.out.println("error2");
+					e.getLocalizedMessage();
+				}
+        		
+           		
+           		System.out.println("javac " + file.getAbsolutePath()   +" & "+   "cd " + filedestination   +" & "+   "java " + real2  + " > " + file2.getAbsolutePath());
+           		
+           		
+
+			} catch (IOException io) {
+				io.getStackTrace();
+			}
+        	
+        	
+        	        	
+1111111real ist der Dateiname mit Typ-Endung(JavaDatei) = test.java
+real2 ist der Dateiname ohne Typ-Endung(JavaDatei) = test
+real3 ist der Dateiname mit Typ-Endung(AusgabeDatei) = test.txt
+real4 ist der Dateiname ohne Typ-Endung(AusgabeDatei) = null
+real5 ist der Dateiname mit Typ-Endung(BatchFile) = 
+real5 ist der Dateiname mit Typ-Endung(BatchFile) = 
+
+file ist: test.java
+file2 ist: null
+v3-ele 0: BatchSkript.txt
+v32z: 0, v3-ele@z: BatchSkript.txt
+LASTv32z: 0, v3-ele@z: BatchSkript.txt
+1111111real ist der Dateiname mit Typ-Endung(JavaDatei) = test.java
+real2 ist der Dateiname ohne Typ-Endung(JavaDatei) = test
+real3 ist der Dateiname mit Typ-Endung(AusgabeDatei) = test.txt
+real4 ist der Dateiname ohne Typ-Endung(AusgabeDatei) = test
+real5 ist der Dateiname mit Typ-Endung(BatchFile) = BatchSkript.txt
+real5 ist der Dateiname mit Typ-Endung(BatchFile) = BatchSkript
+
+file ist: test.java
+file2 ist: ausgabe.txt
+
+
+
+
+
+
+
+languages einfügen
+Fabre in Informatik skripten machen
+dri choose machen
+
+
+------
+FrameInformatikskripten
+UsefulMethods
+FrameStart
+notizen
+dirChoose
+sind offen
+------
+
+
+/*
+public static void XX(int XXX) {
+	
+	if (XXX < 118 && XXX != 999) {
+		
+	LibraryChemie.LibraryChemie();
+	FrameChemiePSEAusgabeFensterNextTo.XnameX = LibraryChemie.s[XXX][0];
+	FrameChemiePSEAusgabeFensterNextTo.XshortsymbolX = LibraryChemie.s[XXX][1];
+	FrameChemiePSEAusgabeFensterNextTo.XspecialcategoryX = LibraryChemie.s[XXX][2];
+	FrameChemiePSEAusgabeFensterNextTo.XmaincategoryX = LibraryChemie.s[XXX][3];
+	FrameChemiePSEAusgabeFensterNextTo.XlookX = LibraryChemie.s[XXX][4];
+	FrameChemiePSEAusgabeFensterNextTo.XaggregateX = LibraryChemie.s[XXX][5];
+	FrameChemiePSEAusgabeFensterNextTo.XstructureX = LibraryChemie.s[XXX][6];
+	FrameChemiePSEAusgabeFensterNextTo.XlicenseX = LibraryChemie.s[XXX][7];
+	FrameChemiePSEAusgabeFensterNextTo.XflameX = LibraryChemie.s[XXX][8];
+	FrameChemiePSEAusgabeFensterNextTo.XprotonX = LibraryChemie.i[XXX][0];
+	FrameChemiePSEAusgabeFensterNextTo.XneutronX = LibraryChemie.i[XXX][1];
+	FrameChemiePSEAusgabeFensterNextTo.XmaingroupX = LibraryChemie.b[XXX][0];
+	FrameChemiePSEAusgabeFensterNextTo.XperiodX = LibraryChemie.b[XXX][1];
+	FrameChemiePSEAusgabeFensterNextTo.XmassonearthX = LibraryChemie.d[XXX][2];
+	FrameChemiePSEAusgabeFensterNextTo.XmassuX = LibraryChemie.d[XXX][3];
+	FrameChemiePSEAusgabeFensterNextTo.XionizationX = LibraryChemie.d[XXX][4];
+	FrameChemiePSEAusgabeFensterNextTo.XdensityX = LibraryChemie.d[XXX][5];
+	FrameChemiePSEAusgabeFensterNextTo.XhardnessX = LibraryChemie.d[XXX][0];
+	FrameChemiePSEAusgabeFensterNextTo.XsmeltpointX = LibraryChemie.d[XXX][6];
+	FrameChemiePSEAusgabeFensterNextTo.XboilingpointX = LibraryChemie.d[XXX][7];
+	FrameChemiePSEAusgabeFensterNextTo.XvolumeX = LibraryChemie.d[XXX][1];
+	FrameChemiePSEAusgabeFensterNextTo.XelectronegativityX = LibraryChemie.d[XXX][8];
+	FrameChemiePSEAusgabeFensterNextTo.XsyntheticalX = LibraryChemie.boo[XXX][0];
+	FrameChemiePSEAusgabeFensterNextTo.XradioactivX = LibraryChemie.boo[XXX][1];
+	
+	}	
+	
+}*/
+
+
+
+Alle Klassen Care Programm
+-UiManager.set....
+-spec. Modifikations
+-tooltips mit einbauen
+-language pack vorbereiten
+-wichtige Bugs, etc von sysout auf JOptionPane umschreiben
+-DISPOSE_ON_CLOSE
+-setTitle("eZ.Matics");
+
+closing zeug
+Reader Writer init
++++arrays schreiben
++++//TestFile richtig konfiugriert?(boolean right)
++++//NeuKonfiguration
+---//Informationen aus settingsFile übernehmen
+
+WENN DAS SETTINGSFILE NICHT DA IST; NEU ERSTELLEN; AUTOMATISCH SETTINGS KLASSE STARTEN
+
+
+	private Boolean ActiveAnalysis;
+	private String[][] array = new String[3][3];
+	array[0][0] = "";
+	array[0][1] = "";
+	array[0][2] = "";
+	array[1][0] = "";
+	array[1][1] = "";
+	array[1][2] = "";
+	array[2][0] = "";
+	array[2][1] = "";
+	array[2][2] = "";
+	
+	
+	
+	
+	
+	
+	
+			//SettingsFile-ANFANG
+		File settingsFile = new File("settingsFile.txt");
+
+		
+		try {
+			
+			FileWriter f = new FileWriter(settingsFile, true);//2. Parameter
+			BufferedWriter b = new BufferedWriter(f);
+			
+			FileReader fr = new FileReader(settingsFile);
+			BufferedReader bffR = new BufferedReader(fr);
+			
+			StringBuilder sb = new StringBuilder(b.toString());
+			
+			for (int i = 0; i < array.length; i++) {
+				
+			}
+			
+			
+			//TestFile richtig konfiugriert?
+			//if() {
+				
+			//} else {
+				
+			//}
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+	
+
+
+
+
+
+
+
+
+eZ.Matics
+
+
+
+
+halbwertszeit elemente berechnen
+http://prntscr.com/et87g6
+elektronegativität einheit?
+tooltips überall einfügen
+
+
+erweitertes periodensystem
+
+In Usefulmethods ausnahmezustand setzen, falls kein Pfad für eine Datei ausgewählt wurde / vielleicht eiunfach in den settings blockieren?
+
+
+
+
+
+
+/*
+       while(io < sb.length()) {
+    	   System.out.println("0");
+    	   if(sb.charAt(io) == '#') {
+    		   System.out.println("1");
+    		   if(sb.charAt(io+1) == 'r') {
+    			   System.out.println("2");
+    			   
+    			   //Leerzeichen rauslöschen
+    			   while(sb.charAt(io+2) == ' ')  {
+    				   sb.deleteCharAt(io+2);
+    			   }
+    			   
+    			   if(sb.charAt(io+2) == '(') {
+    				   if(UsefulMethods.isNumbersThere(sb.charAt(io+3))) {
+    					   System.out.println("3");
+    					   if(UsefulMethods.isNumbersThere(sb.charAt(io+4))) {
+    						   System.out.println("4");
+    						   if(UsefulMethods.isNumbersThere(sb.charAt(io+5))) {
+    							   System.out.println("5");
+    						   } else {
+    							   System.out.println("6");
+    						   }
+    					   } else {
+    						   	System.out.println("7");
+    						   	sb = ScriptCompilerFor(sb, io);
+    					   }
+    				   } else {
+    					   //Keine Zahlen in #r Schleife vorhanden
+    					   //System.out.println("FEHLER:REPORT PLS\n//Keine Zahlen in #r Schleife vorhanden");
+    				   }
+    			   }			   
+    		   }
+    	   }io++;
+       }*/
+
+
+
+
+
+
+
+
+!!!!!!!!Alte Methoden:
+
+
+	public String[][] ReadSettingsFromArray(String array3[][]) {
+		
+		
+		InputStream is = null;
+		try {
+			is = new FileInputStream("settingsFile.txt");
+		} catch (FileNotFoundException e2) {
+			e2.printStackTrace();
+		}
+		BufferedReader buf = new BufferedReader(new InputStreamReader(is));
+		        
+		String s = null;
+		
+		//FileReader fReader = null;
+		//BufferedReader bReader = null;
+		//try {
+			//fReader = new FileReader(settingsFile);
+			//bReader = new BufferedReader(fReader);
+		//} catch (FileNotFoundException e2) {
+			//e2.printStackTrace();
+		//}
+		
+
+		
+		//try {
+			//fileWriter = new FileWriter(settingsFile, true);//2. Parameter, damit nicht überschrieben wird
+			//} catch (IOException e1) {
+			//e1.printStackTrace();
+			//}
+		
+		//bufferedWriter = new BufferedWriter(fileWriter);
+		
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 3; j++) {
+
+				s = array3[i][j];
+				
+				s.replaceAll(" ","");
+				s.replaceAll("=","");
+				s.replaceAll(array2[i][j],"");
+				s.replaceAll(";","");
+				
+				if(i == 0) {//Soll das File gespeichert werden?
+					if(s.matches("Yes") || s.matches("No")) {
+						array3[i][j] = s;
+					} else {
+						JOptionPane.showMessageDialog(null, "Ob die Datei gespeichert werden soll, muss im SettingsFile mit Yes oder No angegeben werden!");
+					}
+				} else if(i == 1) {//Das FileName
+					array3[i][j] = s;
+				} else if(i == 2) {//Der Path für das File
+					
+					File f = new File(s);
+					if(f.isDirectory() == true) {
+						array3[i][j] = s;
+					} else {
+						JOptionPane.showMessageDialog(null, "Angegebener Pfad(Nr. " + j + ") ist kein gültiger Pfad!");
+					}
+					
+					
+				} else if(i == 3) {
+					switch (j) {
+					case 0: array3[i][j] = s;
+					case 1:
+					case 2:
+						break;
+					default:JOptionPane.showMessageDialog(null, "DefaultFehler616");
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Interner Fehler, bitte melden(587 - FrameInformatikSkriptenSettings)");
+				}
+				
+			}
+		}
+		
+
+		
+		try {
+			s = bufferedReader.readLine();
+			
+			if(s == null) {
+				 s = "";
+			}
+			
+			s.replaceAll(" ","");
+			s.replaceAll("=","");
+			s.replaceAll("ActiveAnalysis?[Yes/No]","");
+			s.replaceAll(";","");
+			if(s.matches("Yes") == true) {
+				ActiveAnalysis = true;
+			} else if(s.matches("No") == false) {
+				ActiveAnalysis = false;
+			} else {
+				JOptionPane.showMessageDialog(null, "Interner Fehler(settings574)");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return array3;
+	}
+	
+	
+	
+	
+	
+	
+	
+	00
+	01
+	02
+	10
+	11
+	12
+	20
+	21
+	22
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private boolean checkFile(File file) { 
+    if (file != null) { 
+        try { 
+            file.createNewFile(); 
+        } catch (IOException e) { 
+            System.err.println("Error creating " + file.toString()); 
+        } 
+        if (file.isFile() && file.canWrite() && file.canRead()) 
+        	System.out.println("Pfad: " + file.getAbsolutePath());
+            return true; 
+    } 
+    return false; 
+} 
+
+
+
+
+FILE USEFUL METHODS
+
+
+	
+	
+	/*
+	public boolean isSettingsFileConfigured(String text) {
+		
+		
+		//Arrays mit Standardwerten laden[speichern, Name, Pfad, NOT USED][java, bat, txt]
+		String[][] defaultNames = getArrayDefaultNames();
+		String[][] defaultValues = getArrayDefaultValues();
+
+		
+		boolean correct = true;
+
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 3; j++) {
+				if(correct) {
+					//.println("array2[][]: " + array2[i][j] + "\n" + "text: " + text + "\n----------");
+					if(text.contains(defaultNames[i][j]) != true) {
+						//.println("Fehler!" + i+j+array2[i][j]);
+						correct = false;
+					}
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		return correct;
+	}*/
+
+/*
+ * Glaube nicht, dass diese Methode funktioniert20
+	public String[][] ReadLinesFromFileIntoArray(File f) throws Exception{
+		
+		int i = 0, j = 0, kz = 0;
+		String[][] array = new String[4][3];
+		
+		InputStream is = null;
+		try {
+			is = new FileInputStream(f);
+		} catch (FileNotFoundException e2) {
+			e2.printStackTrace();
+		}
+		BufferedReader buf = new BufferedReader(new InputStreamReader(is));
+		        
+		String line = null;
+		try {
+			line = buf.readLine();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		        
+		while(kz != 11){  
+		   
+		   if(j != 2) {
+			   //System.out.println("1i = " + i+line);
+			   //System.out.println("1j = " + j+line);
+			   array[i][j] = line;
+			   kz++;
+			   j++;
+		   } else if(i != 3){
+			   //System.out.println("2i = " + i+line);
+			   //System.out.println("2j = " + j+line);
+			   array[i][j] = line;
+			   kz++;
+			   i++;
+			   j = 0;
+		   } else {
+			   
+		   }
+		   
+		   try {
+			line = buf.readLine();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		}
+
+
+		return array;
+	}*/
+	
+	
+/*	AreaText = editorPane.getText();
+arr = new char[AreaText.length()];
+for (int i = 0; i < AreaText.length(); i++) {
+	if(AreaText.charAt(i) == '#') {
+		if( AreaText.charAt(i+1) == 'j') {
+			
+		} else if(AreaText.charAt(i+1) == 'r') {
+			
+		}
+	}
+}*/
+
+
+
+		//boolean IsConfigured = isSettingsFileConfigured(settingsText);
+		
+					
+					
+					
+		//System.out.println("settingsText = "+ settingsText);
+		//System.out.println("isConfigured = " + IsConfigured);
+					
+		
+
+					
+					
+					//.println("isConfigured = " + IsConfigured);
+		//NeuKonfiguration
+					//if(IsConfigured == false) {
+						//Vorbereitung für NewConfiguration
+						/*StringBuilder sb = null;
+						
+						if(settingsText != null) {
+							sb = new StringBuilder(settingsText);
+						} else {
+							//Damit settingsText != null ist
+							settingsText = "";
+							sb = new StringBuilder(settingsText);
+						}*/
+						
+						//newConfiguration(array2, array);
+					//}
+		
+		
+		
+			/*
+	 * Sollte ich eigentlich auch nicht mehr brauchen, daher outcommented20
+	public String[][] arrayVervollständigen(String[][] arr) {
+
+		
+		for (int i = 0; i < 4; i++) {
+			for (int  j = 0; j < 3; j++) {
+				if(arr[i][j] == null || arr[i][j] == "") {
+					arr[i][j] = " " + System.getProperty("line.separator");
+				}
+			}
+		}
+		return arr;
+	}*/
+/*
+	public String ReadTextFromFile(File f) {
+		
+		//Müsste so passen, never touch a running system
+		//haut das ganze auch jeweils zeilenweise in den String rein
+		InputStream is = null;
+		try {
+			is = new FileInputStream(f);
+		} catch (FileNotFoundException e2) {
+			e2.printStackTrace();
+		}
+		BufferedReader buf = new BufferedReader(new InputStreamReader(is));
+		        
+		String line = null;
+		try {
+			line = buf.readLine();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		StringBuilder sb = new StringBuilder();
+		        
+		while(line != null){
+		   sb.append(line).append("\n");
+		   try {
+			line = buf.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	        
+	String fileAsString = sb.toString();
+
+
+	return fileAsString;
+}*/
+
+
+
+
+
+		
+		
+		
