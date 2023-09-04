@@ -1,28 +1,25 @@
 "use client"
 import React from 'react';
 import { useLanguageData } from '@/data/languageLoader';
-import Triangle from '@/app/components/Triangle/Triangle';
+import Tile from './components/Tile/tile';
 
 const Homepage: React.FC = () => {
-  const data = useLanguageData();
+  const data = useLanguageData("homepage");
 
   return (
     <div>
       {data && (
-        <main className='overflow-visible p-20 mt-20'>
-          <div className="flex justify-evenly flex-col md:flex-row">
-            <img className=" w-5/6 lg:w-2/6 self-center" src="/W2.webp" alt={data['altPicture']} />
-            <p className="z-10 ml-4 w-5/6 lg:w-3/6 self-center p-12 font-bold text-2xl from-neutral-200" style={{ backgroundColor: "var(--bg-accent)" }}>
-              {data['welcomeText']}
-            </p>
-            <div className='w-1/6'>
-              <Triangle />
-            </div>
+        <main className='p-20 mt-20'>
+          <div className="grid grid-cols-4 grid-rows-2 gap-4 ">
+            <Tile label='Binomial-Calculator' color='bg-red-50'></Tile>
+            <Tile label='Periodic Table' color='bg-red-100'></Tile>
+            <Tile label='Test3' color='bg-red-200'></Tile>
+            <Tile label='Test4' color='bg-red-300'></Tile>
+            <Tile label='Test5' color='bg-red-400'></Tile>
+            <Tile label='Test6' color='bg-red-500'></Tile>
           </div>
-
         </main >
       )}
-
     </div>
   );
 };

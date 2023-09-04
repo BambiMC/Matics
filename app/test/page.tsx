@@ -3,7 +3,7 @@ import React from 'react';
 import { useLanguageData } from '@/data/languageLoader';
 
 const MyPage: React.FC = () => {
-  const data = useLanguageData();
+  const data = useLanguageData("homepage");
 
   return (
     <div>

@@ -1,0 +1,14 @@
+javaFileSave?[Yes/No] = No;
+batFileSave?[Yes/No] = No;
+txtFileSave?[Yes/No] = No;
+javaFileName = java_SkriptDatei;
+batFileName = bat_SkriptDatei;
+txtFileName = txt_SkriptDatei;
+javaFilePath = C:\Users\fnberger\Dropbox\Data\FNBG_matics\oldSources\Matics Aftermath\10 and before\;
+batFilePath = C:\Users\fnberger\Dropbox\Data\FNBG_matics\oldSources\Matics Aftermath\10 and before\;
+txtFilePath = C:\Users\fnberger\Dropbox\Data\FNBG_matics\oldSources\Matics Aftermath\10 and before\;
+ActiveAnalysis?[Yes/No] = Yes;
+classFileSave?[Yes/No] = No;
+Language = en;
+Theme[-1 -> 33]//TODO = 23;
+TitleBar[theme/windows] = theme;

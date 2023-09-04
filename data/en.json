@@ -1,8 +1,33 @@
 {
-  "resume": "Resume",
-  "projects": "Projects",
-  "linkedin": "LinkedIn",
-  "imprint": "Imprint",
-  "welcomeText": "Hey there, I'm Fabian Berger, a 23-year-old master's student. I'm currently pursuing my studies in Computer Science at Friedrich Alexander University in Erlangen.",
-  "altPicture": "Picture of Fabian Berger"
+  "homepage": {
+    "welcomeText": "Hey, I am Fabian Berger, a 23-year-old master's student. I am currently studying computer science at Friedrich Alexander University in Erlangen.",
+    "altPicture": "Picture of Fabian Berger"
+  },
+  "navbar": {
+    "blog": "Blog",
+    "resume": "Resume",
+    "projects": "Projects",
+    "linkedin": "LinkedIn",
+    "imprint": "Imprint"
+  },
+  "imprint": {
+    "title": "Imprint and Privacy Policy",
+    "name": "Fabian Berger",
+    "tmg": "Information according to § 5 TMG",
+    "contact": "Contact",
+    "telephone": "Phone",
+    "editorial": "Editorial responsibility and representation by:",
+    "rstv": "Responsible for content according to § 55 Abs. 2 RStV",
+    "disclaimer": "Disclaimer",
+    "liability1": "Liability for content",
+    "liabilityText1": "The contents of our pages have been created with the utmost care. However, we cannot guarantee the accuracy, completeness, and timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with § 7 Abs.1 TMG and the general laws. According to §§ 8 to 10 TMG, we are not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity. Obligations to remove or block the use of information under general law remain unaffected. However, liability in this regard is only possible from the time of knowledge of a specific legal violation. Upon becoming aware of such legal violations, we will remove this content immediately.",
+    "liability2": "Liability for links",
+    "liabilityText2": "Our offer contains links to external websites of third parties, the content of which we have no influence over. Therefore, we cannot accept any liability for this external content. The respective provider or operator of the linked pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking. However, a permanent content control of the linked pages is not reasonable without concrete evidence of a violation of the law. If we become aware of legal violations, we will immediately remove such links.",
+    "liability3": "Copyright",
+    "liabilityText3": "The content and works created by the site operators on these pages are subject to German copyright law. The reproduction, processing, distribution, and any kind of use beyond the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this page are only permitted for private, non-commercial use. Insofar as the content on this page was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of legal violations, we will immediately remove such content.",
+    "liability4": "Data protection",
+    "liabilityText4": "The use of our website is usually possible without providing personal data. As far as personal data (e.g., name, address, or email addresses) is collected on our pages, this is always done on a voluntary basis, as far as possible. This data will not be disclosed to third parties without your express consent. We point out that data transmission over the Internet (e.g., communication by email) can have security vulnerabilities. A complete protection of data against access by third parties is not possible.",
+    "liability5": "Objection to unsolicited advertising",
+    "liabilityText5": "The use of contact data published in the context of the imprint obligation for sending unsolicited advertising and information materials is hereby expressly prohibited."
+  }
 }
