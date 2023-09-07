@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ThemeSwitcher } from '../ThemeSwitcher/ThemeSwitcher';
-import { useLanguageData } from '@/data/languageLoader';
+import { useLanguageData } from '@data/languageLoader';
 
 const toggleMobileMenu = () => {
   console.log('Toggle mobile menu clicked');

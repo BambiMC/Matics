@@ -20,8 +20,10 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/data/*": ["data/*"],
-      "@/app/*": ["app/*"]
+      "@data/*": ["data/*"],
+      "@app/*": ["app/*"],
+      "@components/*": ["app/components/*"],
+      "@public/*": ["public/*"]
     }
   },
   "include": [
@@ -30,7 +32,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/test/page.tsx",
-    "app/components/Triangle/Triangle.tsx"
+    "app/components/Triangle/Triangle.tsx",
+    "app/components/ElementTile"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { useLanguageData } from "@/data/languageLoader";
+import { useLanguageData } from "@data/languageLoader";
 
 const Imprint: React.FC = () => {
 

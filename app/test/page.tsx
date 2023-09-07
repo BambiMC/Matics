@@ -1,21 +1,25 @@
 "use client"
-import React from 'react';
-import { useLanguageData } from '@/data/languageLoader';
+import React, { useState } from 'react';
+import ElementPopUp from '@components/ElementPopUp/ElementPopUp';
 
-const MyPage: React.FC = () => {
-  const data = useLanguageData("homepage");
+const Home: React.FC = () => {
+  const [isPopUpVisible, setIsPopUpVisible] = useState(false);
+
+  const togglePopUp = () => {
+    setIsPopUpVisible(!isPopUpVisible);
+  };
 
   return (
     <div>
-      <h1 className='mt-32'>User Information</h1>
-      {data && (
-        <div>
-          <p>{data['welcomeText']}</p>
-          <p>{data['imprint']}</p>
-        </div>
-      )}
+      <header >Navbar</header>
+      <main className='m-32'>
+        {/* Your main content goes here */}
+        <button onClick={togglePopUp}>Show Popup</button>
+      </main>
+      <footer >Footer</footer>
+      {isPopUpVisible && <ElementPopUp onClose={togglePopUp} />}
     </div>
   );
 };
 
-export default MyPage;
+export default Home;

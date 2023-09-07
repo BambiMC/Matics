@@ -1,15 +1,19 @@
 import React from 'react';
+import Link from 'next/link';
 
 interface TileProps {
     label: string;
     color: string;
+    to: string;
 }
 
-const Tile: React.FC<TileProps> = ({ label, color }) => {
+const Tile: React.FC<TileProps> = ({ label, color, to }) => {
     return (
-        <div className={`text-center ${color} flex items-center justify-center text-fuchsia-900  aspect-square`}>
-            {label}
-        </div>
+        <Link href={to}>
+            <div className={`text-center ${color} flex items-center justify-center text-fuchsia-900 aspect-square`}>
+                {label}
+            </div>
+        </Link>
     );
 };
 
