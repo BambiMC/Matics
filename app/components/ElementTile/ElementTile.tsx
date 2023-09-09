@@ -16,12 +16,12 @@ const ElementTile: React.FC<ElementTileProps> = ({ elementData, addClasses }) =>
 
   return (
     <div
-      className={`text-xs md:text-xl xl:text-2xl text-center flex items-center justify-center text-black p-0 md:p-2 xl:p-4 2xl:p-8 border-2 border-black ${addClasses}`}
+      className={`text-xs md:text-xl xl:text-2xl text-center flex items-center justify-center text-black p-1 md:p-2 xl:p-4 2xl:p-8 md:border-2 md:border-black aspect-square ${addClasses}`}
       onContextMenu={(e) => e.preventDefault()}
       onClick={togglePopUp}
       style={{ cursor: 'pointer' }}
     >
-      {elementData ? elementData.kurzsymbol : ''}
+      {elementData ? elementData.kurzsymbol : '↓'}
       {isPopUpVisible && <ElementPopUp onClose={togglePopUp} elementData={elementData} addClasses="" />}
 
     </div>

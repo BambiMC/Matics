@@ -74,7 +74,7 @@ const Projects: React.FC = () => {
         {/* Line Number 6 */}
         <ElementTile addClasses='bg-red-500' elementData={elements[54]} />
         <ElementTile addClasses='bg-amber-500' elementData={elements[55]} />
-        <div className='bg-rose-400 text-xs md:text-xl xl:text-2xl text-center flex items-center justify-center text-black p-0 md:p-2 xl:p-4 2xl:p-8 border-2 border-black'>↓</div>
+        <ElementTile addClasses='bg-rose-400' />
         <ElementTile addClasses='bg-yellow-300' elementData={elements[71]} />
         <ElementTile addClasses='bg-yellow-300' elementData={elements[72]} />
         <ElementTile addClasses='bg-yellow-300' elementData={elements[73]} />
@@ -93,7 +93,7 @@ const Projects: React.FC = () => {
         {/* Line Number 7 */}
         <ElementTile addClasses='bg-red-500' elementData={elements[86]} />
         <ElementTile addClasses='bg-amber-500' elementData={elements[87]} />
-        <div className='bg-pink-500 text-xs md:text-xl xl:text-2xl text-center flex items-center justify-center text-black p-0 md:p-2 xl:p-4 2xl:p-8 border-2 border-black'>↓</div>
+        <ElementTile addClasses='bg-pink-500' />
         <ElementTile addClasses='bg-yellow-300' elementData={elements[103]} />
         <ElementTile addClasses='bg-yellow-300' elementData={elements[104]} />
         <ElementTile addClasses='bg-yellow-300' elementData={elements[105]} />
