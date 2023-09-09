@@ -9,13 +9,13 @@ const Homepage: React.FC = () => {
   return (
     <main className='p-20 mt-20'>
       {data && (
-        <div className="grid grid-cols-4 grid-rows-2 gap-4 xl:gap-16 2xl:gap-32">
-          <Tile label='Binomial-Calculator' color='bg-red-50' to='/binomial-calculator'></Tile>
-          <Tile label='Periodic Table' color='bg-red-100' to='/periodicTable'></Tile>
-          <Tile label='Test3' color='bg-red-200' to='/test3'></Tile>
-          <Tile label='Test4' color='bg-red-300' to='/test4'></Tile>
-          <Tile label='Test5' color='bg-red-400' to='/test5'></Tile>
-          <Tile label='Test6' color='bg-red-500' to='/test6'></Tile>
+        <div className="grid grid-cols-8 grid-rows-2 gap-4 xl:gap-16 2xl:gap-3">
+          <Tile label='Periodic Table' color='bg-white' to='/periodicTable'></Tile>
+          <Tile label='Test2' color='bg-white' to='/test2'></Tile>
+          <Tile label='Test3' color='bg-white' to='/test3'></Tile>
+          <Tile label='Test4' color='bg-white' to='/test4'></Tile>
+          <Tile label='Test5' color='bg-white' to='/test5'></Tile>
+          <Tile label='Test6' color='bg-white' to='/test6'></Tile>
         </div>
       )}
     </main>

@@ -10,7 +10,7 @@ interface TileProps {
 const Tile: React.FC<TileProps> = ({ label, color, to }) => {
     return (
         <Link href={to}>
-            <div className={`text-center ${color} flex items-center justify-center text-fuchsia-900 aspect-square`}>
+            <div className={`text-center ${color} flex items-center justify-center aspect-square bg-slate-950`}>
                 {label}
             </div>
         </Link>
