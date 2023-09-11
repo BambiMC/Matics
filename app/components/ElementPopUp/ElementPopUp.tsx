@@ -24,8 +24,7 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData, addClasses }
 
     return (
         <div className={overlayClasses}>
-            {/* className={`text-sm md:text-xl xl:text-2xl text-center flex items-center justify-center text-black p-1 md:p-2 xl:p-4 2xl:p-8 border-2 border-black ${addClasses}`} */}
-            <div className={`text-xs md:text-xl xl:text-2xl ${styles.popup}`}>
+            <div className={`text-xs md:text-base 2xl:text-2xl ${styles.popup}`}>
                 <p className='element-text'>Name: {elementData ? elementData.name : ''}</p>
                 <p className='element-text'>Kurz: {elementData ? elementData.kurzsymbol : ''}</p>
                 <p className='element-text'>Protonen: {elementData ? elementData.protonen : ''}</p>

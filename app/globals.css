@@ -92,16 +92,11 @@ svg>line {
 
 /** Ab hier ist old fnbg.css*/
 
-.container2 {
-  height: 100vh;
-}
-
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-
 
 /* Button */
 .btn {
@@ -185,5 +180,5 @@ textarea {
 a:hover,
 button:hover {
   transform: scale(1.08) !important;
-  color: #909090 !important;
+  color: #ffffff !important;
 }
