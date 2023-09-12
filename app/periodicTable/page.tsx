@@ -10,8 +10,8 @@ const Projects: React.FC = () => {
   return (
 
 
-    <main className='mx-auto max-w-9xl mt-16 lg:mt-8'>
-      <div className="grid grid-cols-18 grid-rows-9 gap-0 sm:gap-1 md:gap-2 xl:gap-4 m-4 md:m-16">
+    <main className='mx-auto max-w-9xl mt-20 lg:mt-8'>
+      <div className="grid grid-cols-18 grid-rows-9 gap-0 sm:gap-1 md:gap-2 xl:gap-4 m-1 md:m-16">
         {/* Line Number 1 */}
         <ElementTile addClasses='bg-cyan-500' elementData={elements[0]} />
         <ElementTile addClasses='bg-purple-500 col-start-18' elementData={elements[1]} />

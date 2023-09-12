@@ -28,6 +28,4 @@ const ElementTile: React.FC<ElementTileProps> = ({ elementData, addClasses }) =>
   );
 };
 
-// ... Example component and other code
-
 export default ElementTile;
