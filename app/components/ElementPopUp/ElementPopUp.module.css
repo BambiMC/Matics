@@ -4,11 +4,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(5px); /* Add a blur effect to the background */
+  backdrop-filter: blur(5px);
   z-index: 5;
 }
 
@@ -21,6 +21,7 @@
 }
 
 p.element-text {
-  padding: 0.25rem;
+  padding: 2rem;
+  margin: 100px;
   font: normal;
 }

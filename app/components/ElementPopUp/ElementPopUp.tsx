@@ -26,7 +26,7 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData, addClasses }
         <div className={overlayClasses}>
             <div className={`text-xs md:text-base 2xl:text-xl font-normal ${styles.popup}`}>
                 <p className='element-text'>Name: {elementData ? elementData.name : ''}</p>
-                <p className='element-text'>Kurz: {elementData ? elementData.kurzsymbol : ''}</p>
+                <p className='element-text'>Kurzsymbol: {elementData ? elementData.kurzsymbol : ''}</p>
                 <p className='element-text'>Protonen: {elementData ? elementData.protonen : ''}</p>
                 <p className='element-text'>Neutronen: {elementData ? elementData.neutronen : ''} *</p>
                 <p className='element-text'>Oberkategorie: {elementData ? elementData.oberkategorie : ''}</p>
@@ -49,7 +49,6 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData, addClasses }
                 <p className='element-text'>Elektronegativität: {elementData ? elementData.elektronegativität : ''} ***</p>
                 <p className='element-text'>Flammenfarbe: {elementData ? elementData.flammenfarbe : ''}</p>
                 <p className='element-text'>Wikipedia: {elementData ? elementData.wikipedia : ''}</p>
-
                 <p className='element-text'>*=Berechnet nach = Masse(gerundet) - Ordnungszahl</p>
                 <p className='element-text'>**=Unter Normalbedingungen 20 Grad Celsius</p>
                 <p className='element-text'>***=Nach der Pauling-Skala, notfalls nach Allred-Rochow</p>
