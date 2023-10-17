@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './ElementPopUp.module.css';
 import { ElementData } from '@public/libraryChemistry';
+import Button from '../Button/Button';
 
 interface PopUpProps {
     onClose: () => void;
@@ -25,7 +26,10 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData, addClasses }
     return (
         <div className={overlayClasses}>
             <div className={`text-xs md:text-base 2xl:text-xl font-normal ${styles.popup}`}>
-                <p className='element-text'>Name: {elementData ? elementData.name : ''}</p>
+                <div className='flex header-row justify-between'>
+                    <p className='element-text font-bold'>{elementData ? elementData.name : ''}</p>
+                    <Button onClick={handleCloseClick}>Text</Button>
+                </div>
                 <p className='element-text'>Kurzsymbol: {elementData ? elementData.kurzsymbol : ''}</p>
                 <p className='element-text'>Protonen: {elementData ? elementData.protonen : ''}</p>
                 <p className='element-text'>Neutronen: {elementData ? elementData.neutronen : ''} *</p>
@@ -55,7 +59,6 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData, addClasses }
 
 
 
-                <button onClick={handleCloseClick}>Close</button>
             </div>
         </div>
     );
