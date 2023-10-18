@@ -12,8 +12,8 @@
   --radius-small: 20px;
   --fnbg-purple: #303030;
   --fnbg-orange: #303030;
-  --bg-body: #eee3ff;
-  --bg-accent: #c5bcf3;
+  --fnbg-body: #eee3ff;
+  --fnbg-accent: #c5bcf3;
 }
 body {
   background-color: var(--fnbg-orange);
@@ -24,21 +24,10 @@ body {
   --radius-big: 0;
   --radius-small: 0;
   --fnbg-purple: #8774e1;
-  /* --fnbg-orange: #fb923c; */
-  --fnbg-orange: #e0e0e0;
-  --bg-body: #363636;
-  --bg-accent: #222222;
+  --fnbg-orange: #fb923c;
+  --fnbg-body: #363636;
+  --fnbg-accent: #222222;
 }
-
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
 
 :root[data-theme="light"] .dark {
   display: none;
@@ -57,7 +46,7 @@ body {
 /**Text*/
 
 body {
-  background-color: var(--bg-body);
+  background-color: var(--fnbg-body);
   overflow-x: hidden;
 }
 
@@ -110,8 +99,8 @@ body {
 
 .btn:hover {
   color: #909090;
-  background-color: var(--bg-accent);
-  border-color: var(--bg-accent);
+  background-color: var(--fnbg-accent);
+  border-color: var(--fnbg-accent);
 }
 
 a {
@@ -160,15 +149,15 @@ h3 {
 nav,
 section,
 footer {
-  background-color: var(--bg-accent);
+  background-color: var(--fnbg-accent);
   box-shadow: 0 2px 5px hsla(0, 0%, 0%, 0.2);
 }
 
 input,
 select,
 textarea {
-  background-color: var(--bg-accent);
-  border-color: var(--bg-accent);
+  background-color: var(--fnbg-accent);
+  border-color: var(--fnbg-accent);
   caret-color: var(--cursor);
   color: var(--cursor);
   border-radius: var(--radius-small);

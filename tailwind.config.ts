@@ -28,6 +28,12 @@ const config: Config = {
       maxWidth: {
         "9xl": "2000px",
       },
+      colors: {
+        "fnbg-purple": "var(--fnbg-purple)",
+        "fnbg-orange": "var(--fnbg-orange)",
+        "fnbg-body": "var(--fnbg-body)",
+        "fnbg-accent": "var(--fnbg-accent)",
+      },
     },
   },
   plugins: [],
