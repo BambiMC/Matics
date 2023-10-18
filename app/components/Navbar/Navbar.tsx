@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ThemeSwitcher } from '../ThemeSwitcher/ThemeSwitcher';
 import { useLanguageData } from '@data/languageLoader';
+import Button from '../Button/Button';
 
 const toggleMobileMenu = () => {
   console.log('Toggle mobile menu clicked');
@@ -41,8 +42,8 @@ const Navbar = () => {
             </div>
             <div className='flex items-center'>
               <div className='px-2'>
-                <button className='m-2' onClick={() => handleLangButtonClick('en')}>EN</button>
-                <button className='m-2' onClick={() => handleLangButtonClick('de')}>DE</button>
+                <Button onClick={() => handleLangButtonClick('en')}>EN</Button>
+                <Button onClick={() => handleLangButtonClick('de')}>DE</Button>
               </div>
               <ThemeSwitcher />
               <button

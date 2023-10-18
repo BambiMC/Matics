@@ -16,7 +16,7 @@ const ElementTile: React.FC<ElementTileProps> = ({ elementData, addClasses }) =>
 
   return (
     <div
-      className={`text-xs md:text-xl xl:text-2xl text-center flex items-center justify-center text-black p-1 md:p-2 xl:p-4 2xl:p-8 md:border-2 md:border-black aspect-square hover:font-extrabold hover:outline sm:outline-white ${addClasses}`}
+      className={`duration-300 text-xs md:text-xl xl:text-2xl text-center flex items-center justify-center text-black p-1 md:p-2 xl:p-4 2xl:p-8 md:border-2 md:border-black aspect-square hover:font-extrabold hover:outline sm:outline-white ${addClasses}`}
       style={{ cursor: 'pointer' }}
       onClick={() => {
         if (elementData) {
@@ -26,8 +26,9 @@ const ElementTile: React.FC<ElementTileProps> = ({ elementData, addClasses }) =>
     >
       {elementData ? elementData.kurzsymbol : '↓'}
 
-      {isPopUpVisible && <ElementPopUp onClose={togglePopUp} elementData={elementData} addClasses="" />}
-
+      {isPopUpVisible && (
+        <ElementPopUp onClose={togglePopUp} elementData={elementData} />
+      )}
     </div>
   );
 };

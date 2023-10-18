@@ -9,9 +9,8 @@ const Projects: React.FC = () => {
   const data = useLanguageData("periodicTable");
   return (
 
-
     <main className='mx-auto max-w-9xl mt-20 lg:mt-8'>
-      <div className="grid grid-cols-18 grid-rows-9 gap-0 sm:gap-1 md:gap-2 xl:gap-4 m-1 md:m-16">
+      <div className="grid grid-cols-18 grid-rows-9 gap-0 sm:gap-1 lg:gap-2 xl:gap-4 m-1 md:m-16">
         {/* Line Number 1 */}
         <ElementTile addClasses='bg-cyan-500' elementData={elements[0]} />
         <ElementTile addClasses='bg-purple-500 col-start-18' elementData={elements[1]} />
@@ -141,8 +140,6 @@ const Projects: React.FC = () => {
         <ElementTile addClasses='bg-pink-500' elementData={elements[100]} />
         <ElementTile addClasses='bg-pink-500' elementData={elements[101]} />
         <ElementTile addClasses='bg-pink-500' elementData={elements[102]} />
-
-
 
       </div>
     </main>
