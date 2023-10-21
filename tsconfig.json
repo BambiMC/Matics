@@ -34,6 +34,6 @@
     "app/test/page.tsx",
     "app/components/Triangle/Triangle.tsx",
     "app/components/ElementTile"
-  ],
+, "data/languageLoader"  ],
   "exclude": ["node_modules"]
 }

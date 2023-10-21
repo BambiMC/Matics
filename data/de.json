@@ -30,7 +30,32 @@
     "liability5": "Widerspruch gegen unverlangte Werbung",
     "liabilityText5": "Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen."
   },
-  {
-    "periodic table": "Periodensystem",
+  "periodicTable": {
+    "chemicalSymbol": "Elementsymbol",
+    "protons": "Protonen",
+    "neutrons": "Neutronen",
+    "elementCategory": "Elementkategorie",
+    "subCategory": "Unterkategorie",
+    "mainGroup": "Hauptgruppe",
+    "period": "Periode",
+    "appearance": "Aussehen",
+    "aggregateState": "Aggregatzustand",
+    "structure": "Struktur",
+    "hardness": "Härte",
+    "volume": "Volumen",
+    "radioactive": "Radioaktiv",
+    "syntheticallyProduced": "Synthetisch hergestellt",
+    "commonness": "Häufigkeit",
+    "atomicWeight": "Atomares Gewicht",
+    "ionizationEnergy": "Ionisierungsenergie",
+    "density": "Dichte",
+    "meltingPoint": "Schmelzpunkt",
+    "boilingPoint": "Siedepunkt",
+    "electronegativity": "Elektronegativität",
+    "flameColor": "Flammenfarbe",
+    "wikipediaLink": "Wikipedia",
+    "explanation1": "*=Berechnet nach = Masse(gerundet) - Ordnungszahl",
+    "explanation2": "**=Unter Normalbedingungen 20 Grad Celsius",
+    "explanation3": "***=Nach der Pauling-Skala, alternativ nach Allred-Rochow"
   }
 }

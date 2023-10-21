@@ -1,8 +1,11 @@
+"use client"
+
 import React from 'react';
 import styles from './ElementPopUp.module.css';
 import { ElementData } from '@public/libraryChemistry';
 import Button from '../Button/Button';
 import Link from 'next/link';
+import { useLanguageData } from "@data/languageLoader";
 
 interface PopUpProps {
     onClose: () => void;
@@ -10,9 +13,14 @@ interface PopUpProps {
     addClasses?: string;
 }
 
-const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData, addClasses }) => {
-    const overlayClasses = `${styles.overlay} ${addClasses}`;
 
+
+
+    
+    const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData, addClasses }) => {
+        const overlayClasses = `${styles.overlay} ${addClasses}`;
+        
+        const data = useLanguageData("imprint");
     const handleOverlayClick = (event: React.MouseEvent) => {
         event.stopPropagation();
     };
