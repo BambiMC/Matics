@@ -22,14 +22,12 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData }) => {
         <div className={styles.blurred} onClick={onClose}>
             <div className={`text-xs md:text-base 2xl:text-xl font-normal ${styles.popup}`} onClick={handleOverlayClick}>
                 <div className='flex header-row justify-between'>
-                    <p className='font-bold pt-4 text-3xl text-fnbg-orange'>{elementData ? elementData.name : ''}</p>
+                    <p className='font-bold pt-4 text-3xl text-fnbg-orange'>{elementData ? elementData.name : ''} - {elementData ? elementData.kurzsymbol : ''}</p>
                     <Button onClick={onClose}>X</Button>
                 </div>
-                <p className='element-text'>Kurzsymbol: {elementData ? elementData.kurzsymbol : ''}</p>
                 <p className='element-text'>Protonen: {elementData ? elementData.protonen : ''}</p>
                 <p className='element-text'>Neutronen: {elementData ? elementData.neutronen : ''} *</p>
-                <p className='element-text'>Oberkategorie: {elementData ? elementData.oberkategorie : ''}</p>
-                <p className='element-text'>Unterkategorie: {elementData ? elementData.unterkategorie : ''}</p>
+                <p className='element-text'>Kategorie: {elementData ? elementData.oberkategorie : ''} - {elementData ? elementData.unterkategorie : ''}</p>
                 <p className='element-text'>Hauptgruppe: {elementData ? elementData.hauptgruppe : ''}</p>
                 <p className='element-text'>Periode: {elementData ? elementData.periode : ''}</p>
                 <p className='element-text'>Aussehen: {elementData ? elementData.aussehen : ''}</p>
@@ -51,7 +49,7 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData }) => {
                     <p className='element-text'>Wikipedia:</p>
                     <Link className='ml-3' href={elementData ? elementData.wikipedia : ''} target="_blank">{elementData ? elementData.wikipedia : ''}</Link>
                 </div>
-                <p className='element-text'>*=Berechnet nach = Masse(gerundet) - Ordnungszahl</p>
+                <p className='element-text pt-4'>*=Berechnet nach = Masse(gerundet) - Ordnungszahl</p>
                 <p className='element-text'>**=Unter Normalbedingungen 20 Grad Celsius</p>
                 <p className='element-text'>***=Nach der Pauling-Skala, alternativ nach Allred-Rochow</p>
 
