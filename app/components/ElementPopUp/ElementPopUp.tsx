@@ -10,15 +10,17 @@ import { useLanguageData } from "@data/languageLoader";
 interface PopUpProps {
     onClose: () => void;
     elementData?: ElementData;
-    addClasses?: string;
 }
 
-const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData, addClasses }) => {
-    const overlayClasses = `${styles.overlay} ${addClasses}`;
+const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData }) => {
+
+    const handleOverlayClick = (event: React.MouseEvent) => {
+        event.stopPropagation();
+    };
 
     return (
-        <div className={overlayClasses}>
-            <div className={`text-xs md:text-base 2xl:text-xl font-normal ${styles.popup}`}>
+        <div className={styles.blurred} onClick={onClose}>
+            <div className={`text-xs md:text-base 2xl:text-xl font-normal ${styles.popup}`} onClick={handleOverlayClick}>
                 <div className='flex header-row justify-between'>
                     <p className='font-bold pt-4 text-3xl text-fnbg-orange'>{elementData ? elementData.name : ''}</p>
                     <Button onClick={onClose}>X</Button>
@@ -48,7 +50,6 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData, addClasses }
                 <div className='flex'>
                     <p className='element-text'>Wikipedia:</p>
                     <Link className='ml-3' href={elementData ? elementData.wikipedia : ''} target="_blank">{elementData ? elementData.wikipedia : ''}</Link>
-
                 </div>
                 <p className='element-text'>*=Berechnet nach = Masse(gerundet) - Ordnungszahl</p>
                 <p className='element-text'>**=Unter Normalbedingungen 20 Grad Celsius</p>

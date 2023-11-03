@@ -16,7 +16,7 @@ const ElementTile: React.FC<ElementTileProps> = ({ elementData, addClasses }) =>
 
   return (
     <div
-      className={`duration-300 text-xs md:text-xl xl:text-2xl text-center flex items-center justify-center text-black p-1 md:p-2 xl:p-4   md:border-black aspect-square hover:font-extrabold hover:outline  ${addClasses}`}
+      className={`flex aspect-square cursor-pointer text-center items-center justify-center duration-300 text-xs md:text-xl xl:text-2xl text-black p-1 md:p-2 xl:p-4 md:border-black hover:font-extrabold hover:outline  ${addClasses}`}
       onClick={() => {
         if (elementData) {
           togglePopUp();

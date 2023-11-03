@@ -3167,7 +3167,7 @@ export const elements: ElementData[] = [
     },
     {
         name: "Nihonium",
-        kurzsymbol: "Uut",
+        kurzsymbol: "Nh",
         unterkategorie: "Wahrscheinlich ein Metall",
         oberkategorie: "Metall",
         aussehen: "Noch nicht erforscht",
