@@ -1135,7 +1135,7 @@ public class LibraryChemie {
 		s[111][8] = "-/-";
 		s[111][9] = "Copernikium";
 		s[112][0] = "Nihonium";
-		s[112][1] = "Uut";
+		s[112][1] = "Nh";
 		s[112][2] = "Wahrscheinlich ein Metall";
 		s[112][3] = "Metall";
 		s[112][4] = "Noch nicht erforscht";

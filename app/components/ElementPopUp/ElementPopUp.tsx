@@ -13,20 +13,11 @@ interface PopUpProps {
     addClasses?: string;
 }
 
-
-
-
-    
-    const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData, addClasses }) => {
-        const overlayClasses = `${styles.overlay} ${addClasses}`;
-        
-        const data = useLanguageData("imprint");
-    const handleOverlayClick = (event: React.MouseEvent) => {
-        event.stopPropagation();
-    };
+const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData, addClasses }) => {
+    const overlayClasses = `${styles.overlay} ${addClasses}`;
 
     return (
-        <div className={overlayClasses} onClick={handleOverlayClick}>
+        <div className={overlayClasses}>
             <div className={`text-xs md:text-base 2xl:text-xl font-normal ${styles.popup}`}>
                 <div className='flex header-row justify-between'>
                     <p className='font-bold pt-4 text-3xl text-fnbg-orange'>{elementData ? elementData.name : ''}</p>
