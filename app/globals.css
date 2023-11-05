@@ -20,7 +20,7 @@
   --radius-small: 0;
   --fnbg-purple: #8774e1;
   --fnbg-orange: #fb923c;
-  --fnbg-body: #363636;
+  --fnbg-body: #404040;
   --fnbg-accent: #222222;
 }
 
@@ -55,6 +55,9 @@ svg > line {
   stroke: var(--fnbg-purple);
   fill: var(--fnbg-purple);
   color: var(--fnbg-purple);
+}
+[lang-icon] svg > path {
+  fill: var(--fnbg-purple);
 }
 
 #sun > path,

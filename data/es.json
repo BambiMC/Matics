@@ -1,0 +1,63 @@
+{
+  "homepage": {
+    "welcomeText": "Hola, soy Fabian Berger, un estudiante de maestría de 23 años. Actualmente, estoy estudiando informática en la Universidad Friedrich Alexander en Erlangen.",
+    "altPicture": "Imagen de Fabian Berger"
+  },
+  "navbar": {
+    "blog": "Blog",
+    "resume": "Currículum",
+    "projects": "Proyectos",
+    "linkedin": "LinkedIn",
+    "imprint": "Aviso legal"
+  },
+  "imprint": {
+    "title": "Aviso Legal y Política de Privacidad",
+    "name": "Fabian Berger",
+    "tmg": "Información según el § 5 TMG",
+    "contact": "Contacto",
+    "telephone": "Teléfono",
+    "editorial": "Responsabilidad editorial y representación por:",
+    "rstv": "Responsable del contenido según el § 55 Abs. 2 RStV",
+    "disclaimer": "Descargo de responsabilidad",
+    "liability1": "Responsabilidad por el contenido",
+    "liabilityText1": "El contenido de nuestras páginas ha sido creado con el mayor cuidado. Sin embargo, no podemos garantizar la exactitud, la integridad y la actualidad del contenido. Como proveedores de servicios, somos responsables de nuestro propio contenido en estas páginas de acuerdo con el § 7 Abs.1 TMG y las leyes generales. Según los §§ 8 a 10 TMG, no estamos obligados a supervisar la información de terceros transmitida o almacenada ni a investigar circunstancias que indiquen actividad ilegal. Las obligaciones de eliminar o bloquear el uso de información de acuerdo con la ley general no se ven afectadas. Sin embargo, la responsabilidad en este sentido solo es posible a partir del momento en que se tiene conocimiento de una violación específica de la ley. Al tener conocimiento de tales violaciones legales, eliminaremos este contenido de inmediato.",
+    "liability2": "Responsabilidad por enlaces",
+    "liabilityText2": "Nuestra oferta contiene enlaces a sitios web externos de terceros, cuyo contenido no tenemos influencia. Por lo tanto, no podemos aceptar ninguna responsabilidad por este contenido externo. El proveedor u operador respectivo de las páginas enlazadas es siempre responsable del contenido de las páginas enlazadas. El contenido enlazado fue revisado en busca de posibles violaciones legales en el momento del enlace. No se observó contenido ilegal en el momento del enlace. Sin embargo, un control constante del contenido enlazado no es razonable sin pruebas concretas de una violación de la ley. Si llegamos a tener conocimiento de violaciones legales, eliminaremos de inmediato tales enlaces.",
+    "liability3": "Derechos de autor",
+    "liabilityText3": "El contenido y las obras creadas por los operadores del sitio en estas páginas están sujetos a la ley de derechos de autor alemana. La reproducción, procesamiento, distribución y cualquier tipo de uso más allá de los límites de la ley de derechos de autor requieren el consentimiento por escrito del autor o creador respectivo. Las descargas y copias de esta página solo están permitidas para uso privado y no comercial. En la medida en que el contenido de esta página no fue creado por el operador, se respetan los derechos de autor de terceros. En particular, el contenido de terceros se identifica como tal. Si a pesar de ello se llegara a tener conocimiento de una infracción de derechos de autor, por favor, infórmenos al respecto. Si llegamos a tener conocimiento de violaciones legales, eliminaremos de inmediato dicho contenido.",
+    "liability4": "Protección de datos",
+    "liabilityText4": "El uso de nuestro sitio web generalmente es posible sin proporcionar datos personales. En la medida en que se recopilen datos personales (por ejemplo, nombre, dirección o direcciones de correo electrónico) en nuestras páginas, esto se hace siempre de forma voluntaria, en la medida de lo posible. Estos datos no se divulgarán a terceros sin su consentimiento expreso. Se señala que la transmisión de datos a través de Internet (por ejemplo, comunicación por correo electrónico) puede tener vulnerabilidades de seguridad. No es posible una protección completa de los datos contra el acceso de terceros.",
+    "liability5": "Oposición a la publicidad no solicitada",
+    "liabilityText5": "Se prohíbe expresamente el uso de los datos de contacto publicados en el contexto de la obligación de impresión para enviar publicidad no solicitada y materiales informativos."
+  },
+  "periodicTable": {
+    "protons": "Protones",
+    "neutrons": "Neutrones",
+    "category": "Categoría",
+    "mainGroup": "Grupo Principal",
+    "period": "Período",
+    "appearance": "Apariencia",
+    "aggregateState": "Estado Agregado",
+    "structure": "Estructura",
+    "hardness": "Dureza",
+    "volume": "Volumen",
+    "radioactive": "Radiactivo",
+    "syntheticallyProduced": "Producido Sintéticamente Solo",
+    "percentageEarthCrust": "Porcentaje en la Corteza Terrestre",
+    "commonness": "Frecuencia",
+    "atomicWeight": "Peso Atómico",
+    "ionizationEnergy": "Energía de Ionización",
+    "density": "Densidad",
+    "meltingPoint": "Punto de Fusión",
+    "boilingPoint": "Punto de Ebullición",
+    "electronegativity": "Electronegatividad",
+    "flameColor": "Color de la Llama",
+    "wikipediaLink": "Enlace a Wikipedia",
+    "explanation1": "* Calculado como = Masa (redondeada) - Número Atómico",
+    "explanation2": "** En condiciones normales: 25°C, 1013 hPa",
+    "explanation3": "*** Según la escala de Pauling, alternativamente según la escala de Allred-Rochow",
+    "yes": "Sí",
+    "no": "No",
+    "mohs": "Mohs"
+  }
+}

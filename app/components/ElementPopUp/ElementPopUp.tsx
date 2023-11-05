@@ -6,6 +6,9 @@ import { ElementData } from '@public/libraryChemistry';
 import Button from '../Button/Button';
 import Link from 'next/link';
 import { useLanguageData } from "@data/languageLoader";
+import MathComponent from '@components/MathComponent/MathComponent';
+
+
 
 interface PopUpProps {
     onClose: () => void;
@@ -14,46 +17,58 @@ interface PopUpProps {
 
 const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData }) => {
 
+    const data = useLanguageData("periodicTable");
+
     const handleOverlayClick = (event: React.MouseEvent) => {
         event.stopPropagation();
     };
 
     return (
         <div className={styles.blurred} onClick={onClose}>
-            <div className={`text-xs md:text-base 2xl:text-xl font-normal ${styles.popup}`} onClick={handleOverlayClick}>
-                <div className='flex header-row justify-between'>
-                    <p className='font-bold pt-4 text-3xl text-fnbg-orange'>{elementData ? elementData.name : ''} - {elementData ? elementData.kurzsymbol : ''}</p>
-                    <Button onClick={onClose}>X</Button>
-                </div>
-                <p className='element-text'>Protonen: {elementData ? elementData.protonen : ''}</p>
-                <p className='element-text'>Neutronen: {elementData ? elementData.neutronen : ''} *</p>
-                <p className='element-text'>Kategorie: {elementData ? elementData.oberkategorie : ''} - {elementData ? elementData.unterkategorie : ''}</p>
-                <p className='element-text'>Hauptgruppe: {elementData ? elementData.hauptgruppe : ''}</p>
-                <p className='element-text'>Periode: {elementData ? elementData.periode : ''}</p>
-                <p className='element-text'>Aussehen: {elementData ? elementData.aussehen : ''}</p>
-                <p className='element-text'>Aggregatszustand: {elementData ? elementData.aggregatszustand : ''} **</p>
-                <p className='element-text'>Struktur: {elementData ? elementData.struktur : ''} **</p>
-                <p className='element-text'>Härte: {elementData ? elementData.haerte : ''} Mohs</p>
-                <p className='element-text'>Volumen: {elementData ? elementData.volumen : ''} m³/mol **</p>
-                <p className='element-text'>Radioaktiv: {elementData ? elementData.radioaktiv : ''}</p>
-                <p className='element-text'>Nur synthetisch herstellbar: {elementData ? elementData.synthetischHergestellt : ''}</p>
-                <p className='element-text'>Prozentsatz an der Erdhülle: {elementData ? elementData.prozentsatzAnDerErdhuelle : ''} %</p>
-                <p className='element-text'>Atommasse: {elementData ? elementData.atommasse : ''} u</p>
-                <p className='element-text'>Ionisierungsenergie: {elementData ? elementData.ionisierungsenergie : ''} eV</p>
-                <p className='element-text'>Dichte: {elementData ? elementData.dichte : ''} g/cm³</p>
-                <p className='element-text'>Schmelzpunkt: {elementData ? elementData.schmelzpunkt : ''} °C</p>
-                <p className='element-text'>Siedepunkt: {elementData ? elementData.siedepunkt : ''} °C</p>
-                <p className='element-text'>Elektronegativität: {elementData ? elementData.elektronegativität : ''} ***</p>
-                <p className='element-text'>Flammenfarbe: {elementData ? elementData.flammenfarbe : ''}</p>
-                <div className='flex'>
-                    <p className='element-text'>Wikipedia:</p>
-                    <Link className='ml-3' href={elementData ? elementData.wikipedia : ''} target="_blank">{elementData ? elementData.wikipedia : ''}</Link>
-                </div>
-                <p className='element-text pt-4'>*=Berechnet nach = Masse(gerundet) - Ordnungszahl</p>
-                <p className='element-text'>**=Unter Normalbedingungen 20 Grad Celsius</p>
-                <p className='element-text'>***=Nach der Pauling-Skala, alternativ nach Allred-Rochow</p>
+            {data && (
+                <div className={`text-xs md:text-base 2xl:text-xl font-normal ${styles.popup}`} onClick={handleOverlayClick}>
+                    <div className='flex header-row justify-between'>
+                        <p className='font-bold pt-4 text-3xl text-fnbg-orange'>{elementData ? elementData.name : ''} - {elementData ? elementData.kurzsymbol : ''}</p>
+                        <Button onClick={onClose}>X</Button>
+                    </div>
+                    <p className='element-text'>{data['protons']}: {elementData ? elementData.protonen : ''}</p>
+                    <p className='element-text'>{data['neutrons']}: {elementData ? elementData.neutronen : ''} *</p>
+                    <p className='element-text'>{data['category']}: {elementData ? elementData.oberkategorie : ''} - {elementData ? elementData.unterkategorie : ''}</p>
+                    <p className='element-text'>{data['mainGroup']}: {elementData ? elementData.hauptgruppe : ''}</p>
+                    <p className='element-text'>{data['period']}: {elementData ? elementData.periode : ''}</p>
+                    <p className='element-text'>{data['appearance']}: {elementData ? elementData.aussehen : ''}</p>
+                    <p className='element-text'>{data['aggregateState']}: {elementData ? elementData.aggregatszustand : ''} **</p>
+                    <p className='element-text'>{data['structure']}: {elementData ? elementData.struktur : ''} **</p>
+                    <p className='element-text'>{data['hardness']}: {elementData ? elementData.haerte : ''} {data['mohs']}</p>
+                    <div className='flex'>
+                        <p className='element-text'>{data['volume']}: {elementData ? elementData.volumen : ''}</p>
+                        <MathComponent mathExpression="\frac{\text{m}^3}{\text{mol}}" />
+                        <p className='element-text'> **</p>
 
-            </div>
+                    </div>
+                    <p className='element-text'>{data['radioactive']}: {elementData?.radioaktiv ? data['yes'] : data['no']}</p>
+                    <p className='element-text'>{data['syntheticallyProduced']}: {elementData?.synthetischHergestellt ? data['yes'] : data['no']}</p>
+                    <p className='element-text'>{data['commonness']}: {elementData ? elementData.prozentsatzAnDerErdhuelle : ''} %</p>
+                    <p className='element-text'>{data['atomicWeight']}: {elementData ? elementData.atommasse : ''} u</p>
+                    <p className='element-text'>{data['ionizationEnergy']}: {elementData ? elementData.ionisierungsenergie : ''} eV</p>
+                    <div className='flex'>
+                        <p className='element-text'>{data['density']}: {elementData ? elementData.dichte : ''}</p>
+                        <MathComponent mathExpression='\frac{g}{\text{cm}^3}' />
+                    </div>
+                    <p className='element-text'>{data['meltingPoint']}: {elementData ? elementData.schmelzpunkt : ''} °C</p>
+                    <p className='element-text'>{data['boilingPoint']}: {elementData ? elementData.siedepunkt : ''} °C</p>
+                    <p className='element-text'>{data['electronegativity']}: {elementData ? elementData.elektronegativität : ''} eV ***</p>
+                    <p className='element-text'>{data['flameColor']}: {elementData ? elementData.flammenfarbe : ''}</p>
+                    <div className='flex'>
+                        <p className='element-text'>{data['wikipediaLink']}:</p>
+                        <Link className='ml-2' href={elementData ? elementData.wikipedia : ''} target="_blank">{elementData ? elementData.wikipedia : ''}</Link>
+                    </div>
+                    <p className='element-text pt-4'>{data['explanation1']}</p>
+                    <p className='element-text'>{data['explanation2']}</p>
+                    <p className='element-text'>{data['explanation3']}</p>
+
+                </div>
+            )}
         </div>
     );
 };

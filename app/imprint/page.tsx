@@ -16,7 +16,7 @@ const Imprint: React.FC = () => {
             <h2 className="text-xl font-semibold mb-2">{data['tmg']}</h2>
             <address className="text-lg">
               Fabian Berger<br />
-              Ratiborer Straße 2<br />
+              Jenaer Straße 1<br />
               91058 Erlangen
             </address>
           </section>
@@ -40,7 +40,7 @@ const Imprint: React.FC = () => {
             <h2 className="text-xl font-semibold mb-2">{data['rstv']}:</h2>
             <p className="text-lg">
               Fabian Berger<br />
-              Ratiborer Straße 2<br />
+              Jenaer Straße 1<br />
               91058 Erlangen
             </p>
           </section>

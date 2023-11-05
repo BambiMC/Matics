@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="footer mt-auto flex justify-around py-3 relative z-20 text-fnbg-purple font-bold" style={{ position: 'fixed', bottom: '0', width: '100%' }}>
       <div>
         Fabian Berger<br />
-        Ratiborer Straße 2<br />
+        Jenaer Straße 1<br />
         91058 Erlangen
       </div>
       <div className="my-auto text-center">
