@@ -2,6 +2,12 @@
 import React from 'react';
 import { useLanguageData } from '@data/languageLoader';
 import Tile from './components/Tile/Tile';
+import ElementTile from './components/ElementTile/ElementTile';
+
+//TODO amd intel nvidia comparator
+//TODO clound upload with password
+
+
 
 const Homepage: React.FC = () => {
   const data = useLanguageData("homepage");
@@ -9,13 +15,9 @@ const Homepage: React.FC = () => {
   return (
     <main className='p-20 mt-20'>
       {data && (
-        <div className="grid grid-cols-8 grid-rows-2 gap-4 xl:gap-16 2xl:gap-3">
-          <Tile label='Periodic Table' color='bg-white' to='/periodicTable'></Tile>
-          <Tile label='Test2' color='bg-white' to='/test2'></Tile>
-          <Tile label='Test3' color='bg-white' to='/test3'></Tile>
-          <Tile label='Test4' color='bg-white' to='/test4'></Tile>
-          <Tile label='Test5' color='bg-white' to='/test5'></Tile>
-          <Tile label='Test6' color='bg-white' to='/test6'></Tile>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6 gap-4 m-auto">
+          <Tile to='/periodicTable'>Periodic Table</Tile>
+          <Tile to='/test2'>test2</Tile>
         </div>
       )}
     </main>

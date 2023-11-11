@@ -50,6 +50,11 @@ main {
   position: relative;
 }
 
+::selection {
+  color: var(--fnbg-body);
+  background: var(--fnbg-orange);
+}
+
 /* Logo */
 svg > line {
   stroke: var(--fnbg-purple);
