@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import Button from '../Button/Button';
 
-// Operators enum
 enum ToggleOperator {
     LessThan = '<',
     LessThanOrEqual = '<=',
     GreaterThan = '>',
     GreaterThanOrEqual = '>=',
-    Equal = '~',
+    Equal = '=',
     NotEqual = '!=',
 }
 
 type ToggleOperatorProps = {
-    id?: string;
+    id: string;
+    currentType: string;
 };
 
-// Function to toggle the operator
-function toggleOperator(currentOperator: ToggleOperator): ToggleOperator {
+function toggleOperatorNumber(currentOperator: ToggleOperator): ToggleOperator {
     switch (currentOperator) {
         case ToggleOperator.LessThan:
             return ToggleOperator.LessThanOrEqual;
@@ -35,11 +34,33 @@ function toggleOperator(currentOperator: ToggleOperator): ToggleOperator {
     }
 }
 
-const ToggleComponent: React.FC<ToggleOperatorProps> = ({ id }) => {
+function toggleOperatorString(currentOperator: ToggleOperator): ToggleOperator {
+    if (currentOperator === ToggleOperator.Equal) {
+        return ToggleOperator.NotEqual;
+    } else if (currentOperator === ToggleOperator.NotEqual) {
+        return ToggleOperator.Equal;
+    } else {
+        return ToggleOperator.Equal;
+    }
+}
+
+const ToggleComponent: React.FC<ToggleOperatorProps> = ({ id, currentType }) => {
     const [operator, setOperator] = useState<ToggleOperator>(ToggleOperator.Equal);
 
+    document.addEventListener("changedAttribute", ((event: CustomEvent) => {
+        if (event.detail.type === 'string' && operator != ToggleOperator.Equal && operator != ToggleOperator.NotEqual) {
+            setOperator(ToggleOperator.Equal);
+        }
+    }) as EventListener);
+
     const handleToggle = () => {
-        setOperator(toggleOperator(operator));
+        if (currentType === 'string') {
+            setOperator(toggleOperatorString(operator));
+        } else if (currentType === 'number') {
+            setOperator(toggleOperatorNumber(operator));
+        } else {
+            console.log('Unknown type: ' + currentType);
+        }
     };
 
     return (

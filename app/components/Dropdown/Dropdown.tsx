@@ -1,9 +1,11 @@
 // components/Dropdown.tsx
 import React, { useState, FC } from 'react';
 
+
 interface DropdownOption {
     label: string;
     value: number;
+    type: string;
 }
 
 interface DropdownProps {

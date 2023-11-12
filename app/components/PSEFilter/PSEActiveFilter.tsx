@@ -1,18 +1,26 @@
 import React from 'react';
+import Button from '../Button/Button';
 
 type PSEActiveFilterProps = {
-  attribute: string;
-  operator: string;
-  filterValue: string | number;
+  onClick: () => void;
+  id: string;
 };
 
-const PSEActiveFilter: React.FC<PSEActiveFilterProps> = ({ attribute, operator, filterValue }) => {
+const PSEActiveFilter: React.FC<PSEActiveFilterProps> = ({ id, onClick }) => {
+
+  document.addEventListener("addedFilter", ((e: CustomEvent) => {
+    if (e.detail === id) {
+
+      const filter: HTMLElement = document.getElementById(id)!;
+      filter!.innerText = filter!.getAttribute('attribute') + ' ' + filter!.getAttribute('toggleOperator') + ' ' + filter!.getAttribute('filterValue');
+      filter.style.display = 'block';
+    }
+
+  }) as EventListener);
+
   return (
-    <div className="active-filter">
-      <span>{attribute}</span>
-      <span>{operator}</span>
-      <span>{filterValue}</span>
-    </div>
+    <Button addClasses="active-filter" id={id} onClick={onClick}>
+    </Button>
   );
 };
 

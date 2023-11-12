@@ -47,12 +47,12 @@ const Navbar = () => {
               <Link href="/imprint" className="px-5 py-3">{data['imprint']}</Link>
             </div>
             <div className='flex px-2'>
-              <Button className='hidden xl:block' onClick={() => handleLangButtonClick('en')}>EN</Button>
-              <Button className='hidden xl:block' onClick={() => handleLangButtonClick('de')}>DE</Button>
-              <Button className='hidden xl:block' onClick={() => handleLangButtonClick('es')}>ES</Button>
-              <Button className='hidden xl:block' onClick={() => handleLangButtonClick('fr')}>FR</Button>
-              <Button className='hidden xl:block' onClick={() => handleLangButtonClick('jp')}>JP</Button>
-              <button onClick={toggleLangMenu} className='xl:hidden pr-3 text-fnbg-purple'>
+              <Button addClasses='hidden xl:block' onClick={() => handleLangButtonClick('en')}>EN</Button>
+              <Button addClasses='hidden xl:block' onClick={() => handleLangButtonClick('de')}>DE</Button>
+              <Button addClasses='hidden xl:block' onClick={() => handleLangButtonClick('es')}>ES</Button>
+              <Button addClasses='hidden xl:block' onClick={() => handleLangButtonClick('fr')}>FR</Button>
+              <Button addClasses='hidden xl:block pr-8' onClick={() => handleLangButtonClick('jp')}>JP</Button>
+              <button onClick={toggleLangMenu} className='xl:hidden px-3 text-fnbg-purple'>
                 <svg
                   height="32"
                   width="32"

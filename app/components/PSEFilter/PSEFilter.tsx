@@ -12,12 +12,34 @@ type PSEFilterProps = {
 interface DropdownOption {
     label: string;
     value: number;
-}
-interface OperatorTable {
-    [key: string]: (a: number, b: number) => boolean;
+    type: string;
 }
 
-const operatorTable: OperatorTable = {
+type SearchType = {
+    attribute: string;
+    toggleOperator: string;
+    filterValue: string;
+};
+
+class Search {
+    attribute!: string;
+    toggleOperator!: string;
+    filterValue!: string;
+    constructor(attribute: string, toggleOperator: string, filterValue: string) {
+        this.attribute = attribute;
+        this.toggleOperator = toggleOperator;
+        this.filterValue = filterValue;
+    }
+}
+
+interface OperatorTableNumber {
+    [key: string]: (a: number, b: number) => boolean;
+}
+interface OperatorTableString {
+    [key: string]: (a: string, b: string) => boolean;
+}
+
+const operatorTableNumber: OperatorTableNumber = {
     '>': (a, b) => a > b,
     '>=': (a, b) => a >= b,
     '<': (a, b) => a < b,
@@ -26,46 +48,68 @@ const operatorTable: OperatorTable = {
     '!=': (a, b) => a !== b,
 };
 
-const options: DropdownOption[] = [
-    { label: 'Name', value: 1 },
-    { label: 'Kürzel', value: 2 },
-    { label: 'Kategorie', value: 3 },
-    { label: 'Aussehen', value: 4 },
-    { label: 'Aggregatszustand', value: 5 },
-    { label: 'Struktur', value: 6 },
+const operatorTableString: OperatorTableString = {
+    '=': (a, b) => a.trim().toLowerCase().includes(b.trim().toLowerCase()),
+    '!=': (a, b) => !a.trim().toLowerCase().includes(b.trim().toLowerCase()),
+};
 
-    { label: 'Protonen', value: 7 },
-    { label: 'Neutronen', value: 8 },
-    { label: 'Härte', value: 9 },
-    { label: 'Volumen', value: 10 },
-    { label: 'Häufigkeit', value: 11 },
-    { label: 'Atomares Gewicht', value: 12 },
-    { label: 'Ionisierungsenergie', value: 13 },
-    { label: 'Dichte', value: 14 },
-    { label: 'Schmelzpunkt', value: 15 },
-    { label: 'Siedepunkt', value: 16 },
-    { label: 'Elektronegativität', value: 17 },
-    { label: 'Flammenfarbe', value: 18 },
+// const operatorTableString: OperatorTableString = {
+//     '=': (a, b) => {
+//         const c = a.trim().toLowerCase();
+//         const d = b.trim().toLowerCase();
+//         console.log("c: " + c + " d: " + d + ", bool: " + c.includes(d));
+//         return c.includes(d);
+//     },
+//     '!=': (a, b) => {
+//         const c = a.trim().toLowerCase();
+//         const d = b.trim().toLowerCase();
+//         console.log("c: " + c + " d: " + d + ", bool: " + c.includes(d));
+//         return !c.includes(d);
+//     }
+// };
+
+const options: DropdownOption[] = [
+    { label: 'Name', value: 0, type: 'string' },
+    { label: 'Kürzel', value: 1, type: 'string' },
+    { label: 'Kategorie', value: 2, type: 'string' },
+    { label: 'Aussehen', value: 3, type: 'string' },
+    { label: 'Aggregatszustand', value: 4, type: 'string' },
+    { label: 'Struktur', value: 5, type: 'string' },
+
+    { label: 'Protonen', value: 6, type: 'number' },
+    { label: 'Neutronen', value: 7, type: 'number' },
+    { label: 'Härte', value: 8, type: 'number' },
+    { label: 'Volumen', value: 9, type: 'number' },
+    { label: 'Häufigkeit', value: 10, type: 'number' },
+    { label: 'Atomares Gewicht', value: 11, type: 'number' },
+    { label: 'Ionisierungsenergie', value: 12, type: 'number' },
+    { label: 'Dichte', value: 13, type: 'number' },
+    { label: 'Schmelzpunkt', value: 14, type: 'number' },
+    { label: 'Siedepunkt', value: 15, type: 'number' },
+    { label: 'Elektronegativität', value: 16, type: 'number' },
+
+    { label: 'Flammenfarbe', value: 17, type: 'string' },
 ];
 
 const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isFilterActive, setIsFilterActive] = useState(true);
 
     function getElementDataValue(elementData: ElementData, idNumber: number): string | number {
         switch (idNumber) {
-            case 1:
+            case 0:
                 return elementData.name;
-            case 2:
+            case 1:
                 return elementData.kurzsymbol;
-            case 3:
+            case 2:
                 return elementData.unterkategorie, ', ' + elementData.oberkategorie;
-            case 4:
+            case 3:
                 return elementData.aussehen;
-            case 5:
+            case 4:
                 return elementData.aggregatszustand;
-            case 6:
+            case 5:
                 return elementData.struktur;
+            case 6:
+                return elementData.flammenfarbe;
             case 7:
                 return elementData.protonen;
             case 8:
@@ -88,8 +132,6 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
                 return elementData.siedepunkt;
             case 17:
                 return elementData.elektronegativität;
-            case 18:
-                return elementData.flammenfarbe;
             default:
                 return 'Error in getElementDataValue';
         }
@@ -99,106 +141,87 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
-    const [selectedAttribute, setselectedAttribute] = useState<DropdownOption | null>(null);
+    const [selectedAttribute, setselectedAttribute] = useState<DropdownOption | null>(options[0]);
 
-    const handleSelect = (option: DropdownOption) => {
-        console.log('Selected option:', option);
+    const handleDropdownSelect = (option: DropdownOption) => {
         setselectedAttribute(option);
+        document.dispatchEvent(new CustomEvent('changedAttribute', {
+            detail: option
+        }));
     };
 
-    const toggleFilter = (idNumber: number) => {
-        setIsFilterActive(!isFilterActive);
-        handleFilter(idNumber);
-    };
+    const applyFilter = (search: Search) => {
+        console.log('applyFilter to: ' + search.attribute + ' ' + search.toggleOperator + ' ' + search.filterValue);
 
-    const handleFilter = (idNumber: number) => {
-        const elementTiles = document.querySelectorAll('#ElementTile');
-        var filterValue: string | number = 0;
-        if (isFilterActive) {
-            console.log('Filter is active');
-            const toggleOperator: string = (document.getElementById('filter-toggle') as HTMLInputElement).innerText;
-
-            elementTiles.forEach(function (elementTile, i) {
-                const elementDataValue: number | string = getElementDataValue(elements[i], idNumber);
-                if (typeof elementDataValue === 'number') {
-                    const filterValue: number = Number((document.getElementById('filter-input') as HTMLInputElement).value);
-
-                    if (!operatorTable[toggleOperator](elementDataValue, filterValue)) {
-                        (elementTile as HTMLElement).style.filter = 'blur(6px)';
-                    }
-                } else if (typeof elementDataValue === 'string') {
-                    filterValue = (document.getElementById('filter-input') as HTMLInputElement).value;
-
-
-                    if (toggleOperator === '~') {
-                        if (!elementDataValue.includes(filterValue.toString())) {
-                            (elementTile as HTMLElement).style.filter = 'blur(6px)';
-                        }
-                    } else if (toggleOperator === '!=') {
-                        if (elementDataValue === filterValue.toString()) {
-                            (elementTile as HTMLElement).style.filter = 'blur(6px)';
-                        }
-                    } else {
-                        console.log('cant find this toggle: ' + toggleOperator);
-                    }
-                }
-
-            });
-
-            // var newActiveFilterElement = document.createElement('button');
-            // newActiveFilterElement.id = 'active-filter';
-            // // newActiveFilterElement.addEventListener('click', function () {
-            // //     () => toggleFilter(selectedAttribute!.value)
-            // // });
-            // newActiveFilterElement.onclick = function () { () => toggleFilter(selectedAttribute!.value) };
-            // var textNode = document.createTextNode('TEST');
-            // newActiveFilterElement.appendChild(textNode);
-
-            // document.getElementById('selectedFilters')!.appendChild(newActiveFilterElement);
-            document.getElementById('execute-button')!.textContent = '✗';
-
-
-        } else {
-            console.log('Filter is inactive');
-            const toggleOperator: string = (document.getElementById('filter-toggle') as HTMLInputElement).innerText;
-
-            elementTiles.forEach(function (elementTile, i) {
-                const elementDataValue: number | string = getElementDataValue(elements[i], idNumber);
-                if (typeof elementDataValue === 'number') {
-                    const filterValue: number = Number((document.getElementById('filter-input') as HTMLInputElement).value);
-
-                    if (!operatorTable[toggleOperator](elementDataValue, filterValue)) {
-                        (elementTile as HTMLElement).style.filter = '';
-                    }
-                } else if (typeof elementDataValue === 'string') {
-                    filterValue = (document.getElementById('filter-input') as HTMLInputElement).value;
-
-
-                    if (toggleOperator === '~') {
-                        if (!elementDataValue.includes(filterValue.toString())) {
-                            (elementTile as HTMLElement).style.filter = '';
-                        }
-                    } else if (toggleOperator === '!=') {
-                        if (elementDataValue === filterValue.toString()) {
-                            (elementTile as HTMLElement).style.filter = '';
-                        }
-                    } else {
-                        console.log('cant find this toggle: ' + toggleOperator);
-                    }
-                }
-
-            });
-
-            // document.getElementById('active-filter')!.remove();
-            document.getElementById('execute-button')!.textContent = '✓';
-
+        const elementTiles = document.querySelectorAll('[id^="Elltile-"]');
+        for (let index = 0; index < 118; index++) {
+            const element = array[index];
+            //HERE COONTINUE WORK WITH NEW IDS
 
         }
+
+        elementTiles.forEach(function (elementTile, i) {
+            const elementDataValue: number | string = getElementDataValue(elements[i], (selectedAttribute!.value));
+
+            if (typeof elementDataValue === 'number') {
+                if (!operatorTableNumber[search.toggleOperator](elementDataValue, Number(search.filterValue))) {
+                    (elementTile as HTMLElement).style.filter = 'blur(6px)';
+                }
+            } else if (typeof elementDataValue === 'string') {
+                if (!operatorTableString[search.toggleOperator](elementDataValue, search.filterValue)) {
+                    console.log('elementDataValue: ' + elementDataValue);
+                    (elementTile as HTMLElement).style.filter = 'blur(6px)';
+                }
+            }
+        });
+
+        const emptyFilter = document.querySelector("#selectedFilters [id^=filter-]:not([attribute])") as HTMLElement;
+        if (emptyFilter) {
+            emptyFilter.setAttribute('attribute', search.attribute);
+            emptyFilter.setAttribute('toggleOperator', search.toggleOperator);
+            emptyFilter.setAttribute('filterValue', search.filterValue);
+
+            document.dispatchEvent(new CustomEvent('addedFilter', { detail: emptyFilter.id }));
+        } else {
+            alert('Maximale Anzahl an Filtern erreicht - Seite muss neugeladen werden.')
+        }
+    };
+
+    const removeFilter = (filterIdToBeDeactivated: string) => {
+        console.log('removeFilter');
+
+        const filterToBeDeactivated = document.getElementById(filterIdToBeDeactivated) as HTMLElement;
+        filterToBeDeactivated.removeAttribute('attribute');
+        filterToBeDeactivated.removeAttribute('toggleOperator');
+        filterToBeDeactivated.removeAttribute('filterValue');
+        filterToBeDeactivated.innerText = '';
+
+        const elementTiles = document.querySelectorAll('#ElementTile:not([placeholder])');
+        elementTiles.forEach(function (elementTile) {
+            (elementTile as HTMLElement).style.filter = '';
+        });
+
+        const activeFilter = document.querySelectorAll("#selectedFilters [id^=filter-][attribute]") as NodeListOf<HTMLElement>;
+        activeFilter.forEach(function (activeFilter) {
+            var attribute = activeFilter.getAttribute('attribute');
+            var toggleOperator = activeFilter.getAttribute('toggleOperator');
+            var filterValue = activeFilter.getAttribute('filterValue');
+
+            activeFilter.removeAttribute('attribute');
+            activeFilter.removeAttribute('toggleOperator');
+            activeFilter.removeAttribute('filterValue');
+            activeFilter.innerText = '';
+
+            applyFilter(new Search(attribute!, toggleOperator!, filterValue!));
+        });
     };
 
     return (
         <div className='flex bg-fnbg-accent my-4'>
-            <div id='selectedFilters' className='bg-blue-900'>
+            <div id='selectedFilters' className='flex'>
+                <PSEActiveFilter id='filter-1' onClick={() => removeFilter('filter-1')} />
+                <PSEActiveFilter id='filter-2' onClick={() => removeFilter('filter-2')} />
+                <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-3')} />
             </div>
             <div className='mr-8 bg-fnbg-body ml-auto my-2'>
                 <div className="dropdown border-2 flex">
@@ -206,10 +229,10 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
                     {isDropdownOpen && (
                         <div className="dropdown-content">
                             <div className='flex'>
-                                <Dropdown options={options} onSelect={handleSelect} />
-                                <ToggleOperator id='filter-toggle' />
+                                <Dropdown options={options} onSelect={handleDropdownSelect} />
+                                <ToggleOperator id='filter-toggle' currentType={selectedAttribute!.type} />
                                 <input type="text" className='w-24' id='filter-input' />
-                                <Button onClick={() => toggleFilter(selectedAttribute!.value)} id='execute-button' addClasses='p-2'>✓</Button>
+                                <Button onClick={() => applyFilter(new Search(options[selectedAttribute!.value].label, (document.getElementById('filter-toggle') as HTMLInputElement).innerText, (document.getElementById('filter-input') as HTMLInputElement).value))} id='execute-button' addClasses='p-2'>✓</Button>
                             </div>
                         </div>
                     )}
@@ -218,5 +241,4 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
         </div>
     );
 };
-
 export default PSEFilter;
