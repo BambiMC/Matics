@@ -1,0 +1,14 @@
+// const operatorTableString: OperatorTableString = {
+//     '=': (a, b) => {
+//         const c = a.trim().toLowerCase();
+//         const d = b.trim().toLowerCase();
+//         console.log("c: " + c + " d: " + d + ", bool: " + c.includes(d));
+//         return c.includes(d);
+//     },
+//     '≠': (a, b) => {
+//         const c = a.trim().toLowerCase();
+//         const d = b.trim().toLowerCase();
+//         console.log("c: " + c + " d: " + d + ", bool: " + c.includes(d));
+//         return !c.includes(d);
+//     }
+// };

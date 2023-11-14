@@ -1,8 +1,10 @@
 // components/Dropdown.tsx
+import { ElementData } from '@public/libraryChemistry';
 import React, { useState, FC } from 'react';
 
 
 interface DropdownOption {
+    key: keyof ElementData;
     label: string;
     value: number;
     type: string;

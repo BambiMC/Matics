@@ -7,7 +7,7 @@ enum ToggleOperator {
     GreaterThan = '>',
     GreaterThanOrEqual = '>=',
     Equal = '=',
-    NotEqual = '!=',
+    NotEqual = '≠',
 }
 
 type ToggleOperatorProps = {

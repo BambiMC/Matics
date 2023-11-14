@@ -1,5 +1,5 @@
-import { ElementData } from '@public/libraryChemistry';
 import React, { useState } from 'react';
+import { ElementData } from '@public/libraryChemistry';
 import ElementPopUp from '../ElementPopUp/ElementPopUp';
 
 interface ElementTileProps {
@@ -9,35 +9,40 @@ interface ElementTileProps {
   id?: string;
 }
 
-const ElementTile: React.FC<ElementTileProps> = ({ elementData, addClasses, placeholder = false, id }) => {
+const ElementTile: React.FC<ElementTileProps> = ({
+  elementData,
+  addClasses = '',
+  placeholder = false,
+  id: propId,
+}) => {
   const [isPopUpVisible, setIsPopUpVisible] = useState(false);
+  const id = placeholder ? 'PlaceholderTile' : propId;
+  const placeholderAttribute = placeholder ? { placeholder: 'true' } : {};
 
   const togglePopUp = () => {
     setIsPopUpVisible(!isPopUpVisible);
   };
 
-  if (placeholder) {
-    id = 'PlaceholderTile';
-  }
-
+  const handleClick = () => {
+    if (elementData) {
+      togglePopUp();
+    } else if (placeholder) {
+      console.log('clicked');
+      // Jump to the bottom of the page
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  };
 
   return (
     <div
+      {...placeholderAttribute}
       className={`flex aspect-square cursor-pointer text-center items-center justify-center duration-300 text-xs md:text-xl xl:text-2xl text-black p-1 md:p-2 xl:p-4 border-[#404040] sm:border-2 hover:border-4 hover:z-10 hover:border-black p-auto ${addClasses}`}
       id={id}
-      onClick={() => {
-        if (elementData) {
-          togglePopUp();
-        }
-      }}
+      onClick={handleClick}
     >
-      <p>
-        {elementData ? elementData.kurzsymbol : '↓'}
-      </p>
+      <p>{elementData ? elementData.kurzsymbol : '↓'}</p>
 
-      {isPopUpVisible && (
-        <ElementPopUp onClose={togglePopUp} elementData={elementData} />
-      )}
+      {isPopUpVisible && <ElementPopUp onClose={togglePopUp} elementData={elementData} />}
     </div>
   );
 };

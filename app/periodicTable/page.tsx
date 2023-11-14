@@ -75,7 +75,7 @@ const Projects: React.FC = () => {
         {/* Line Number 6 */}
         <ElementTile addClasses='bg-red-500' elementData={elements[54]} id='ElliTile-54' />
         <ElementTile addClasses='bg-amber-500' elementData={elements[55]} id='ElliTile-55' />
-        <ElementTile addClasses='bg-rose-400' placeholder={false} />
+        <ElementTile addClasses='border-rose-400' placeholder={true} />
         <ElementTile addClasses='bg-yellow-300' elementData={elements[71]} id='ElliTile-71' />
         <ElementTile addClasses='bg-yellow-300' elementData={elements[72]} id='ElliTile-72' />
         <ElementTile addClasses='bg-yellow-300' elementData={elements[73]} id='ElliTile-73' />
@@ -94,7 +94,7 @@ const Projects: React.FC = () => {
         {/* Line Number 7 */}
         <ElementTile addClasses='bg-red-500' elementData={elements[86]} id='ElliTile-86' />
         <ElementTile addClasses='bg-amber-500' elementData={elements[87]} id='ElliTile-87' />
-        <ElementTile addClasses='bg-pink-500' placeholder={false} />
+        <ElementTile addClasses='border-pink-500' placeholder={true} />
         <ElementTile addClasses='bg-yellow-300' elementData={elements[103]} id='ElliTile-103' />
         <ElementTile addClasses='bg-yellow-300' elementData={elements[104]} id='ElliTile-104' />
         <ElementTile addClasses='bg-yellow-300' elementData={elements[105]} id='ElliTile-105' />

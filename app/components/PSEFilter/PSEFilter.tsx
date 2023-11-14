@@ -1,34 +1,29 @@
 import { ElementData } from '@public/libraryChemistry';
-import React, { useState } from 'react';
-import ToggleOperator from './ToggleOperator';
+import React, { useEffect, useState } from 'react';
 import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 import PSEActiveFilter from './PSEActiveFilter';
+import ToggleOperator from './ToggleOperator';
 
 type PSEFilterProps = {
     elements: ElementData[];
 };
 
 interface DropdownOption {
+    key: keyof ElementData;
     label: string;
     value: number;
     type: string;
 }
 
-type SearchType = {
-    attribute: string;
-    toggleOperator: string;
-    filterValue: string;
-};
-
 class Search {
-    attribute!: string;
-    toggleOperator!: string;
-    filterValue!: string;
-    constructor(attribute: string, toggleOperator: string, filterValue: string) {
-        this.attribute = attribute;
-        this.toggleOperator = toggleOperator;
-        this.filterValue = filterValue;
+    searchCategory!: DropdownOption;
+    operator!: string;
+    searchValue!: string;
+    constructor(searchCategory: DropdownOption, operator: string, searchValue: string) {
+        this.searchCategory = searchCategory;
+        this.operator = operator;
+        this.searchValue = searchValue;
     }
 }
 
@@ -45,97 +40,41 @@ const operatorTableNumber: OperatorTableNumber = {
     '<': (a, b) => a < b,
     '<=': (a, b) => a <= b,
     '=': (a, b) => a === b,
-    '!=': (a, b) => a !== b,
+    '≠': (a, b) => a !== b,
 };
 
 const operatorTableString: OperatorTableString = {
     '=': (a, b) => a.trim().toLowerCase().includes(b.trim().toLowerCase()),
-    '!=': (a, b) => !a.trim().toLowerCase().includes(b.trim().toLowerCase()),
+    '≠': (a, b) => !a.trim().toLowerCase().includes(b.trim().toLowerCase()),
 };
 
-// const operatorTableString: OperatorTableString = {
-//     '=': (a, b) => {
-//         const c = a.trim().toLowerCase();
-//         const d = b.trim().toLowerCase();
-//         console.log("c: " + c + " d: " + d + ", bool: " + c.includes(d));
-//         return c.includes(d);
-//     },
-//     '!=': (a, b) => {
-//         const c = a.trim().toLowerCase();
-//         const d = b.trim().toLowerCase();
-//         console.log("c: " + c + " d: " + d + ", bool: " + c.includes(d));
-//         return !c.includes(d);
-//     }
-// };
-
 const options: DropdownOption[] = [
-    { label: 'Name', value: 0, type: 'string' },
-    { label: 'Kürzel', value: 1, type: 'string' },
-    { label: 'Kategorie', value: 2, type: 'string' },
-    { label: 'Aussehen', value: 3, type: 'string' },
-    { label: 'Aggregatszustand', value: 4, type: 'string' },
-    { label: 'Struktur', value: 5, type: 'string' },
-
-    { label: 'Protonen', value: 6, type: 'number' },
-    { label: 'Neutronen', value: 7, type: 'number' },
-    { label: 'Härte', value: 8, type: 'number' },
-    { label: 'Volumen', value: 9, type: 'number' },
-    { label: 'Häufigkeit', value: 10, type: 'number' },
-    { label: 'Atomares Gewicht', value: 11, type: 'number' },
-    { label: 'Ionisierungsenergie', value: 12, type: 'number' },
-    { label: 'Dichte', value: 13, type: 'number' },
-    { label: 'Schmelzpunkt', value: 14, type: 'number' },
-    { label: 'Siedepunkt', value: 15, type: 'number' },
-    { label: 'Elektronegativität', value: 16, type: 'number' },
-
-    { label: 'Flammenfarbe', value: 17, type: 'string' },
+    { key: 'name', label: 'Name', value: 0, type: 'string' },
+    { key: 'kurzsymbol', label: 'Kürzel', value: 1, type: 'string' },
+    { key: 'unterkategorie', label: 'Kategorie', value: 2, type: 'string' },
+    { key: 'aussehen', label: 'Aussehen', value: 3, type: 'string' },
+    { key: 'aggregatszustand', label: 'Aggregatszustand', value: 4, type: 'string' },
+    { key: 'struktur', label: 'Struktur', value: 5, type: 'string' },
+    { key: 'protonen', label: 'Protonen', value: 6, type: 'number' },
+    { key: 'neutronen', label: 'Neutronen', value: 7, type: 'number' },
+    { key: 'haerte', label: 'Härte', value: 8, type: 'number' },
+    { key: 'volumen', label: 'Volumen', value: 9, type: 'number' },
+    { key: 'prozentsatzAnDerErdhuelle', label: 'Häufigkeit', value: 10, type: 'number' },
+    { key: 'atommasse', label: 'Atomares Gewicht', value: 11, type: 'number' },
+    { key: 'ionisierungsenergie', label: 'Ionisierungsenergie', value: 12, type: 'number' },
+    { key: 'dichte', label: 'Dichte', value: 13, type: 'number' },
+    { key: 'schmelzpunkt', label: 'Schmelzpunkt', value: 14, type: 'number' },
+    { key: 'siedepunkt', label: 'Siedepunkt', value: 15, type: 'number' },
+    { key: 'elektronegativität', label: 'Elektronegativität', value: 16, type: 'number' },
+    { key: 'flammenfarbe', label: 'Flammenfarbe', value: 17, type: 'string' },
 ];
+
+function getDropdownOptionByLabel(label: string): DropdownOption {
+    return options.find((option) => option.label === label)!;
+}
 
 const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-    function getElementDataValue(elementData: ElementData, idNumber: number): string | number {
-        switch (idNumber) {
-            case 0:
-                return elementData.name;
-            case 1:
-                return elementData.kurzsymbol;
-            case 2:
-                return elementData.unterkategorie, ', ' + elementData.oberkategorie;
-            case 3:
-                return elementData.aussehen;
-            case 4:
-                return elementData.aggregatszustand;
-            case 5:
-                return elementData.struktur;
-            case 6:
-                return elementData.flammenfarbe;
-            case 7:
-                return elementData.protonen;
-            case 8:
-                return elementData.neutronen;
-            case 9:
-                return elementData.haerte;
-            case 10:
-                return elementData.volumen;
-            case 11:
-                return elementData.prozentsatzAnDerErdhuelle;
-            case 12:
-                return elementData.atommasse;
-            case 13:
-                return elementData.ionisierungsenergie;
-            case 14:
-                return elementData.dichte;
-            case 15:
-                return elementData.schmelzpunkt;
-            case 16:
-                return elementData.siedepunkt;
-            case 17:
-                return elementData.elektronegativität;
-            default:
-                return 'Error in getElementDataValue';
-        }
-    };
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -151,69 +90,87 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
     };
 
     const applyFilter = (search: Search) => {
-        console.log('applyFilter to: ' + search.attribute + ' ' + search.toggleOperator + ' ' + search.filterValue);
-
-        const elementTiles = document.querySelectorAll('[id^="Elltile-"]');
-        for (let index = 0; index < 118; index++) {
-            const element = array[index];
-            //HERE COONTINUE WORK WITH NEW IDS
-
+        if (search.searchValue === '') {
+            return;
         }
+        console.log('applyFilter to: ' + search.searchCategory + ' ' + search.operator + ' ' + search.searchValue);
 
-        elementTiles.forEach(function (elementTile, i) {
-            const elementDataValue: number | string = getElementDataValue(elements[i], (selectedAttribute!.value));
-
-            if (typeof elementDataValue === 'number') {
-                if (!operatorTableNumber[search.toggleOperator](elementDataValue, Number(search.filterValue))) {
-                    (elementTile as HTMLElement).style.filter = 'blur(6px)';
+        for (let i = 0; i < 118; i++) {
+            if (search.searchCategory.type === 'number') {
+                if (!operatorTableNumber[search.operator](Number(elements[i][search.searchCategory.key]), Number(search.searchValue))) {
+                    document.getElementById('ElliTile-' + i)!.style.filter = 'blur(6px)';
                 }
-            } else if (typeof elementDataValue === 'string') {
-                if (!operatorTableString[search.toggleOperator](elementDataValue, search.filterValue)) {
-                    console.log('elementDataValue: ' + elementDataValue);
-                    (elementTile as HTMLElement).style.filter = 'blur(6px)';
+            } else if (search.searchCategory.type === 'string') {
+                if (!operatorTableString[search.operator](elements[i][search.searchCategory.key].toString(), search.searchValue)) {
+                    document.getElementById('ElliTile-' + i)!.style.filter = 'blur(6px)';
                 }
             }
-        });
+        }
 
-        const emptyFilter = document.querySelector("#selectedFilters [id^=filter-]:not([attribute])") as HTMLElement;
+        const emptyFilter = document.querySelector("#selectedFilters [id^=filter-]:not([searchCategory])") as HTMLElement;
         if (emptyFilter) {
-            emptyFilter.setAttribute('attribute', search.attribute);
-            emptyFilter.setAttribute('toggleOperator', search.toggleOperator);
-            emptyFilter.setAttribute('filterValue', search.filterValue);
-
-            document.dispatchEvent(new CustomEvent('addedFilter', { detail: emptyFilter.id }));
+            emptyFilter.setAttribute('searchCategory', search.searchCategory.label);
+            emptyFilter.setAttribute('operator', search.operator);
+            emptyFilter.setAttribute('searchValue', search.searchValue);
+            emptyFilter.innerText = search.searchCategory.label + ' ' + search.operator + ' ' + search.searchValue;
         } else {
-            alert('Maximale Anzahl an Filtern erreicht - Seite muss neugeladen werden.')
+            alert('Maximale Anzahl an Filtern erreicht.');
         }
     };
 
+    function resetFilterComponent(filter: HTMLElement) {
+        filter.removeAttribute('searchCategory');
+        filter.removeAttribute('operator');
+        filter.removeAttribute('searchValue');
+        filter.innerText = '';
+    }
+
     const removeFilter = (filterIdToBeDeactivated: string) => {
-        console.log('removeFilter');
+        console.log('removeFilter from ' + filterIdToBeDeactivated);
 
         const filterToBeDeactivated = document.getElementById(filterIdToBeDeactivated) as HTMLElement;
-        filterToBeDeactivated.removeAttribute('attribute');
-        filterToBeDeactivated.removeAttribute('toggleOperator');
-        filterToBeDeactivated.removeAttribute('filterValue');
-        filterToBeDeactivated.innerText = '';
+        resetFilterComponent(filterToBeDeactivated);
 
-        const elementTiles = document.querySelectorAll('#ElementTile:not([placeholder])');
+        const elementTiles = document.querySelectorAll('[id^=ElliTile]:not([placeholder])');
         elementTiles.forEach(function (elementTile) {
             (elementTile as HTMLElement).style.filter = '';
         });
 
-        const activeFilter = document.querySelectorAll("#selectedFilters [id^=filter-][attribute]") as NodeListOf<HTMLElement>;
+        const activeFilter = document.querySelectorAll("#selectedFilters [id^=filter-][searchCategory]") as NodeListOf<HTMLElement>;
+        var activeSearches = new Array<Search>();
+
         activeFilter.forEach(function (activeFilter) {
-            var attribute = activeFilter.getAttribute('attribute');
-            var toggleOperator = activeFilter.getAttribute('toggleOperator');
-            var filterValue = activeFilter.getAttribute('filterValue');
-
-            activeFilter.removeAttribute('attribute');
-            activeFilter.removeAttribute('toggleOperator');
-            activeFilter.removeAttribute('filterValue');
-            activeFilter.innerText = '';
-
-            applyFilter(new Search(attribute!, toggleOperator!, filterValue!));
+            activeSearches.push(new Search(getDropdownOptionByLabel(activeFilter.getAttribute('searchCategory')!)!, activeFilter.getAttribute('operator')!, activeFilter.getAttribute('searchValue')!));
+            resetFilterComponent(activeFilter);
         });
+        activeSearches.forEach(function (activeSearch) {
+            applyFilter(new Search(activeSearch.searchCategory, activeSearch.operator, activeSearch.searchValue));
+        });
+    };
+
+    useEffect(() => {
+        const handleEscapeKey = (event: { key: string; }) => {
+            if (event.key === 'Escape') {
+                console.log('Escape key pressed!');
+                for (let i = 5; i > 0; i--) {
+                    if (document.getElementById('filter-' + i)?.hasAttribute('searchCategory')) {
+                        removeFilter('filter-' + i);
+                        break;
+                    }
+                }
+            }
+        };
+        document.addEventListener('keydown', handleEscapeKey);
+
+        return () => {
+            document.removeEventListener('keydown', handleEscapeKey);
+        };
+    }); // Empty dependency array means this effect runs once when the component mounts
+
+    const handlePossibleEnterInInput = (event: { key: string; }) => {
+        if (event.key === 'Enter') {
+            applyFilter(new Search(options[selectedAttribute!.value], (document.getElementById('filter-toggle') as HTMLInputElement).innerText, (document.getElementById('filter-input') as HTMLInputElement).value));
+        }
     };
 
     return (
@@ -222,6 +179,8 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
                 <PSEActiveFilter id='filter-1' onClick={() => removeFilter('filter-1')} />
                 <PSEActiveFilter id='filter-2' onClick={() => removeFilter('filter-2')} />
                 <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-3')} />
+                <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-4')} />
+                <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-5')} />
             </div>
             <div className='mr-8 bg-fnbg-body ml-auto my-2'>
                 <div className="dropdown border-2 flex">
@@ -231,8 +190,8 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
                             <div className='flex'>
                                 <Dropdown options={options} onSelect={handleDropdownSelect} />
                                 <ToggleOperator id='filter-toggle' currentType={selectedAttribute!.type} />
-                                <input type="text" className='w-24' id='filter-input' />
-                                <Button onClick={() => applyFilter(new Search(options[selectedAttribute!.value].label, (document.getElementById('filter-toggle') as HTMLInputElement).innerText, (document.getElementById('filter-input') as HTMLInputElement).value))} id='execute-button' addClasses='p-2'>✓</Button>
+                                <input type="text" className='w-24' id='filter-input' onKeyDown={handlePossibleEnterInInput} />
+                                <Button onClick={() => applyFilter(new Search(options[selectedAttribute!.value], (document.getElementById('filter-toggle') as HTMLInputElement).innerText, (document.getElementById('filter-input') as HTMLInputElement).value))} id='execute-button' addClasses='p-2'>✓</Button>
                             </div>
                         </div>
                     )}
