@@ -109,6 +109,8 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
 
         const emptyFilter = document.querySelector("#selectedFilters [id^=filter-]:not([searchCategory])") as HTMLElement;
         if (emptyFilter) {
+            //set emptyFilter enabled
+
             emptyFilter.setAttribute('searchCategory', search.searchCategory.label);
             emptyFilter.setAttribute('operator', search.operator);
             emptyFilter.setAttribute('searchValue', search.searchValue);
