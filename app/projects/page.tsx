@@ -2,7 +2,6 @@
 import React from 'react';
 import { useLanguageData } from '@data/languageLoader';
 import Tile from '@components/Tile/Tile';
-import ElementTile from '@components/ElementTile/ElementTile';
 
 //TODO amd intel nvidia comparator
 //TODO clound upload with password
@@ -15,7 +14,7 @@ const Homepage: React.FC = () => {
   return (
     <main className='p-20 mt-20'>
       {data && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6 gap-4 m-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-6 gap-4 m-auto">
           <Tile to='/periodicTable'>Periodic Table</Tile>
           <Tile to='https://marketplace.visualstudio.com/items?itemName=FabianBerger.angry-dino' newTab>Angry Dino Theme</Tile>
           <Tile to='https://curseforge.com/minecraft/mc-mods/non-intrusive-doors' newTab>Non Intrusive Doors Mod</Tile>
