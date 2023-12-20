@@ -21,8 +21,8 @@ const Homepage: React.FC = () => {
           <Tile to='https://blog.fnbg.de' newTab>FNBG Blog</Tile>
           <Tile to='https://github.com/BambiMC' newTab>Github</Tile>
           {/* <Tile to='/'>Big-Data.AI Summit 2019 & 2022</Tile> */}
-          <Tile to='/DSAG-Beitrag.pdf'>DSAG Artikel 2019</Tile>
-          <Tile to='/Kurzbeschreibung-Bachelorthesis.pdf'>Kurzbeschreibung Bachelorthesis</Tile>
+          <Tile to='/DSAG-Beitrag.pdf' newTab>DSAG Artikel 2019</Tile>
+          <Tile to='/Kurzbeschreibung-Bachelorthesis.pdf newTab'>Kurzbeschreibung Bachelorthesis</Tile>
           {/* <Tile to='/'></Tile> */}
 
         </div>
