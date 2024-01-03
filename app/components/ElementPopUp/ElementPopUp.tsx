@@ -8,8 +8,6 @@ import Link from 'next/link';
 import { useLanguageData } from "@data/languageLoader";
 import MathComponent from '@components/MathComponent/MathComponent';
 
-
-
 interface PopUpProps {
     onClose: () => void;
     elementData?: ElementData;
@@ -24,12 +22,13 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData }) => {
     };
 
     return (
+
         <div className={styles.blurred} onClick={onClose}>
             {data && (
                 <div className={`text-xs md:text-base 2xl:text-xl font-normal ${styles.popup}`} onClick={handleOverlayClick}>
                     <div className='flex header-row justify-between'>
-                        <p className='font-bold pt-4 text-3xl text-fnbg-orange'>{elementData ? elementData.name : ''} - {elementData ? elementData.kurzsymbol : ''}</p>
-                        <Button onClick={onClose}>X</Button>
+                        <p className='font-bold text-3xl text-fnbg-orange my-4'>{elementData ? elementData.name : ''} - {elementData ? elementData.kurzsymbol : ''}</p>
+                        <Button onClick={onClose} addClasses='text-3xl'>&#x2716;</Button>
                     </div>
                     <p className='element-text'>{data['protons']}: {elementData ? elementData.protonen : ''}</p>
                     <p className='element-text'>{data['neutrons']}: {elementData ? elementData.neutronen : ''} *</p>
@@ -44,7 +43,6 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData }) => {
                         <p className='element-text'>{data['volume']}: {elementData ? elementData.volumen : ''}</p>
                         <MathComponent mathExpression="\frac{\text{m}^3}{\text{mol}}" />
                         <p className='element-text'> **</p>
-
                     </div>
                     <p className='element-text'>{data['radioactive']}: {elementData?.radioaktiv ? data['yes'] : data['no']}</p>
                     <p className='element-text'>{data['syntheticallyProduced']}: {elementData?.synthetischHergestellt ? data['yes'] : data['no']}</p>

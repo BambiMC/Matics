@@ -27,7 +27,7 @@ const Dropdown: FC<DropdownProps> = ({ options, onSelect }) => {
 
     return (
         <div className="dropdown-container">
-            <div className="selected-option p-2" onClick={() => setIsOpen(!isOpen)}>
+            <div className="selected-option p-2 cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
                 {selectedAttribute ? selectedAttribute.label : 'Attribut auswählen'}
             </div>
             {isOpen && (
@@ -35,7 +35,7 @@ const Dropdown: FC<DropdownProps> = ({ options, onSelect }) => {
                     {options.map((option) => (
                         <div
                             key={option.value}
-                            className="option"
+                            className="option cursor-pointer"
                             onClick={() => handleSelect(option)}
                         >
                             {option.label}

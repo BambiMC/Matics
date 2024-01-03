@@ -13,15 +13,18 @@
   --fnbg-orange: #303030;
   --fnbg-body: #eee3ff;
   --fnbg-accent: #c5bcf3;
+  --fnbg-text: #303030;
 }
 
 :root[data-theme="dark"] {
   --radius-big: 0;
   --radius-small: 0;
-  --fnbg-purple: #8774e1;
+  /* --fnbg-purple: #8774e1; */
+  --fnbg-purple: #8b7bdd;
   --fnbg-orange: #fb923c;
   --fnbg-body: #404040;
   --fnbg-accent: #222222;
+  --fnbg-text: #bcbcff;
 }
 
 :root[data-theme="light"] .dark,
@@ -46,8 +49,8 @@ body {
   background-color: var(--fnbg-body);
 }
 
-main {
-  position: relative;
+p {
+  color: var(--fnbg-text);
 }
 
 ::selection {
@@ -85,15 +88,14 @@ a {
   color: var(--fnbg-purple) !important;
 }
 
-label {
-  max-width: 100%;
-  color: var(--fnbg-orange);
-}
-
 Link,
 a {
   font-weight: bold;
-  letter-spacing: 1.5px;
+}
+
+label {
+  max-width: 100%;
+  color: var(--fnbg-orange);
 }
 
 img:not(#logo) {

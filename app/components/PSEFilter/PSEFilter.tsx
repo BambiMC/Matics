@@ -99,10 +99,12 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
             if (search.searchCategory.type === 'number') {
                 if (!operatorTableNumber[search.operator](Number(elements[i][search.searchCategory.key]), Number(search.searchValue))) {
                     document.getElementById('ElliTile-' + i)!.style.filter = 'blur(6px)';
+                    document.getElementById('ElliTile-' + i)!.style.pointerEvents = 'none';
                 }
             } else if (search.searchCategory.type === 'string') {
                 if (!operatorTableString[search.operator](elements[i][search.searchCategory.key].toString(), search.searchValue)) {
                     document.getElementById('ElliTile-' + i)!.style.filter = 'blur(6px)';
+                    document.getElementById('ElliTile-' + i)!.style.pointerEvents = 'none';
                 }
             }
         }
@@ -115,16 +117,20 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
             emptyFilter.setAttribute('operator', search.operator);
             emptyFilter.setAttribute('searchValue', search.searchValue);
             emptyFilter.innerText = search.searchCategory.label + ' ' + search.operator + ' ' + search.searchValue;
+            emptyFilter.style.pointerEvents = 'auto';
+
         } else {
             alert('Maximale Anzahl an Filtern erreicht.');
         }
     };
 
-    function resetFilterComponent(filter: HTMLElement) {
-        filter.removeAttribute('searchCategory');
-        filter.removeAttribute('operator');
-        filter.removeAttribute('searchValue');
-        filter.innerText = '';
+    function resetFilterComponent(filterToReset: HTMLElement) {
+        filterToReset.removeAttribute('searchCategory');
+        filterToReset.removeAttribute('operator');
+        filterToReset.removeAttribute('searchValue');
+        filterToReset.innerText = '';
+        filterToReset.style.pointerEvents = 'none';
+
     }
 
     const removeFilter = (filterIdToBeDeactivated: string) => {
@@ -136,6 +142,7 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
         const elementTiles = document.querySelectorAll('[id^=ElliTile]:not([placeholder])');
         elementTiles.forEach(function (elementTile) {
             (elementTile as HTMLElement).style.filter = '';
+            (elementTile as HTMLElement).style.pointerEvents = 'auto';
         });
 
         const activeFilter = document.querySelectorAll("#selectedFilters [id^=filter-][searchCategory]") as NodeListOf<HTMLElement>;
@@ -186,7 +193,8 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
             </div>
             <div className='mr-8 bg-fnbg-body ml-auto my-2'>
                 <div className="dropdown border-2 flex">
-                    <Button onClick={toggleDropdown} addClasses="dropbtn ml-auto pl-auto">Elemente filtern</Button>
+                    <button onClick={toggleDropdown} className="dropbtn ml-auto pl-auto button font-bold p-2 rounded-lg text-fnbg-text hover:text-fnbg-purple duration-300">Elemente filtern</button>
+
                     {isDropdownOpen && (
                         <div className="dropdown-content">
                             <div className='flex'>

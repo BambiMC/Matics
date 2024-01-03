@@ -7,11 +7,11 @@ import PSEFilter from '@app/components/PSEFilter/PSEFilter';
 
 
 const Projects: React.FC = () => {
-  const data = useLanguageData("periodicTable");
   return (
 
-    <main className='mx-auto max-w-9xl my-40 md:mt-20 lg:mt-24'>
+    <main className='px-4 mx-auto w-screen max-w-9xl my-40 md:mt-20 lg:mt-24'>
       <PSEFilter elements={elements} />
+
       <div className="grid grid-cols-18 grid-rows-9 gap-0 sm:gap-1 lg:gap-2 xl:gap-4">
         {/* Line Number 1 */}
         <ElementTile addClasses='bg-cyan-500' elementData={elements[0]} id='ElliTile-0' />

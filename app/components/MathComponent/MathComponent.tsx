@@ -15,7 +15,7 @@ const MathComponent: React.FC<MathComponentProps> = ({ mathExpression }) => {
         });
     }, [mathExpression, mathContainerId]);
 
-    return <div className='px-1' id={mathContainerId} />;
+    return <div className='px-1 text-fnbg-text' id={mathContainerId} />;
 };
 
 export default MathComponent;

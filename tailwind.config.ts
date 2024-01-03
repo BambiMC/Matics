@@ -29,13 +29,14 @@ const config: Config = {
         "18": "18",
       },
       maxWidth: {
-        "9xl": "2000px",
+        "9xl": "1600px",
       },
       colors: {
         "fnbg-purple": "var(--fnbg-purple)",
         "fnbg-orange": "var(--fnbg-orange)",
         "fnbg-body": "var(--fnbg-body)",
         "fnbg-accent": "var(--fnbg-accent)",
+        "fnbg-text": "var(--fnbg-text)",
       },
     },
   },

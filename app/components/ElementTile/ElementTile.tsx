@@ -36,11 +36,11 @@ const ElementTile: React.FC<ElementTileProps> = ({
   return (
     <div
       {...placeholderAttribute}
-      className={`flex aspect-square cursor-pointer text-center items-center justify-center duration-300 text-xs md:text-xl xl:text-2xl text-black p-0 lg:p-2 xl:p-4 border-[#404040] border-1 sm:border-2 lg:border-4 hover:z-10 hover:border-black ${addClasses}`}
+      className={`flex aspect-square cursor-pointer text-center items-center justify-center duration-300 text-xs md:text-xl xl:text-2xl p-0 lg:p-2 xl:p-4 border-[#404040] border-1 sm:border-2 lg:border-4 hover:z-10 hover:border-black ${addClasses}`}
       id={id}
       onClick={handleClick}
     >
-      <p>{elementData ? elementData.kurzsymbol : '↓'}</p>
+      <p className='text-black'>{elementData ? elementData.kurzsymbol : '↓'}</p>
 
       {isPopUpVisible && <ElementPopUp onClose={togglePopUp} elementData={elementData} />}
     </div>
