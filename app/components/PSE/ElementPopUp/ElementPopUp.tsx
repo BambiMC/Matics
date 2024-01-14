@@ -2,8 +2,8 @@
 
 import React from 'react';
 import styles from './ElementPopUp.module.css';
-import { ElementData } from '@public/libraryChemistry';
-import Button from '../Button/Button';
+import { ElementData } from '@public/libChem/elementData';
+import Button from '../../Button/Button';
 import Link from 'next/link';
 import { useLanguageData } from "@data/languageLoader";
 import MathComponent from '@components/MathComponent/MathComponent';
@@ -15,7 +15,7 @@ interface PopUpProps {
 
 const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData }) => {
 
-    const data = useLanguageData("periodicTable");
+    const data = useLanguageData("elementPopUp");
 
     const handleOverlayClick = (event: React.MouseEvent) => {
         event.stopPropagation();
@@ -55,7 +55,7 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData }) => {
                     </div>
                     <p className='element-text'>{data['meltingPoint']}: {elementData ? elementData.schmelzpunkt : ''} °C</p>
                     <p className='element-text'>{data['boilingPoint']}: {elementData ? elementData.siedepunkt : ''} °C</p>
-                    <p className='element-text'>{data['electronegativity']}: {elementData ? elementData.elektronegativität : ''} eV ***</p>
+                    <p className='element-text'>{data['electronegativity']}: {elementData ? elementData.elektronegativitaet : ''} eV ***</p>
                     <p className='element-text'>{data['flameColor']}: {elementData ? elementData.flammenfarbe : ''}</p>
                     <div className='flex'>
                         <p className='element-text'>{data['wikipediaLink']}:</p>

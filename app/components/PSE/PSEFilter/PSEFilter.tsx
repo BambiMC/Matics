@@ -1,31 +1,53 @@
-import { ElementData } from '@public/libraryChemistry';
+import { ElementData } from '@public/libChem/elementData';
 import React, { useEffect, useState } from 'react';
-import Button from '../Button/Button';
-import Dropdown from '../Dropdown/Dropdown';
+import Button from '@components/Button/Button';
+import Dropdown from '@components/Dropdown/Dropdown';
 import PSEActiveFilter from './PSEActiveFilter';
 import ToggleOperator from './ToggleOperator';
+import { useLanguageData } from '@data/languageLoader';
 
 type PSEFilterProps = {
     elements: ElementData[];
+    dataExtern: any;
 };
 
 interface DropdownOption {
     key: keyof ElementData;
-    label: string;
     value: number;
     type: string;
 }
 
 class Search {
-    searchCategory!: DropdownOption;
-    operator!: string;
-    searchValue!: string;
+    searchCategory: DropdownOption;
+    operator: string;
+    searchValue: string;
     constructor(searchCategory: DropdownOption, operator: string, searchValue: string) {
         this.searchCategory = searchCategory;
         this.operator = operator;
         this.searchValue = searchValue;
     }
 }
+
+const options: DropdownOption[] = [
+    { key: 'name', value: 0, type: 'string' },
+    { key: 'kurzsymbol', value: 1, type: 'string' },
+    { key: 'unterkategorie', value: 2, type: 'string' },
+    { key: 'aussehen', value: 3, type: 'string' },
+    { key: 'aggregatszustand', value: 4, type: 'string' },
+    { key: 'struktur', value: 5, type: 'string' },
+    { key: 'protonen', value: 6, type: 'number' },
+    { key: 'neutronen', value: 7, type: 'number' },
+    { key: 'haerte', value: 8, type: 'number' },
+    { key: 'volumen', value: 9, type: 'number' },
+    { key: 'prozentsatzAnDerErdhuelle', value: 10, type: 'number' },
+    { key: 'atommasse', value: 11, type: 'number' },
+    { key: 'ionisierungsenergie', value: 12, type: 'number' },
+    { key: 'dichte', value: 13, type: 'number' },
+    { key: 'schmelzpunkt', value: 14, type: 'number' },
+    { key: 'siedepunkt', value: 15, type: 'number' },
+    { key: 'elektronegativitaet', value: 16, type: 'number' },
+    { key: 'flammenfarbe', value: 17, type: 'string' },
+];
 
 interface OperatorTableNumber {
     [key: string]: (a: number, b: number) => boolean;
@@ -48,42 +70,28 @@ const operatorTableString: OperatorTableString = {
     '≠': (a, b) => !a.trim().toLowerCase().includes(b.trim().toLowerCase()),
 };
 
-const options: DropdownOption[] = [
-    { key: 'name', label: 'Name', value: 0, type: 'string' },
-    { key: 'kurzsymbol', label: 'Kürzel', value: 1, type: 'string' },
-    { key: 'unterkategorie', label: 'Kategorie', value: 2, type: 'string' },
-    { key: 'aussehen', label: 'Aussehen', value: 3, type: 'string' },
-    { key: 'aggregatszustand', label: 'Aggregatszustand', value: 4, type: 'string' },
-    { key: 'struktur', label: 'Struktur', value: 5, type: 'string' },
-    { key: 'protonen', label: 'Protonen', value: 6, type: 'number' },
-    { key: 'neutronen', label: 'Neutronen', value: 7, type: 'number' },
-    { key: 'haerte', label: 'Härte', value: 8, type: 'number' },
-    { key: 'volumen', label: 'Volumen', value: 9, type: 'number' },
-    { key: 'prozentsatzAnDerErdhuelle', label: 'Häufigkeit', value: 10, type: 'number' },
-    { key: 'atommasse', label: 'Atomares Gewicht', value: 11, type: 'number' },
-    { key: 'ionisierungsenergie', label: 'Ionisierungsenergie', value: 12, type: 'number' },
-    { key: 'dichte', label: 'Dichte', value: 13, type: 'number' },
-    { key: 'schmelzpunkt', label: 'Schmelzpunkt', value: 14, type: 'number' },
-    { key: 'siedepunkt', label: 'Siedepunkt', value: 15, type: 'number' },
-    { key: 'elektronegativität', label: 'Elektronegativität', value: 16, type: 'number' },
-    { key: 'flammenfarbe', label: 'Flammenfarbe', value: 17, type: 'string' },
-];
-
-function getDropdownOptionByLabel(label: string): DropdownOption {
-    return options.find((option) => option.label === label)!;
+function getDropdownOptionByKey(key: string): DropdownOption {
+    return options.find((option) => option.key.toString() === key)!;
 }
 
 const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
+    const data = useLanguageData('periodicTableFilter');
+    console.log("datA:");
+    // console.log(useLanguageData('periodicTableFilter')!['name']);
+
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedAttribute, setSelectedAttribute] = useState<DropdownOption>(options[0]);
+
+    console.log("selectedAttribute:");
+    console.log(selectedAttribute.toString());
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
-    const [selectedAttribute, setselectedAttribute] = useState<DropdownOption | null>(options[0]);
 
     const handleDropdownSelect = (option: DropdownOption) => {
-        setselectedAttribute(option);
+        setSelectedAttribute(option);
         document.dispatchEvent(new CustomEvent('changedAttribute', {
             detail: option
         }));
@@ -113,10 +121,10 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
         if (emptyFilter) {
             //set emptyFilter enabled
 
-            emptyFilter.setAttribute('searchCategory', search.searchCategory.label);
+            emptyFilter.setAttribute('searchCategory', search.searchCategory.key);
             emptyFilter.setAttribute('operator', search.operator);
             emptyFilter.setAttribute('searchValue', search.searchValue);
-            emptyFilter.innerText = search.searchCategory.label + ' ' + search.operator + ' ' + search.searchValue;
+            emptyFilter.innerText = search.searchCategory.key + ' ' + search.operator + ' ' + search.searchValue;
             emptyFilter.style.pointerEvents = 'auto';
 
         } else {
@@ -136,8 +144,7 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
     const removeFilter = (filterIdToBeDeactivated: string) => {
         console.log('removeFilter from ' + filterIdToBeDeactivated);
 
-        const filterToBeDeactivated = document.getElementById(filterIdToBeDeactivated) as HTMLElement;
-        resetFilterComponent(filterToBeDeactivated);
+        resetFilterComponent(document.getElementById(filterIdToBeDeactivated) as HTMLElement);
 
         const elementTiles = document.querySelectorAll('[id^=ElliTile]:not([placeholder])');
         elementTiles.forEach(function (elementTile) {
@@ -149,7 +156,7 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
         var activeSearches = new Array<Search>();
 
         activeFilter.forEach(function (activeFilter) {
-            activeSearches.push(new Search(getDropdownOptionByLabel(activeFilter.getAttribute('searchCategory')!)!, activeFilter.getAttribute('operator')!, activeFilter.getAttribute('searchValue')!));
+            activeSearches.push(new Search(getDropdownOptionByKey(activeFilter.getAttribute('searchCategory')!), activeFilter.getAttribute('operator')!, activeFilter.getAttribute('searchValue')!));
             resetFilterComponent(activeFilter);
         });
         activeSearches.forEach(function (activeSearch) {
@@ -183,31 +190,36 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
     };
 
     return (
-        <div className='flex bg-fnbg-accent my-4'>
-            <div id='selectedFilters' className='flex'>
-                <PSEActiveFilter id='filter-1' onClick={() => removeFilter('filter-1')} />
-                <PSEActiveFilter id='filter-2' onClick={() => removeFilter('filter-2')} />
-                <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-3')} />
-                <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-4')} />
-                <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-5')} />
-            </div>
-            <div className='mr-8 bg-fnbg-body ml-auto my-2'>
-                <div className="dropdown border-2 flex">
-                    <button onClick={toggleDropdown} className="dropbtn ml-auto pl-auto button font-bold p-2 rounded-lg text-fnbg-text hover:text-fnbg-purple duration-300">Elemente filtern</button>
+        <div>
+            {data && (
+                <div className='flex bg-fnbg-accent my-4'>
+                    <div id='selectedFilters' className='flex'>
+                        <PSEActiveFilter id='filter-1' onClick={() => removeFilter('filter-1')} />
+                        <PSEActiveFilter id='filter-2' onClick={() => removeFilter('filter-2')} />
+                        <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-3')} />
+                        <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-4')} />
+                        <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-5')} />
+                    </div>
+                    <div className='mr-8 bg-fnbg-body ml-auto my-2'>
+                        <div className="dropdown border-2 flex">
+                            <button onClick={toggleDropdown} className="dropbtn ml-auto pl-auto button font-bold p-2 rounded-lg text-fnbg-text hover:text-fnbg-purple duration-300">{data['filterElement']}</button>
 
-                    {isDropdownOpen && (
-                        <div className="dropdown-content">
-                            <div className='flex'>
-                                <Dropdown options={options} onSelect={handleDropdownSelect} />
-                                <ToggleOperator id='filter-toggle' currentType={selectedAttribute!.type} />
-                                <input type="text" className='w-24' id='filter-input' onKeyDown={handlePossibleEnterInInput} />
-                                <Button onClick={() => applyFilter(new Search(options[selectedAttribute!.value], (document.getElementById('filter-toggle') as HTMLInputElement).innerText, (document.getElementById('filter-input') as HTMLInputElement).value))} id='execute-button' addClasses='p-2'>✓</Button>
-                            </div>
+                            {isDropdownOpen && (
+                                <div className="dropdown-content">
+                                    <div className='flex'>
+                                        <Dropdown options={options} onSelect={handleDropdownSelect} />
+                                        <ToggleOperator id='filter-toggle' currentType={selectedAttribute!.type} />
+                                        <input type="text" className='w-24' id='filter-input' onKeyDown={handlePossibleEnterInInput} />
+                                        <Button onClick={() => applyFilter(new Search(options[selectedAttribute!.value], (document.getElementById('filter-toggle') as HTMLInputElement).innerText, (document.getElementById('filter-input') as HTMLInputElement).value))} id='execute-button' addClasses='p-2'>✓</Button>
+                                    </div>
+                                </div>
+                            )}
                         </div>
-                    )}
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 };
+
 export default PSEFilter;

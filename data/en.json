@@ -30,7 +30,7 @@
     "liability5": "Objection to unsolicited advertising",
     "liabilityText5": "The use of contact data published in the context of the imprint obligation for sending unsolicited advertising and information materials is hereby expressly prohibited."
   },
-  "periodicTable": {
+  "elementPopUp": {
     "protons": "Protons",
     "neutrons": "Neutrons",
     "category": "Category",
@@ -59,5 +59,38 @@
     "yes": "Yes",
     "no": "No",
     "mohs": "Mohs"
+  },
+  "projects": {
+    "periodicTable": "Interaktives Periodensystem",
+    "elementPopUp": "interaktives Periodensystem",
+    "angrydino": "Angry Dino Theme",
+    "nonintrusivedoors": "Non Intrusive Doors Mod",
+    "blog": "FNBG Blog",
+    "github": "GitHub",
+    "dsag": "DSAG Artikel 2019",
+    "ba": "Kurzbeschreibung Bachelorthesis",
+    "psg": "PSG Amberg Webseite"
+  },
+  "periodicTableFilter": {
+    "filterElement": "Filter Elements",
+    "attributAuswaehlen": "Select Attribute",
+    "name": "Name",
+    "kurzsymbol": "Short Symbol",
+    "unterkategorie": "Subcategory",
+    "aussehen": "Appearance",
+    "aggregatzustand": "State of Matter",
+    "struktur": "Structure",
+    "protonen": "Protons",
+    "neutronen": "Neutrons",
+    "haerte": "Hardness",
+    "volumen": "Volume",
+    "prozentsatzAnDerErdhuelle": "Abundance",
+    "atommasse": "Atomic Mass",
+    "ionisierungsenergie": "Ionization Energy",
+    "dichte": "Density",
+    "schmelzpunkt": "Melting Point",
+    "siedepunkt": "Boiling Point",
+    "elektronegativitaet": "Electronegativity",
+    "flammenfarbe": "Flame Color"
   }
 }

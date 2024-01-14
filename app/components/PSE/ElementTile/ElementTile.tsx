@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { ElementData } from '@public/libraryChemistry';
-import ElementPopUp from '../ElementPopUp/ElementPopUp';
+import { ElementData } from '@public/libChem/elementData';
+import ElementPopUp from '@components/PSE/ElementPopUp/ElementPopUp';
 
 interface ElementTileProps {
   elementData?: ElementData;

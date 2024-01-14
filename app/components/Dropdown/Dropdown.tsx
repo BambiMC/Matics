@@ -1,11 +1,10 @@
-// components/Dropdown.tsx
-import { ElementData } from '@public/libraryChemistry';
+import { useLanguageData } from '@data/languageLoader';
+import { ElementData } from '@public/libChem/elementData';
 import React, { useState, FC } from 'react';
 
 
 interface DropdownOption {
     key: keyof ElementData;
-    label: string;
     value: number;
     type: string;
 }
@@ -16,31 +15,37 @@ interface DropdownProps {
 }
 
 const Dropdown: FC<DropdownProps> = ({ options, onSelect }) => {
-    const [selectedAttribute, setselectedAttribute] = useState<DropdownOption | null>(null);
+    const data = useLanguageData("periodicTableFilter");
+
+    const [selectedAttribute, setSelectedAttribute] = useState<DropdownOption | null>(options[0]);
     const [isOpen, setIsOpen] = useState(false);
 
     const handleSelect = (option: DropdownOption) => {
-        setselectedAttribute(option);
+        setSelectedAttribute(option);
         onSelect(option);
         setIsOpen(false);
     };
 
     return (
         <div className="dropdown-container">
-            <div className="selected-option p-2 cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-                {selectedAttribute ? selectedAttribute.label : 'Attribut auswählen'}
-            </div>
-            {isOpen && (
-                <div className="options-container">
-                    {options.map((option) => (
-                        <div
-                            key={option.value}
-                            className="option cursor-pointer"
-                            onClick={() => handleSelect(option)}
-                        >
-                            {option.label}
+            {data && (
+                <div>
+                    <div className="selected-option p-2 cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+                        {selectedAttribute ? data[selectedAttribute.key.toString()] : data['attributAuswaehlen']}
+                    </div>
+                    {isOpen && (
+                        <div className="options-container">
+                            {options.map((option) => (
+                                <div
+                                    key={option.value}
+                                    className="option cursor-pointer"
+                                    onClick={() => handleSelect(option)}
+                                >
+                                    {data[option!.key.toString()]}
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    )}
                 </div>
             )}
         </div>

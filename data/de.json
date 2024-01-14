@@ -30,7 +30,7 @@
     "liability5": "Widerspruch gegen unverlangte Werbung",
     "liabilityText5": "Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen."
   },
-  "periodicTable": {
+  "elementPopUp": {
     "protons": "Protonen",
     "neutrons": "Neutronen",
     "category": "Kategorie",
@@ -60,5 +60,37 @@
     "no": "Nein",
     "mohs": "Mohs"
   },
-  "alienZebra": {}
+  "projects": {
+    "periodicTable": "Interaktives Periodensystem",
+    "elementPopUp": "interaktives Periodensystem",
+    "angrydino": "Angry Dino Theme",
+    "nonintrusivedoors": "Non Intrusive Doors Mod",
+    "blog": "FNBG Blog",
+    "github": "GitHub",
+    "dsag": "DSAG Artikel 2019",
+    "ba": "Kurzbeschreibung Bachelorthesis",
+    "psg": "PSG Amberg Webseite"
+  },
+  "periodicTableFilter": {
+    "filterElement": "Elemente filtern",
+    "attributAuswaehlen": "Attribut auswählen",
+    "name": "Name",
+    "kurzsymbol": "Kurzsymbol",
+    "unterkategorie": "Kategorie",
+    "aussehen": "Aussehen",
+    "aggregatzustand": "Aggregatzustand",
+    "struktur": "Struktur",
+    "protonen": "Protonen",
+    "neutronen": "Neutronen",
+    "haerte": "Härte",
+    "volumen": "Volumen",
+    "prozentsatzAnDerErdhuelle": "Häufigkeit",
+    "atommasse": "Atommasse",
+    "ionisierungsenergie": "Ionisierungsenergie",
+    "dichte": "Dichte",
+    "schmelzpunkt": "Schmelzpunkt",
+    "siedepunkt": "Siedepunkt",
+    "elektronegativitaet": "Elektronegativität",
+    "flammenfarbe": "Flammenfarbe"
+  }
 }

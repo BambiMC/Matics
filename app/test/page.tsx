@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import ElementPopUp from '@components/ElementPopUp/ElementPopUp';
+import ElementPopUp from '@app/components/PSE/ElementPopUp/ElementPopUp';
 
 const Home: React.FC = () => {
   const [isPopUpVisible, setIsPopUpVisible] = useState(false);
