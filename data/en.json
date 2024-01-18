@@ -61,15 +61,15 @@
     "mohs": "Mohs"
   },
   "projects": {
-    "periodicTable": "Interaktives Periodensystem",
-    "elementPopUp": "interaktives Periodensystem",
+    "periodicTable": "Interactive Periodic Table",
     "angrydino": "Angry Dino Theme",
-    "nonintrusivedoors": "Non Intrusive Doors Mod",
+    "nonintrusivedoors": "Non-Intrusive Doors Mod",
     "blog": "FNBG Blog",
     "github": "GitHub",
-    "dsag": "DSAG Artikel 2019",
-    "ba": "Kurzbeschreibung Bachelorthesis",
-    "psg": "PSG Amberg Webseite"
+    "dsag": "DSAG Article 2019",
+    "ba": "Brief Description Bachelor Thesis",
+    "psg": "PSG Amberg Website",
+    "cpuxf": "Certified Professional for Usability and User Experience (CPUX-F)"
   },
   "periodicTableFilter": {
     "filterElement": "Filter Elements",

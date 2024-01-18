@@ -62,14 +62,14 @@
   },
   "projects": {
     "periodicTable": "Interaktives Periodensystem",
-    "elementPopUp": "interaktives Periodensystem",
     "angrydino": "Angry Dino Theme",
     "nonintrusivedoors": "Non Intrusive Doors Mod",
     "blog": "FNBG Blog",
     "github": "GitHub",
     "dsag": "DSAG Artikel 2019",
     "ba": "Kurzbeschreibung Bachelorthesis",
-    "psg": "PSG Amberg Webseite"
+    "psg": "PSG Amberg Webseite",
+    "cpuxf": "Certified Professional für Usability und User Experience (CPUX-F)"
   },
   "periodicTableFilter": {
     "filterElement": "Elemente filtern",
