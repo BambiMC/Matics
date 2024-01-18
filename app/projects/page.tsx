@@ -24,7 +24,9 @@ const Homepage: React.FC = () => {
           <Tile to='/DSAG-Beitrag.pdf' newTab>{data['dsag']}</Tile>
           <Tile to='/Kurzbeschreibung-Bachelorthesis.pdf' newTab>{data['ba']}</Tile>
           <Tile to='https://dev.fnbg.de' newTab>{data['psg']}</Tile>
+          <Tile to='/CPUX-F-Zertifikat-Fabian-Berger.pdf' newTab>{data['cpuxf']}</Tile>
           {/* <Tile to='/'></Tile> */}
+
 
         </div>
       )}
