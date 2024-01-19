@@ -16,7 +16,7 @@
     border-color: transparent transparent #fb923c transparent;
     transition: transform 0.5s ease;
     rotate: 180deg;
-    
+    overflow: hidden;
 }
 
 .trianglePurple {
@@ -29,7 +29,7 @@
     border-width: 0 125px 216.5px 125px;
     border-color: transparent transparent #8774e1 transparent;
     transition: transform 0.5s ease;
-    
+    overflow: hidden;
 }
 
 .trianglePurple:hover,
