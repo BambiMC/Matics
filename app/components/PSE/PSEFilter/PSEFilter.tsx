@@ -104,23 +104,26 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
         console.log('applyFilter to: ' + search.searchCategory + ' ' + search.operator + ' ' + search.searchValue);
 
         for (let i = 0; i < 118; i++) {
-            if (search.searchCategory.type === 'number') {
-                if (!operatorTableNumber[search.operator](Number(elements[i][search.searchCategory.key]), Number(search.searchValue))) {
-                    document.getElementById('ElliTile-' + i)!.style.filter = 'blur(6px)';
-                    document.getElementById('ElliTile-' + i)!.style.pointerEvents = 'none';
+            if (elements[i][search.searchCategory.key]) {
+                if (search.searchCategory.type === 'number') {
+                    if (!operatorTableNumber[search.operator](Number(elements[i][search.searchCategory.key]), Number(search.searchValue))) {
+                        document.getElementById('ElliTile-' + i)!.style.filter = 'blur(6px)';
+                        document.getElementById('ElliTile-' + i)!.style.pointerEvents = 'none';
+                    }
+                } else if (search.searchCategory.type === 'string') {
+                    if (!operatorTableString[search.operator](elements[i][search.searchCategory.key]!.toString(), search.searchValue)) {
+                        document.getElementById('ElliTile-' + i)!.style.filter = 'blur(6px)';
+                        document.getElementById('ElliTile-' + i)!.style.pointerEvents = 'none';
+                    }
                 }
-            } else if (search.searchCategory.type === 'string') {
-                if (!operatorTableString[search.operator](elements[i][search.searchCategory.key].toString(), search.searchValue)) {
-                    document.getElementById('ElliTile-' + i)!.style.filter = 'blur(6px)';
-                    document.getElementById('ElliTile-' + i)!.style.pointerEvents = 'none';
-                }
+            } else {
+                document.getElementById('ElliTile-' + i)!.style.filter = 'blur(6px)';
+                document.getElementById('ElliTile-' + i)!.style.pointerEvents = 'none';
             }
         }
 
         const emptyFilter = document.querySelector("#selectedFilters [id^=filter-]:not([searchCategory])") as HTMLElement;
         if (emptyFilter) {
-            //set emptyFilter enabled
-
             emptyFilter.setAttribute('searchCategory', search.searchCategory.key);
             emptyFilter.setAttribute('operator', search.operator);
             emptyFilter.setAttribute('searchValue', search.searchValue);
