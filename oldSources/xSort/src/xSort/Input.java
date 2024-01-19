@@ -32,9 +32,8 @@ public class Input extends JFrame {
 	private JTextField tFpolygons;
 	private JTextField tF_graphX;
 	private JTextField tF_graphY;
-	
-	
-	String[] comboBoxArray = new String[] {"InsertionSort"};
+
+	String[] comboBoxArray = new String[] { "InsertionSort" };
 	private JTextField tFdelay;
 	private JTextField tFtimeRun;
 	private JTextField tFnumberRuns;
@@ -51,7 +50,7 @@ public class Input extends JFrame {
 				try {
 					Input frame = new Input(null);
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					SwingUtilities.updateComponentTreeUI(frame); 
+					SwingUtilities.updateComponentTreeUI(frame);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -70,12 +69,13 @@ public class Input extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0, 20, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 5, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[] { 0, 0, 20, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 5, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
-		
+
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(comboBoxArray));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
@@ -84,7 +84,7 @@ public class Input extends JFrame {
 		gbc_comboBox.gridx = 1;
 		gbc_comboBox.gridy = 5;
 		contentPane.add(comboBox, gbc_comboBox);
-		
+
 		JLabel lblGeneral = new JLabel("General");
 		lblGeneral.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_lblGeneral = new GridBagConstraints();
@@ -93,7 +93,7 @@ public class Input extends JFrame {
 		gbc_lblGeneral.gridx = 0;
 		gbc_lblGeneral.gridy = 0;
 		contentPane.add(lblGeneral, gbc_lblGeneral);
-		
+
 		JLabel lblTimeDelay = new JLabel("Time Delay between each step:");
 		GridBagConstraints gbc_lblTimeDelay = new GridBagConstraints();
 		gbc_lblTimeDelay.anchor = GridBagConstraints.WEST;
@@ -101,7 +101,7 @@ public class Input extends JFrame {
 		gbc_lblTimeDelay.gridx = 0;
 		gbc_lblTimeDelay.gridy = 7;
 		contentPane.add(lblTimeDelay, gbc_lblTimeDelay);
-		
+
 		tFdelay = new JTextField();
 		tFdelay.setText("10");
 		GridBagConstraints gbc_tFdelay = new GridBagConstraints();
@@ -111,35 +111,32 @@ public class Input extends JFrame {
 		gbc_tFdelay.gridy = 7;
 		contentPane.add(tFdelay, gbc_tFdelay);
 		tFdelay.setColumns(10);
-		
+
 		JButton btnApply = new JButton("Apply");
 		btnApply.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				//Create New Setup
-				
+
+				// Create New Setup
+
 				try {
-					disp.newSetup(Integer.valueOf(tF_graphX.getText()), Integer.valueOf(tF_graphY.getText()), Integer.valueOf(tFpolygons.getText()), Integer.valueOf(tFdelay.getText()), comboBox.getSelectedItem().toString());
+					disp.newSetup(Integer.valueOf(tF_graphX.getText()), Integer.valueOf(tF_graphY.getText()),
+							Integer.valueOf(tFpolygons.getText()), Integer.valueOf(tFdelay.getText()),
+							comboBox.getSelectedItem().toString());
 				} catch (NumberFormatException e) {
 					System.out.println("wrong value in input");
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				
-				
+
 			}
 		});
-		
-		
+
 		GridBagConstraints gbc_btnApply = new GridBagConstraints();
 		gbc_btnApply.fill = GridBagConstraints.BOTH;
 		gbc_btnApply.insets = new Insets(0, 0, 5, 0);
 		gbc_btnApply.gridx = 3;
 		gbc_btnApply.gridy = 8;
 		contentPane.add(btnApply, gbc_btnApply);
-		
+
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setPreferredSize(new Dimension(0, 1));
 		GridBagConstraints gbc_separator_1 = new GridBagConstraints();
@@ -149,7 +146,7 @@ public class Input extends JFrame {
 		gbc_separator_1.gridx = 0;
 		gbc_separator_1.gridy = 9;
 		contentPane.add(separator_1, gbc_separator_1);
-		
+
 		JLabel lblOutput = new JLabel("Output");
 		lblOutput.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_lblOutput = new GridBagConstraints();
@@ -158,7 +155,7 @@ public class Input extends JFrame {
 		gbc_lblOutput.gridx = 0;
 		gbc_lblOutput.gridy = 10;
 		contentPane.add(lblOutput, gbc_lblOutput);
-		
+
 		JLabel lblTimeNeeded = new JLabel("Time Needed for last run: (in mcs)");
 		GridBagConstraints gbc_lblTimeNeeded = new GridBagConstraints();
 		gbc_lblTimeNeeded.anchor = GridBagConstraints.WEST;
@@ -166,7 +163,7 @@ public class Input extends JFrame {
 		gbc_lblTimeNeeded.gridx = 0;
 		gbc_lblTimeNeeded.gridy = 11;
 		contentPane.add(lblTimeNeeded, gbc_lblTimeNeeded);
-		
+
 		tFtimeRun = new JTextField();
 		GridBagConstraints gbc_tFtimeRun = new GridBagConstraints();
 		gbc_tFtimeRun.insets = new Insets(0, 0, 5, 5);
@@ -175,7 +172,7 @@ public class Input extends JFrame {
 		gbc_tFtimeRun.gridy = 11;
 		contentPane.add(tFtimeRun, gbc_tFtimeRun);
 		tFtimeRun.setColumns(10);
-		
+
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setPreferredSize(new Dimension(0, 1));
 		GridBagConstraints gbc_separator_2 = new GridBagConstraints();
@@ -185,7 +182,7 @@ public class Input extends JFrame {
 		gbc_separator_2.gridx = 0;
 		gbc_separator_2.gridy = 12;
 		contentPane.add(separator_2, gbc_separator_2);
-		
+
 		JLabel lblBatchRun = new JLabel("Batch run");
 		lblBatchRun.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_lblBatchRun = new GridBagConstraints();
@@ -194,14 +191,14 @@ public class Input extends JFrame {
 		gbc_lblBatchRun.gridx = 0;
 		gbc_lblBatchRun.gridy = 13;
 		contentPane.add(lblBatchRun, gbc_lblBatchRun);
-		
+
 		JCheckBox boxEnabled = new JCheckBox("Enabled?");
 		GridBagConstraints gbc_boxEnabled = new GridBagConstraints();
 		gbc_boxEnabled.insets = new Insets(0, 0, 5, 5);
 		gbc_boxEnabled.gridx = 1;
 		gbc_boxEnabled.gridy = 13;
 		contentPane.add(boxEnabled, gbc_boxEnabled);
-		
+
 		JLabel lblNumberOfRuns = new JLabel("Number of Runs:");
 		GridBagConstraints gbc_lblNumberOfRuns = new GridBagConstraints();
 		gbc_lblNumberOfRuns.anchor = GridBagConstraints.WEST;
@@ -209,7 +206,7 @@ public class Input extends JFrame {
 		gbc_lblNumberOfRuns.gridx = 0;
 		gbc_lblNumberOfRuns.gridy = 14;
 		contentPane.add(lblNumberOfRuns, gbc_lblNumberOfRuns);
-		
+
 		tFnumberRuns = new JTextField();
 		tFnumberRuns.setText("10");
 		GridBagConstraints gbc_tFnumberRuns = new GridBagConstraints();
@@ -219,7 +216,7 @@ public class Input extends JFrame {
 		gbc_tFnumberRuns.gridy = 14;
 		contentPane.add(tFnumberRuns, gbc_tFnumberRuns);
 		tFnumberRuns.setColumns(10);
-		
+
 		JLabel lblAverageTimein = new JLabel("Average time: (in mcs)");
 		GridBagConstraints gbc_lblAverageTimein = new GridBagConstraints();
 		gbc_lblAverageTimein.anchor = GridBagConstraints.WEST;
@@ -227,7 +224,7 @@ public class Input extends JFrame {
 		gbc_lblAverageTimein.gridx = 0;
 		gbc_lblAverageTimein.gridy = 15;
 		contentPane.add(lblAverageTimein, gbc_lblAverageTimein);
-		
+
 		tFaverageTime = new JTextField();
 		GridBagConstraints gbc_tFaverageTime = new GridBagConstraints();
 		gbc_tFaverageTime.insets = new Insets(0, 0, 5, 5);
@@ -236,7 +233,7 @@ public class Input extends JFrame {
 		gbc_tFaverageTime.gridy = 15;
 		contentPane.add(tFaverageTime, gbc_tFaverageTime);
 		tFaverageTime.setColumns(10);
-		
+
 		JLabel lblGetOutputdata = new JLabel("Get Output-Data: (in mcs)");
 		GridBagConstraints gbc_lblGetOutputdata = new GridBagConstraints();
 		gbc_lblGetOutputdata.anchor = GridBagConstraints.WEST;
@@ -244,7 +241,7 @@ public class Input extends JFrame {
 		gbc_lblGetOutputdata.gridx = 0;
 		gbc_lblGetOutputdata.gridy = 16;
 		contentPane.add(lblGetOutputdata, gbc_lblGetOutputdata);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
@@ -253,86 +250,78 @@ public class Input extends JFrame {
 		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 16;
 		contentPane.add(scrollPane, gbc_scrollPane);
-		
+
 		JTextPane textPane = new JTextPane();
 		scrollPane.setViewportView(textPane);
-		
+
 		JButton btnStart = new JButton("Start Algorithm");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				
-				
+
 				if (boxEnabled.isSelected()) {
-					
-					
-					//BATCH
-					
+
+					// BATCH
+
 					int everyRun = 0;
-					
+
 					for (int i = 0; i < Integer.valueOf(tFnumberRuns.getText()); i++) {
-						
-						if(i == 0) {
-							
-							if(solved) {
-								disp.newSetup(Integer.valueOf(tF_graphX.getText()), Integer.valueOf(tF_graphY.getText()), Integer.valueOf(tFpolygons.getText()), Integer.valueOf(tFdelay.getText()), comboBox.getSelectedItem().toString());
+
+						if (i == 0) {
+
+							if (solved) {
+								disp.newSetup(Integer.valueOf(tF_graphX.getText()),
+										Integer.valueOf(tF_graphY.getText()), Integer.valueOf(tFpolygons.getText()),
+										Integer.valueOf(tFdelay.getText()), comboBox.getSelectedItem().toString());
 							}
-							
-							
-							//Start Algorithm and set the "Time needed"-tF
+
+							// Start Algorithm and set the "Time needed"-tF
 							timeTrackerTemp = disp.Start();
 							tFtimeRun.setText(Integer.toString(timeTrackerTemp));
 							textPane.setText(Integer.toString(timeTrackerTemp));
 							everyRun = timeTrackerTemp;
-							tFaverageTime.setText(Integer.toString(everyRun / (i+1)));
-							
+							tFaverageTime.setText(Integer.toString(everyRun / (i + 1)));
+
 						} else {
-							
-							//Basically Create New Setup with same parameter, but check it anyway! :-)
-							
+
+							// Basically Create New Setup with same parameter, but check it anyway! :-)
+
 							try {
-								disp.newSetup(Integer.valueOf(tF_graphX.getText()), Integer.valueOf(tF_graphY.getText()), Integer.valueOf(tFpolygons.getText()), Integer.valueOf(tFdelay.getText()), comboBox.getSelectedItem().toString());
+								disp.newSetup(Integer.valueOf(tF_graphX.getText()),
+										Integer.valueOf(tF_graphY.getText()), Integer.valueOf(tFpolygons.getText()),
+										Integer.valueOf(tFdelay.getText()), comboBox.getSelectedItem().toString());
 							} catch (NumberFormatException e1) {
 								System.out.println("wrong value in input");
-								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}
-							
-							//Start Algorithm and set the "Time needed"-tF
+
+							// Start Algorithm and set the "Time needed"-tF
 							timeTrackerTemp = disp.Start();
 							tFtimeRun.setText(Integer.toString(timeTrackerTemp));
 							textPane.setText(textPane.getText() + "\n" + timeTrackerTemp);
 							everyRun = everyRun + timeTrackerTemp;
-							tFaverageTime.setText(Integer.toString(everyRun / (i+1)));
-							
-						}
-						
-						
-					} 
-					
-					
-				} else {
-					
-					
-					//NO-BATCH
+							tFaverageTime.setText(Integer.toString(everyRun / (i + 1)));
 
-					if(solved) {
-						disp.newSetup(Integer.valueOf(tF_graphX.getText()), Integer.valueOf(tF_graphY.getText()), Integer.valueOf(tFpolygons.getText()), Integer.valueOf(tFdelay.getText()), comboBox.getSelectedItem().toString());
+						}
+
 					}
-					
-					//Start Algorithm and set the "Time needed"-tF
+
+				} else {
+
+					// NO-BATCH
+
+					if (solved) {
+						disp.newSetup(Integer.valueOf(tF_graphX.getText()), Integer.valueOf(tF_graphY.getText()),
+								Integer.valueOf(tFpolygons.getText()), Integer.valueOf(tFdelay.getText()),
+								comboBox.getSelectedItem().toString());
+					}
+
+					// Start Algorithm and set the "Time needed"-tF
 					timeTrackerTemp = disp.Start();
 					tFtimeRun.setText(Integer.toString(timeTrackerTemp));
 					solved = true;
-					
-					
+
 				}
-				
 
-				
-
-				
 			}
 		});
 		btnStart.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -342,21 +331,19 @@ public class Input extends JFrame {
 		gbc_btnStart.gridx = 0;
 		gbc_btnStart.gridy = 1;
 		contentPane.add(btnStart, gbc_btnStart);
-		
+
 		JButton btnEnd = new JButton("End Session");
 		btnEnd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				//End Session
+
+				// End Session
 				System.exit(0);
-				
-				
+
 			}
 		});
-		
-		
+
 		JSeparator separator = new JSeparator();
-		separator.setPreferredSize(new Dimension(0,1));
+		separator.setPreferredSize(new Dimension(0, 1));
 		GridBagConstraints gbc_separator = new GridBagConstraints();
 		gbc_separator.gridwidth = 4;
 		gbc_separator.insets = new Insets(0, 0, 5, 0);
@@ -364,9 +351,8 @@ public class Input extends JFrame {
 		gbc_separator.gridy = 2;
 		gbc_separator.fill = GridBagConstraints.HORIZONTAL;
 
-		
 		contentPane.add(separator, gbc_separator);
-		
+
 		JLabel lblAdvanced = new JLabel("Advanced");
 		lblAdvanced.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_lblAdvanced = new GridBagConstraints();
@@ -375,7 +361,7 @@ public class Input extends JFrame {
 		gbc_lblAdvanced.gridx = 0;
 		gbc_lblAdvanced.gridy = 3;
 		contentPane.add(lblAdvanced, gbc_lblAdvanced);
-		
+
 		JLabel lblNumberOfPolygons = new JLabel("Number of Polygons:");
 		GridBagConstraints gbc_lblNumberOfPolygons = new GridBagConstraints();
 		gbc_lblNumberOfPolygons.anchor = GridBagConstraints.WEST;
@@ -383,7 +369,7 @@ public class Input extends JFrame {
 		gbc_lblNumberOfPolygons.gridx = 0;
 		gbc_lblNumberOfPolygons.gridy = 4;
 		contentPane.add(lblNumberOfPolygons, gbc_lblNumberOfPolygons);
-		
+
 		tFpolygons = new JTextField();
 		tFpolygons.setText("100");
 		GridBagConstraints gbc_tFpolygons = new GridBagConstraints();
@@ -393,7 +379,7 @@ public class Input extends JFrame {
 		gbc_tFpolygons.gridy = 4;
 		contentPane.add(tFpolygons, gbc_tFpolygons);
 		tFpolygons.setColumns(10);
-		
+
 		JLabel lblSetAlgorithm = new JLabel("Set Algorithm:");
 		GridBagConstraints gbc_lblSetAlgorithm = new GridBagConstraints();
 		gbc_lblSetAlgorithm.anchor = GridBagConstraints.WEST;
@@ -401,7 +387,7 @@ public class Input extends JFrame {
 		gbc_lblSetAlgorithm.gridx = 0;
 		gbc_lblSetAlgorithm.gridy = 5;
 		contentPane.add(lblSetAlgorithm, gbc_lblSetAlgorithm);
-		
+
 		JLabel lblGraphx = new JLabel("Graph (x * y):");
 		GridBagConstraints gbc_lblGraphx = new GridBagConstraints();
 		gbc_lblGraphx.anchor = GridBagConstraints.WEST;
@@ -409,7 +395,7 @@ public class Input extends JFrame {
 		gbc_lblGraphx.gridx = 0;
 		gbc_lblGraphx.gridy = 6;
 		contentPane.add(lblGraphx, gbc_lblGraphx);
-		
+
 		tF_graphX = new JTextField();
 		tF_graphX.setText("15");
 		GridBagConstraints gbc_tF_graphX = new GridBagConstraints();
@@ -419,7 +405,7 @@ public class Input extends JFrame {
 		gbc_tF_graphX.gridy = 6;
 		contentPane.add(tF_graphX, gbc_tF_graphX);
 		tF_graphX.setColumns(10);
-		
+
 		tF_graphY = new JTextField();
 		tF_graphY.setText("500");
 		GridBagConstraints gbc_tF_graphY = new GridBagConstraints();
@@ -429,30 +415,26 @@ public class Input extends JFrame {
 		gbc_tF_graphY.gridy = 6;
 		contentPane.add(tF_graphY, gbc_tF_graphY);
 		tF_graphY.setColumns(10);
-		
-		
+
 		JButton btnReset = new JButton("Reset");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				//Basically Create New Setup with same parameter, but check it anyway! :-)
-				
+
+				// Basically Create New Setup with same parameter, but check it anyway! :-)
+
 				try {
-					disp.newSetup(Integer.valueOf(tF_graphX.getText()), Integer.valueOf(tF_graphY.getText()), Integer.valueOf(tFpolygons.getText()), Integer.valueOf(tFdelay.getText()), comboBox.getSelectedItem().toString());
+					disp.newSetup(Integer.valueOf(tF_graphX.getText()), Integer.valueOf(tF_graphY.getText()),
+							Integer.valueOf(tFpolygons.getText()), Integer.valueOf(tFdelay.getText()),
+							comboBox.getSelectedItem().toString());
 					solved = false;
 				} catch (NumberFormatException e) {
 					System.out.println("wrong value in input");
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				
-				
-				
+
 			}
 		});
-		
+
 		btnReset.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GridBagConstraints gbc_btnReset = new GridBagConstraints();
 		gbc_btnReset.fill = GridBagConstraints.HORIZONTAL;
@@ -466,7 +448,7 @@ public class Input extends JFrame {
 		gbc_btnEnd.gridx = 2;
 		gbc_btnEnd.gridy = 1;
 		contentPane.add(btnEnd, gbc_btnEnd);
-		
+
 		JLabel lblonlyBatch = new JLabel("(only batch)");
 		GridBagConstraints gbc_lblonlyBatch = new GridBagConstraints();
 		gbc_lblonlyBatch.anchor = GridBagConstraints.NORTHWEST;
@@ -474,9 +456,6 @@ public class Input extends JFrame {
 		gbc_lblonlyBatch.gridx = 0;
 		gbc_lblonlyBatch.gridy = 17;
 		contentPane.add(lblonlyBatch, gbc_lblonlyBatch);
-		
-
-		
 
 	}
 

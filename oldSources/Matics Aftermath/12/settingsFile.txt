@@ -10,5 +10,5 @@ txtFilePath = C:\Users\fnberger\Dropbox\Data\FNBG_matics\oldSources\Matics After
 ActiveAnalysis?[Yes/No] = Yes;
 classFileSave?[Yes/No] = No;
 Language = en;
-Theme[-1 -> 33]//TODO = 27;
+Theme[-1 -> 33]//TOD = 27;
 TitleBar[theme/windows] = theme;

@@ -68,7 +68,7 @@ file2 ist: ausgabe.txt
 
 
 
-languages einfügen
+languages einfï¿½gen
 Fabre in Informatik skripten machen
 dri choose machen
 
@@ -134,7 +134,7 @@ Reader Writer init
 +++arrays schreiben
 +++//TestFile richtig konfiugriert?(boolean right)
 +++//NeuKonfiguration
----//Informationen aus settingsFile übernehmen
+---//Informationen aus settingsFile ï¿½bernehmen
 
 WENN DAS SETTINGSFILE NICHT DA IST; NEU ERSTELLEN; AUTOMATISCH SETTINGS KLASSE STARTEN
 
@@ -185,7 +185,6 @@ WENN DAS SETTINGSFILE NICHT DA IST; NEU ERSTELLEN; AUTOMATISCH SETTINGS KLASSE S
 			
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -206,13 +205,13 @@ eZ.Matics
 
 halbwertszeit elemente berechnen
 http://prntscr.com/et87g6
-elektronegativität einheit?
-tooltips überall einfügen
+elektronegativitï¿½t einheit?
+tooltips ï¿½berall einfï¿½gen
 
 
 erweitertes periodensystem
 
-In Usefulmethods ausnahmezustand setzen, falls kein Pfad für eine Datei ausgewählt wurde / vielleicht eiunfach in den settings blockieren?
+In Usefulmethods ausnahmezustand setzen, falls kein Pfad fï¿½r eine Datei ausgewï¿½hlt wurde / vielleicht eiunfach in den settings blockieren?
 
 
 
@@ -227,7 +226,7 @@ In Usefulmethods ausnahmezustand setzen, falls kein Pfad für eine Datei ausgewäh
     		   if(sb.charAt(io+1) == 'r') {
     			   System.out.println("2");
     			   
-    			   //Leerzeichen rauslöschen
+    			   //Leerzeichen rauslï¿½schen
     			   while(sb.charAt(io+2) == ' ')  {
     				   sb.deleteCharAt(io+2);
     			   }
@@ -290,7 +289,7 @@ In Usefulmethods ausnahmezustand setzen, falls kein Pfad für eine Datei ausgewäh
 
 		
 		//try {
-			//fileWriter = new FileWriter(settingsFile, true);//2. Parameter, damit nicht überschrieben wird
+			//fileWriter = new FileWriter(settingsFile, true);//2. Parameter, damit nicht ï¿½berschrieben wird
 			//} catch (IOException e1) {
 			//e1.printStackTrace();
 			//}
@@ -315,13 +314,13 @@ In Usefulmethods ausnahmezustand setzen, falls kein Pfad für eine Datei ausgewäh
 					}
 				} else if(i == 1) {//Das FileName
 					array3[i][j] = s;
-				} else if(i == 2) {//Der Path für das File
+				} else if(i == 2) {//Der Path fï¿½r das File
 					
 					File f = new File(s);
 					if(f.isDirectory() == true) {
 						array3[i][j] = s;
 					} else {
-						JOptionPane.showMessageDialog(null, "Angegebener Pfad(Nr. " + j + ") ist kein gültiger Pfad!");
+						JOptionPane.showMessageDialog(null, "Angegebener Pfad(Nr. " + j + ") ist kein gï¿½ltiger Pfad!");
 					}
 					
 					
@@ -534,7 +533,7 @@ for (int i = 0; i < AreaText.length(); i++) {
 					//.println("isConfigured = " + IsConfigured);
 		//NeuKonfiguration
 					//if(IsConfigured == false) {
-						//Vorbereitung für NewConfiguration
+						//Vorbereitung fï¿½r NewConfiguration
 						/*StringBuilder sb = null;
 						
 						if(settingsText != null) {
@@ -552,7 +551,7 @@ for (int i = 0; i < AreaText.length(); i++) {
 		
 			/*
 	 * Sollte ich eigentlich auch nicht mehr brauchen, daher outcommented20
-	public String[][] arrayVervollständigen(String[][] arr) {
+	public String[][] arrayVervollstï¿½ndigen(String[][] arr) {
 
 		
 		for (int i = 0; i < 4; i++) {
@@ -567,7 +566,7 @@ for (int i = 0; i < AreaText.length(); i++) {
 /*
 	public String ReadTextFromFile(File f) {
 		
-		//Müsste so passen, never touch a running system
+		//Mï¿½sste so passen, never touch a running system
 		//haut das ganze auch jeweils zeilenweise in den String rein
 		InputStream is = null;
 		try {

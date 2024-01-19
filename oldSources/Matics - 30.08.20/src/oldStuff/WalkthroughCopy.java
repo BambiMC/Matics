@@ -1,6 +1,5 @@
 package oldStuff;
 
-
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
@@ -16,11 +15,11 @@ import org.pushingpixels.substance.api.skin.SubstanceGraphiteAquaLookAndFeel;
 
 public class WalkthroughCopy extends JFrame {
   /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+   * 
+   */
+  private static final long serialVersionUID = 1L;
 
-public WalkthroughCopy() {
+  public WalkthroughCopy() {
     super("Sample app");
     this.setLayout(new FlowLayout());
     this.add(new JButton("button"));
@@ -31,24 +30,25 @@ public WalkthroughCopy() {
     this.setSize(new Dimension(250, 80));
     this.setLocationRelativeTo(null);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    /*try {
-		UIManager.setLookAndFeel(new SubstanceAutumnLookAndFeel());
-	} catch (UnsupportedLookAndFeelException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}*/
+    /*
+     * try {
+     * UIManager.setLookAndFeel(new SubstanceAutumnLookAndFeel());
+     * } catch (UnsupportedLookAndFeelException e) {
+     * e.printStackTrace();
+     * }
+     */
   }
 
-public static void main(String[] args) {
+  public static void main(String[] args) {
     JFrame.setDefaultLookAndFeelDecorated(true);
     SwingUtilities.invokeLater(() -> {
-        try {
-          UIManager.setLookAndFeel(new SubstanceGraphiteAquaLookAndFeel());
-        } catch (Exception e) {
-          System.out.println("Substance Graphite failed to initialize");
-        }
-        WalkthroughCopy w = new WalkthroughCopy();
-        w.setVisible(true);
+      try {
+        UIManager.setLookAndFeel(new SubstanceGraphiteAquaLookAndFeel());
+      } catch (Exception e) {
+        System.out.println("Substance Graphite failed to initialize");
+      }
+      WalkthroughCopy w = new WalkthroughCopy();
+      w.setVisible(true);
     });
   }
 }

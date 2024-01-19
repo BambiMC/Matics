@@ -53,14 +53,14 @@ public class FileUsefulMethods {
 		two = 3;
 
 		// SettingsFile neu erstellen, falls nicht vorhanden
-		if(settingsFile.exists() != true) {
+		if (settingsFile.exists() != true) {
 
 			try {
 
 				// Datei nicht gefunden, wird versucht neu zu erstellen
 				settingsFile.createNewFile();
 
-			} catch(IOException e) {
+			} catch (IOException e) {
 
 				JOptionPane.showMessageDialog(null,
 						"settingsFile wurde nicht gefunden, konnte aber auch nicht neu erstellt werden,\nvermutlich wegen unzureichender Berechtigungen");
@@ -71,7 +71,7 @@ public class FileUsefulMethods {
 
 				newConfiguration();
 
-			} catch(Exception e) {
+			} catch (Exception e) {
 
 				JOptionPane.showMessageDialog(null, "MORITZCHRIS_5"
 						+ "Das Programm wurde seemingly das erste mal gestartet, file wurde erstellt, neukonfig fehlgeschlagen");
@@ -91,7 +91,7 @@ public class FileUsefulMethods {
 			// Die Rohdaten aus der Datei erlangen
 			settingsFileArray = readSettingsIntoArray(settingsFile);
 
-		} catch(Exception e) {
+		} catch (Exception e) {
 
 			// konnte vermutlich nicht aus File lesen, vermutlich wegen unzureichender
 			// Berechtigungen
@@ -105,14 +105,14 @@ public class FileUsefulMethods {
 
 			ausgabeArray = ReadSettingsFromLinesArray(settingsFileArray);
 
-		} catch(Exception e) {
+		} catch (Exception e) {
 
 			// scheint nicht gescheit konfiguriert zu sein
 			JOptionPane.showMessageDialog(null,
 					"settingsFile ist falsch konfiguriert" /*
 															 * , manuell fixen,\noder settingsFile neu konfigurieren\nUm
 															 * das SettingsFile neu zu konfigurieren, einfach die Datei
-															 * im Speicherort umbennen, löschen, oder in einen anderen
+															 * im Speicherort umbennen, lï¿½schen, oder in einen anderen
 															 * Ordner verschieben, \ndann wird automatisch ein neues
 															 * Exemplar der Datei generiert, dass in jedem Fall
 															 * funktionieren muss!"
@@ -122,7 +122,7 @@ public class FileUsefulMethods {
 
 			newConfiguration();
 			JOptionPane.showMessageDialog(null, "MORITZCHRIS_4"
-					+ "Programm hat hoffentlich ein neues settingsFile erstellt, schließt jetzt!\nBitte Programm nochmal starten, sollte jetzt funktionieren!");
+					+ "Programm hat hoffentlich ein neues settingsFile erstellt, schlieï¿½t jetzt!\nBitte Programm nochmal starten, sollte jetzt funktionieren!");
 
 		}
 
@@ -173,7 +173,7 @@ public class FileUsefulMethods {
 		array[3][0] = "ActiveAnalysis?[Yes/No]";
 		array[3][1] = "classFileSave?[Yes/No]";
 		array[3][2] = "Language";
-		array[4][0] = "Theme[-1 -> 33]//TODO";
+		array[4][0] = "Theme[-1 -> 33]//TOD";
 		array[4][1] = "TitleBar[theme/windows]";
 		array[4][2] = "";
 
@@ -185,20 +185,20 @@ public class FileUsefulMethods {
 
 		String s = null;
 
-		if(arr[0][0] == "") {
+		if (arr[0][0] == "") {
 
-			JOptionPane.showMessageDialog(null, "MORITZCHRIS_14" + "Leeres File wird versucht zu befüllen");
-			throw new IllegalArgumentException("Leeres File wird vielleicht versucht zu befüllen");
+			JOptionPane.showMessageDialog(null, "MORITZCHRIS_14" + "Leeres File wird versucht zu befï¿½llen");
+			throw new IllegalArgumentException("Leeres File wird vielleicht versucht zu befï¿½llen");
 
 		}
 
-		for(int i = 0; i < one; i++) {
+		for (int i = 0; i < one; i++) {
 
-			for(int j = 0; j < two; j++) {
+			for (int j = 0; j < two; j++) {
 
 				s = arr[i][j];
 
-				if(s == null) {
+				if (s == null) {
 
 					JOptionPane.showMessageDialog(null,
 							"MORITZCHRIS" + "Zeile scheint zu fehlen, daher Neukonfiguration?");
@@ -210,15 +210,15 @@ public class FileUsefulMethods {
 
 				int start = 0, ende = 0;
 
-				for(int k = 0; k < sb.length(); k++) {
+				for (int k = 0; k < sb.length(); k++) {
 
-					if(sb.charAt(k) == '=') {
+					if (sb.charAt(k) == '=') {
 
 						start = k + 1;
 
 					}
 
-					if(sb.charAt(k) == ';') {
+					if (sb.charAt(k) == ';') {
 
 						ende = k;
 
@@ -230,9 +230,9 @@ public class FileUsefulMethods {
 
 				s = new StringBuilder(sb.toString().trim()).toString();
 
-				if(i == 0) {// Soll das File gespeichert werden?
+				if (i == 0) {// Soll das File gespeichert werden?
 
-					if(s.contains("Yes") || s.contains("No")) {
+					if (s.contains("Yes") || s.contains("No")) {
 
 						arr[i][j] = s;
 
@@ -245,125 +245,126 @@ public class FileUsefulMethods {
 
 					}
 
-				} else if(i == 1) {// Das FileName
+				} else if (i == 1) {// Das FileName
 
 					arr[i][j] = s;
 
-				} else if(i == 2) {// Der Path für das File
+				} else if (i == 2) {// Der Path fï¿½r das File
 
 					File f = new File(s);
 
-					if(f.isDirectory() == true) {
+					if (f.isDirectory() == true) {
 
 						arr[i][j] = s;
 
 					} else {
 
 						JOptionPane.showMessageDialog(null,
-								"MORITZCHRIS_7" + "Angegebener Pfad(Nr. " + j + ") ist kein gültiger Pfad!=" + s);
+								"MORITZCHRIS_7" + "Angegebener Pfad(Nr. " + j + ") ist kein gï¿½ltiger Pfad!=" + s);
 						throw new IllegalArgumentException(
-								"Angegebener Pfad(Nr. " + j + ") ist kein gültiger Pfad!=" + s);
+								"Angegebener Pfad(Nr. " + j + ") ist kein gï¿½ltiger Pfad!=" + s);
 
 					}
 
-				} else if(i == 3) {
+				} else if (i == 3) {
 
-					switch(j) {
+					switch (j) {
 
-					case 0:
-						arr[i][j] = s;
-						break;
-
-					case 1:
-						if(s.contains("Yes") || s.contains("No")) {
-
+						case 0:
 							arr[i][j] = s;
+							break;
 
-						} else {
+						case 1:
+							if (s.contains("Yes") || s.contains("No")) {
 
-							JOptionPane.showMessageDialog(null, "MORITZCHRIS_8"
-									+ "Ob die Datei gespeichert werden soll, muss im SettingsFile mit Yes oder No angegeben werden!(i = 3)");
-							throw new IllegalArgumentException(
-									"Ob die Datei gespeichert werden soll, muss im SettingsFile mit Yes oder No angegeben werden!(i = 3)");
+								arr[i][j] = s;
 
-						}
-						break;
+							} else {
 
-					case 2:
-						if(s.contains("en")) {
+								JOptionPane.showMessageDialog(null, "MORITZCHRIS_8"
+										+ "Ob die Datei gespeichert werden soll, muss im SettingsFile mit Yes oder No angegeben werden!(i = 3)");
+								throw new IllegalArgumentException(
+										"Ob die Datei gespeichert werden soll, muss im SettingsFile mit Yes oder No angegeben werden!(i = 3)");
 
-							arr[i][j] = "en";
+							}
+							break;
 
-						} else if(s.contains("de")) {
+						case 2:
+							if (s.contains("en")) {
 
-							arr[i][j] = "de";
+								arr[i][j] = "en";
 
-						} else {
+							} else if (s.contains("de")) {
 
-							JOptionPane.showMessageDialog(null, "MORITZCHRIS_9"
-									+ "Die Spracheinstellung kann nicht übernommen werden, scheint falsch zu sein, bitte überprüfen");
-							throw new IllegalArgumentException(
-									"Die Spracheinstellung kann nicht übernommen werden, scheint falsch zu sein, bitte überprüfen");
+								arr[i][j] = "de";
 
-						} ;
-						break;
+							} else {
 
-					default:
-						JOptionPane.showMessageDialog(null, "MORITZCHRIS_10" + "DefaultFehler616");
-						throw new IllegalArgumentException("DefaultFehler616");
+								JOptionPane.showMessageDialog(null, "MORITZCHRIS_9"
+										+ "Die Spracheinstellung kann nicht ï¿½bernommen werden, scheint falsch zu sein, bitte ï¿½berprï¿½fen");
+								throw new IllegalArgumentException(
+										"Die Spracheinstellung kann nicht ï¿½bernommen werden, scheint falsch zu sein, bitte ï¿½berprï¿½fen");
+
+							}
+							;
+							break;
+
+						default:
+							JOptionPane.showMessageDialog(null, "MORITZCHRIS_10" + "DefaultFehler616");
+							throw new IllegalArgumentException("DefaultFehler616");
 
 					}
 
-				} else if(i == 4) {
+				} else if (i == 4) {
 
-					switch(j) {
+					switch (j) {
 
-					case 0:
+						case 0:
 
-						arr[i][j] = Integer.toString(-1);
-						int themeNumber = 0;
+							arr[i][j] = Integer.toString(-1);
+							int themeNumber = 0;
 
-						try {
+							try {
 
-							themeNumber = Integer.valueOf(s);
+								themeNumber = Integer.valueOf(s);
 
-						} catch(Exception e) {
+							} catch (Exception e) {
 
-							JOptionPane.showMessageDialog(null, "MORITZCHRIS_11"
-									+ "Kann die Einstellung, welches Theme benutzt werden soll, nicht anwenden");
-							throw new IllegalArgumentException(
-									"Kann die Einstellung, welches Theme benutzt werden soll, nicht anwenden");
+								JOptionPane.showMessageDialog(null, "MORITZCHRIS_11"
+										+ "Kann die Einstellung, welches Theme benutzt werden soll, nicht anwenden");
+								throw new IllegalArgumentException(
+										"Kann die Einstellung, welches Theme benutzt werden soll, nicht anwenden");
 
-						}
+							}
 
-						arr[i][j] = Integer.toString(themeNumber);
-						break;
+							arr[i][j] = Integer.toString(themeNumber);
+							break;
 
-					case 1:
+						case 1:
 
-						if(s.contains("theme")) {
+							if (s.contains("theme")) {
 
-							arr[i][j] = "theme";
+								arr[i][j] = "theme";
 
-						} else if(s.contains("windows")) {
+							} else if (s.contains("windows")) {
 
-							arr[i][j] = "windows";
+								arr[i][j] = "windows";
 
-						} else {
+							} else {
 
-							JOptionPane.showMessageDialog(null, "MORITZCHRIS_12"
-									+ "Kann die Einstellung zur TitleBar nicht anwenden, bitte settingsFile checken");
-							throw new IllegalArgumentException(
-									"Kann die Einstellung zur TitleBar nicht anwenden, bitte settingsFile checken");
+								JOptionPane.showMessageDialog(null, "MORITZCHRIS_12"
+										+ "Kann die Einstellung zur TitleBar nicht anwenden, bitte settingsFile checken");
+								throw new IllegalArgumentException(
+										"Kann die Einstellung zur TitleBar nicht anwenden, bitte settingsFile checken");
 
-						}
+							}
 
-						break;
+							break;
 
-					default:
-						// throw new IllegalArgumentException("[4][2] ist nicht benutzt, kein Fehler");
-						arr[i][j] = "";
-						break;
+						default:
+							// throw new IllegalArgumentException("[4][2] ist nicht benutzt, kein Fehler");
+							arr[i][j] = "";
+							break;
 
 					}
 
@@ -387,9 +388,9 @@ public class FileUsefulMethods {
 		String[] ausgabeArray = new String[one * two];
 		int EinsDimArrayZaehler = 0;
 
-		for(int i = 0; i < one; i++) {
+		for (int i = 0; i < one; i++) {
 
-			for(int j = 0; j < two; j++) {
+			for (int j = 0; j < two; j++) {
 
 				ausgabeArray[EinsDimArrayZaehler] = arr[i][j];
 				EinsDimArrayZaehler++;
@@ -410,7 +411,7 @@ public class FileUsefulMethods {
 
 			array = new String[one][two];
 
-		} catch(Exception e) {
+		} catch (Exception e) {
 
 			JOptionPane.showMessageDialog(null,
 					"MORITZCHRIS_2" + "kann kein BufferedReader oder String[][] array erstellen");
@@ -426,14 +427,14 @@ public class FileUsefulMethods {
 			// br = new BufferedReader(new FileReader(settingsFile));
 
 			// Loop across the arguments
-			for(int i = 0; i < one; i++) {
+			for (int i = 0; i < one; i++) {
 
-				for(int j = 0; j < two; j++) {
+				for (int j = 0; j < two; j++) {
 
 					array[i][j] = buffReader.readLine();
 
 					// Null-Zeilencheck und Behebung
-					if(array[i][j] == null) {
+					if (array[i][j] == null) {
 
 						array[i][j] = "";
 
@@ -446,7 +447,7 @@ public class FileUsefulMethods {
 			buffReader.close();
 			fileReader.close();
 
-		} catch(IOException e) {
+		} catch (IOException e) {
 
 			JOptionPane.showMessageDialog(null, "Fehler beim Einlesen der Werte innerhalb der Datei");
 			e.printStackTrace();
@@ -468,11 +469,11 @@ public class FileUsefulMethods {
 		// File settingsFile = new File("settingsFile.txt");
 
 		// NewConfiguration
-		for(int i = 0; i < one; i++) {
+		for (int i = 0; i < one; i++) {
 
-			for(int j = 0; j < two; j++) {
+			for (int j = 0; j < two; j++) {
 
-				if(arrayDefaultNames[i][j] != "" && arrayValues[i][j] != "") {
+				if (arrayDefaultNames[i][j] != "" && arrayValues[i][j] != "") {
 
 					sb.append(arrayDefaultNames[i][j] + " = " + arrayValues[i][j] + ";"
 							+ System.getProperty("line.separator"));
@@ -487,13 +488,13 @@ public class FileUsefulMethods {
 
 		try {
 
-			fileWriter = new FileWriter(settingsFile, false);// 2. Parameter, damit überschrieben wird
+			fileWriter = new FileWriter(settingsFile, false);// 2. Parameter, damit ï¿½berschrieben wird
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 			bufferedWriter.write(sb.toString());
 			bufferedWriter.close();
 			fileWriter.close();
 
-		} catch(IOException e) {
+		} catch (IOException e) {
 
 			JOptionPane.showMessageDialog(null,
 					"Creation of settingsFile failed in folder: " + System.getProperty("user.dir") + " failed");

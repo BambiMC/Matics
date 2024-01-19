@@ -36,7 +36,8 @@ public class FileUsefulMethods {
 	}
 
 	/**
-	 * @param recHelp please always insert false, otherwise there could be errors, if the settingsFile is wrongly configured
+	 * @param recHelp please always insert false, otherwise there could be errors,
+	 *                if the settingsFile is wrongly configured
 	 * @return settingsArray with all the cleaned values
 	 */
 	public static String[] masterHelp(String settingsFileName, Boolean recHelp) {
@@ -62,14 +63,14 @@ public class FileUsefulMethods {
 		exp = 15;
 
 		// SettingsFile neu erstellen, falls nicht vorhanden
-		if(settingsFile.exists() != true) {
+		if (settingsFile.exists() != true) {
 
 			try {
 
 				// Datei nicht gefunden, wird versucht neu zu erstellen
 				settingsFile.createNewFile();
 
-			} catch(IOException e) {
+			} catch (IOException e) {
 
 				JOptionPane.showMessageDialog(null, lang[0]);
 
@@ -79,7 +80,7 @@ public class FileUsefulMethods {
 
 				newConfiguration();
 
-			} catch(Exception e) {
+			} catch (Exception e) {
 
 				JOptionPane.showMessageDialog(null, lang[1]);
 
@@ -98,7 +99,7 @@ public class FileUsefulMethods {
 			// Die Rohdaten aus der Datei erlangen
 			settingsFileArray = readSettingsIntoArray(settingsFile);
 
-		} catch(Exception e) {
+		} catch (Exception e) {
 
 			// konnte vermutlich nicht aus File lesen, vermutlich wegen unzureichender
 			// Berechtigungen
@@ -110,7 +111,7 @@ public class FileUsefulMethods {
 
 			ausgabeArray = ReadSettingsFromLinesArray(settingsFileArray);
 
-		} catch(Exception e) {
+		} catch (Exception e) {
 
 			// scheint nicht gescheit konfiguriert zu sein
 
@@ -119,15 +120,15 @@ public class FileUsefulMethods {
 			JOptionPane.showMessageDialog(null, lang[3]);
 
 			// schlage Neukonfiguration vor
-			if(recHelp == false) {
+			if (recHelp == false) {
 
-				if(JOptionPane.showConfirmDialog(null, lang[4]) == 0) {
+				if (JOptionPane.showConfirmDialog(null, lang[4]) == 0) {
 
 					newConfiguration();
 
 					return FileUsefulMethods.masterHelp(settingsFileName, true);
 
-					// benutze temporäre Standardkonfiguration
+					// benutze temporï¿½re Standardkonfiguration
 				} else {
 
 					JOptionPane.showMessageDialog(null, lang[16]);
@@ -137,7 +138,7 @@ public class FileUsefulMethods {
 
 			} else {
 
-				// Beginnende Endlosschleife abbrechen und Programm schließen, weil das Zeug
+				// Beginnende Endlosschleife abbrechen und Programm schlieï¿½en, weil das Zeug
 				// echt nicht geht
 				JOptionPane.showMessageDialog(null, lang[5]);
 				System.exit(0);
@@ -193,7 +194,7 @@ public class FileUsefulMethods {
 		array[9] = "batFilePath";
 		array[10] = "txtFilePath";
 		array[11] = "Language";
-		array[12] = "Theme[-1 -> 33]//TODO";
+		array[12] = "Theme[-1 -> 33]//TOD";
 		array[13] = "TitleBar[theme/windows]";
 		array[14] = "";
 
@@ -204,20 +205,20 @@ public class FileUsefulMethods {
 	private String[] ReadSettingsFromLinesArray(String[] array) throws Exception {
 
 		// Clean up each line to get raw values
-		for(int i = 0; i < array.length; i++) {
+		for (int i = 0; i < array.length; i++) {
 
 			StringBuilder sb = new StringBuilder(array[i]);
 			int start = 0, end = 0;
 
-			for(int k = 0; k < sb.length(); k++) {
+			for (int k = 0; k < sb.length(); k++) {
 
-				if(sb.charAt(k) == '=') {
+				if (sb.charAt(k) == '=') {
 
 					start = k + 1;
 
 				}
 
-				if(sb.charAt(k) == ';') {
+				if (sb.charAt(k) == ';') {
 
 					end = k;
 
@@ -231,142 +232,142 @@ public class FileUsefulMethods {
 		}
 
 		// Clean up each value individually
-		for(int i = 0; i < exp; i++) {
+		for (int i = 0; i < exp; i++) {
 
-			switch(i) {
+			switch (i) {
 
-			// Yes or No
-			case 0, 1, 2, 3, 4: {
+				// Yes or No
+				case 0, 1, 2, 3, 4: {
 
-				if(array[i].toLowerCase().contains("yes")) {
+					if (array[i].toLowerCase().contains("yes")) {
 
-					array[i] = "yes";
+						array[i] = "yes";
 
-				} else if(array[i].toLowerCase().contains("no")) {
+					} else if (array[i].toLowerCase().contains("no")) {
 
-					array[i] = "no";
+						array[i] = "no";
 
-				} else {
+					} else {
 
-					array[i] = "no";
-					throw new Exception(lang[6] + array[i] + "  " + i);
+						array[i] = "no";
+						throw new Exception(lang[6] + array[i] + "  " + i);
 
-				}
+					}
 
-				break;
-
-			}
-
-			// Filenames
-			case 5, 6, 7: {
-
-				if(array[i].isEmpty()) {
-
-					array[i] = "defaultFilename";
-					throw new Exception(lang[7]);
+					break;
 
 				}
 
-				break;
+				// Filenames
+				case 5, 6, 7: {
 
-			}
+					if (array[i].isEmpty()) {
 
-			// Paths
-			case 8, 9, 10: {
+						array[i] = "defaultFilename";
+						throw new Exception(lang[7]);
 
-				Path path = Paths.get(array[i]);
+					}
 
-				if(!Files.exists(path)) {
-
-					array[i] = settingsFile.getAbsolutePath().replaceAll(settingsFile.getName(), "");
-					throw new Exception(lang[8] + path);
+					break;
 
 				}
 
-				break;
+				// Paths
+				case 8, 9, 10: {
 
-			}
+					Path path = Paths.get(array[i]);
 
-			// Language
-			case 11: {
+					if (!Files.exists(path)) {
 
-				if(array[i].toLowerCase().contains("en")) {
+						array[i] = settingsFile.getAbsolutePath().replaceAll(settingsFile.getName(), "");
+						throw new Exception(lang[8] + path);
 
-					array[i] = "en";
+					}
 
-				} else if(array[i].toLowerCase().contains("de")) {
-
-					array[i] = "de";
-
-				} else {
-
-					array[i] = "en";
-					throw new Exception(lang[9] + array[i]);
+					break;
 
 				}
 
-				break;
+				// Language
+				case 11: {
 
-			}
+					if (array[i].toLowerCase().contains("en")) {
 
-			// Theme
-			case 12: {
+						array[i] = "en";
 
-				int themeNumber = 0;
+					} else if (array[i].toLowerCase().contains("de")) {
 
-				try {
+						array[i] = "de";
 
-					themeNumber = Integer.valueOf(array[i]);
+					} else {
 
-				} catch(Exception e) {
+						array[i] = "en";
+						throw new Exception(lang[9] + array[i]);
 
-					JOptionPane.showMessageDialog(null, lang[10] + array[i]);
-					themeNumber = -1;
+					}
 
-				}
-
-				if(themeNumber >= themesInstalled - 1 && themeNumber < -1) {
-
-					themeNumber = -1;
-					throw new Exception(lang[11] + array[i]);
+					break;
 
 				}
 
-				break;
+				// Theme
+				case 12: {
 
-			}
+					int themeNumber = 0;
 
-			// Titlebar
-			case 13: {
+					try {
 
-				if(array[i].toLowerCase().contains("theme")) {
+						themeNumber = Integer.valueOf(array[i]);
 
-					array[i] = "theme";
+					} catch (Exception e) {
 
-				} else if(array[i].toLowerCase().contains("windows")) {
+						JOptionPane.showMessageDialog(null, lang[10] + array[i]);
+						themeNumber = -1;
 
-					array[i] = "windows";
+					}
 
-				} else {
+					if (themeNumber >= themesInstalled - 1 && themeNumber < -1) {
 
-					array[i] = "theme";
-					throw new Exception(lang[12] + array[i]);
+						themeNumber = -1;
+						throw new Exception(lang[11] + array[i]);
+
+					}
+
+					break;
 
 				}
 
-				break;
+				// Titlebar
+				case 13: {
 
-			}
+					if (array[i].toLowerCase().contains("theme")) {
 
-			case 14: {
+						array[i] = "theme";
 
-				break;
+					} else if (array[i].toLowerCase().contains("windows")) {
 
-			}
+						array[i] = "windows";
 
-			default:
+					} else {
 
-				throw new Exception(lang[13]);
+						array[i] = "theme";
+						throw new Exception(lang[12] + array[i]);
+
+					}
+
+					break;
+
+				}
+
+				case 14: {
+
+					break;
+
+				}
+
+				default:
+
+					throw new Exception(lang[13]);
 
 			}
 
@@ -389,7 +390,7 @@ public class FileUsefulMethods {
 			fileReader = new FileReader(settingsFile);
 			buffReader = new BufferedReader(fileReader);
 
-			for(int i = 0; i < exp; i++) {
+			for (int i = 0; i < exp; i++) {
 
 				array[i] = buffReader.readLine();
 
@@ -398,7 +399,7 @@ public class FileUsefulMethods {
 			buffReader.close();
 			fileReader.close();
 
-		} catch(IOException e) {
+		} catch (IOException e) {
 
 			JOptionPane.showMessageDialog(null, lang[14]);
 
@@ -406,9 +407,9 @@ public class FileUsefulMethods {
 
 		// Clean Up Array Values
 		// Null-Zeilencheck und Behebung
-		for(int i = 0; i < array.length; i++) {
+		for (int i = 0; i < array.length; i++) {
 
-			if(array[i] == null) {
+			if (array[i] == null) {
 
 				array[i] = "";
 
@@ -420,15 +421,15 @@ public class FileUsefulMethods {
 		Boolean runAgain = true;
 		int lastElementRollover = -1;
 
-		while(runAgain) {
+		while (runAgain) {
 
 			runAgain = false;
 
-			for(int i = 0; i < array.length; i++) {
+			for (int i = 0; i < array.length; i++) {
 
-				if(array[i].isEmpty() && i > lastElementRollover) {
+				if (array[i].isEmpty() && i > lastElementRollover) {
 
-					for(int j = i; j < array.length - 1; j++) {
+					for (int j = i; j < array.length - 1; j++) {
 
 						array[j] = array[j + 1];
 
@@ -445,7 +446,7 @@ public class FileUsefulMethods {
 
 		String[] arrayFinally = new String[exp];
 
-		for(int i = 0; i < arrayFinally.length; i++) {
+		for (int i = 0; i < arrayFinally.length; i++) {
 
 			arrayFinally[i] = array[i];
 
@@ -462,9 +463,9 @@ public class FileUsefulMethods {
 		StringBuilder sb = new StringBuilder("");
 
 		// NewConfiguration
-		for(int i = 0; i < exp; i++) {
+		for (int i = 0; i < exp; i++) {
 
-			if(arrayDefaultNames[i] != "" && arrayValues[i] != "") {
+			if (arrayDefaultNames[i] != "" && arrayValues[i] != "") {
 
 				sb.append(arrayDefaultNames[i] + " = " + arrayValues[i] + ";" + System.getProperty("line.separator"));
 
@@ -476,13 +477,13 @@ public class FileUsefulMethods {
 
 		try {
 
-			fileWriter = new FileWriter(settingsFile, false);// 2. Parameter, damit überschrieben wird
+			fileWriter = new FileWriter(settingsFile, false);// 2. Parameter, damit ï¿½berschrieben wird
 			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 			bufferedWriter.write(sb.toString());
 			bufferedWriter.close();
 			fileWriter.close();
 
-		} catch(IOException e) {
+		} catch (IOException e) {
 
 			JOptionPane.showMessageDialog(null, lang[15] + System.getProperty("user.dir"));
 

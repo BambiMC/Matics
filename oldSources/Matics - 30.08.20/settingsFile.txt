@@ -10,5 +10,5 @@ javaFilePath = C:\Users\fabia\Dropbox\Workspace\Matics\;
 batFilePath = C:\Users\fabia\Dropbox\Workspace\Matics\;
 txtFilePath = C:\Users\fabia\Dropbox\Workspace\Matics\;
 Language = en;
-Theme[-1 -> 33]//TODO = 23;
+Theme[-1 -> 33]//TOD = 23;
 TitleBar[theme/windows] = theme;

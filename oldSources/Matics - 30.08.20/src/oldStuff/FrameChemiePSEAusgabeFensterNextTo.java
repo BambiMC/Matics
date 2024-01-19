@@ -13,28 +13,25 @@ import javax.swing.border.EmptyBorder;
 
 import libs.LibraryChemie;
 
-
 public class FrameChemiePSEAusgabeFensterNextTo extends JFrame {
 
+	// Own Variables
 
-
-//Own Variables
-	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static String XnameX = null, XshortsymbolX = null, XspecialcategoryX = null, XmaincategoryX = null, XlookX = null, XaggregateX = null, XstructureX = null, XlicenseX = null, XflameX = null;
+	public static String XnameX = null, XshortsymbolX = null, XspecialcategoryX = null, XmaincategoryX = null,
+			XlookX = null, XaggregateX = null, XstructureX = null, XlicenseX = null, XflameX = null;
 	public static int XprotonX = 0, XneutronX = 0;
 	public static byte XmaingroupX = 0, XperiodX = 0;
-	public static double XmassonearthX = 0, XmassuX = 0, XionizationX = 0, XdensityX = 0, XhardnessX = 0, XsmeltpointX = 0, XboilingpointX = 0, XvolumeX = 0, XelectronegativityX = 0;
-	public static boolean XsyntheticalX, XradioactivX;	
+	public static double XmassonearthX = 0, XmassuX = 0, XionizationX = 0, XdensityX = 0, XhardnessX = 0,
+			XsmeltpointX = 0, XboilingpointX = 0, XvolumeX = 0, XelectronegativityX = 0;
+	public static boolean XsyntheticalX, XradioactivX;
 	public static int XXX;
 
-
-
-
 	private JPanel contentPane;
+
 	/**
 	 * Launch the application.
 	 */
@@ -69,7 +66,7 @@ public class FrameChemiePSEAusgabeFensterNextTo extends JFrame {
 		JLabel lblDatenblatt = new JLabel("Datenblatt");
 		lblDatenblatt.setFont(new Font("Tahoma", Font.PLAIN, 18));		
 		
-		//XXX = FrameChemiePSE.b;
+		// = FrameChemiePSE.b;
 		
 		if (XXX < 118 && XXX != 999) {
 			
@@ -135,7 +132,7 @@ public class FrameChemiePSEAusgabeFensterNextTo extends JFrame {
 		
 		JLabel lblHrte = new JLabel("\u2022 H\u00E4rte: " + XhardnessX + " Mohs");
 		
-		JLabel lblVolumen = new JLabel("\u2022 Volumen: " + XvolumeX + " m³/mol *");
+		JLabel lblVolumen = new JLabel("\u2022 Volumen: " + XvolumeX + " mï¿½/mol *");
 		
 		JLabel lblRadioaktiv = new JLabel("\u2022 Radioaktiv?: " + XradioactivX);
 		if (XradioactivX == true) {
@@ -155,17 +152,17 @@ public class FrameChemiePSEAusgabeFensterNextTo extends JFrame {
 			lblSynthetischHergestellt.setText("\u2022 Nur Synthetische Herstellung?: Nein");
 		}
 		
-		JLabel lblProzentsatzAnDerErdhülle = new JLabel("\u2022 Prozentsatz an der Erdh\u00FClle: " + XmassonearthX + " %");
+		JLabel lblProzentsatzAnDerErdhï¿½lle = new JLabel("\u2022 Prozentsatz an der Erdh\u00FClle: " + XmassonearthX + " %");
 		
 		JLabel lblAtommasse = new JLabel("\u2022 Atommasse: " + XmassuX + " u");
 		
 		JLabel lblIonisierungsenergie = new JLabel("\u2022 Ionisierungsenergie: " + XionizationX + " eV");
 		
-		JLabel lblDichte = new JLabel("\u2022 Dichte: " + XdensityX + " g/cm³ *");
+		JLabel lblDichte = new JLabel("\u2022 Dichte: " + XdensityX + " g/cmï¿½ *");
 		
-		JLabel lblSchmelzpunkt = new JLabel("\u2022 Schmelzpunkt: " + XsmeltpointX + " ° C");
+		JLabel lblSchmelzpunkt = new JLabel("\u2022 Schmelzpunkt: " + XsmeltpointX + " ï¿½ C");
 		
-		JLabel lblSiedepunkt = new JLabel("\u2022 Siedepunkt: " + XboilingpointX + " ° C");
+		JLabel lblSiedepunkt = new JLabel("\u2022 Siedepunkt: " + XboilingpointX + " ï¿½ C");
 		
 		JLabel lblElektronegativitt = new JLabel("\u2022 Elektronegativit\u00E4t: " + XelectronegativityX + " ***");
 		
@@ -226,7 +223,7 @@ public class FrameChemiePSEAusgabeFensterNextTo extends JFrame {
 									.addGap(10)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addComponent(lblAtommasse)
-										.addComponent(lblProzentsatzAnDerErdhülle)))
+										.addComponent(lblProzentsatzAnDerErdhï¿½lle)))
 								.addComponent(lblIonisierungsenergie)
 								.addComponent(lblDichte)
 								.addGroup(gl_contentPane.createSequentialGroup()
@@ -286,7 +283,7 @@ public class FrameChemiePSEAusgabeFensterNextTo extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(lblSynthetischHergestellt)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblProzentsatzAnDerErdhülle)
+					.addComponent(lblProzentsatzAnDerErdhï¿½lle)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(lblAtommasse)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -313,5 +310,5 @@ public class FrameChemiePSEAusgabeFensterNextTo extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
-		
+
 }

@@ -10,5 +10,5 @@ javaFilePath = C:\Users\fabia\Desktop\Matics Aftermath\14\;
 batFilePath = C:\Users\fabia\Desktop\Matics Aftermath\14\;
 txtFilePath = C:\Users\fabia\Desktop\Matics Aftermath\14\;
 Language = en;
-Theme[-1 -> 33]//TODO = 23;
+Theme[-1 -> 33]//TOD = 23;
 TitleBar[theme/windows] = theme;
