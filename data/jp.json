@@ -58,7 +58,8 @@
     "explanation3": "*** Paulingスケールに従い、またはAllred-Rochowスケールに従うこともできます",
     "yes": "はい",
     "no": "いいえ",
-    "mohs": "モース硬度"
+    "mohs": "モース硬度",
+    "unknown": "不明"
   },
   "projects": {
     "periodicTable": "対話型周期表",

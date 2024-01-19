@@ -58,7 +58,8 @@
     "explanation3": "*** Nach der Pauling-Skala, alternativ nach Allred-Rochow",
     "yes": "Ja",
     "no": "Nein",
-    "mohs": "Mohs"
+    "mohs": "Mohs",
+    "unknown": "Unbekannt"
   },
   "projects": {
     "periodicTable": "Interaktives Periodensystem",

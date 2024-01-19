@@ -58,7 +58,8 @@
     "explanation3": "*** Selon l'échelle de Pauling, alternativement selon l'échelle d'Allred-Rochow",
     "yes": "Oui",
     "no": "Non",
-    "mohs": "Mohs"
+    "mohs": "Mohs",
+    "unknown": "Inconnu"
   },
   "projects": {
     "periodicTable": "Tableau Périodique Interactif",
