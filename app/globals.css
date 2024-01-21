@@ -35,7 +35,7 @@
 *:hover,
 #logo,
 #project {
-  transition: all 0.25s ease;
+  transition: all 0.5s ease;
 }
 
 #logo:hover,

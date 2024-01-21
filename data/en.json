@@ -72,7 +72,9 @@
     "psg": "PSG Amberg Website",
     "cpuxf": "Certified Professional for Usability and User Experience (CPUX-F)"
   },
+
   "periodicTableFilter": {
+    "activeFilters": "Active Filters",
     "filterElement": "Filter Elements",
     "attributAuswaehlen": "Select Attribute",
     "name": "Name",

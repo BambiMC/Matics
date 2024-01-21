@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import { useLanguageData } from '@data/languageLoader';
-import Tile from '@app/components/PSE/Tile/Tile';
+import Tile from '@app/components/Tile/Tile';
 
 //TODO amd intel nvidia comparator
 //TODO clound upload with password

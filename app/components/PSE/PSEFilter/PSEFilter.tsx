@@ -76,8 +76,6 @@ function getDropdownOptionByKey(key: string): DropdownOption {
 
 const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
     const data = useLanguageData('periodicTableFilter');
-    console.log("datA:");
-    // console.log(useLanguageData('periodicTableFilter')!['name']);
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedAttribute, setSelectedAttribute] = useState<DropdownOption>(options[0]);
@@ -119,6 +117,7 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
             } else {
                 document.getElementById('ElliTile-' + i)!.style.filter = 'blur(6px)';
                 document.getElementById('ElliTile-' + i)!.style.pointerEvents = 'none';
+
             }
         }
 
@@ -129,6 +128,8 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
             emptyFilter.setAttribute('searchValue', search.searchValue);
             emptyFilter.innerText = search.searchCategory.key + ' ' + search.operator + ' ' + search.searchValue;
             emptyFilter.style.pointerEvents = 'auto';
+            emptyFilter.style.display = 'block';
+
 
         } else {
             alert('Maximale Anzahl an Filtern erreicht.');
@@ -141,6 +142,9 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
         filterToReset.removeAttribute('searchValue');
         filterToReset.innerText = '';
         filterToReset.style.pointerEvents = 'none';
+        filterToReset.style.display = 'none';
+
+
 
     }
 
@@ -197,12 +201,14 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
             {data && (
                 <div className='flex bg-fnbg-accent my-4'>
                     <div id='selectedFilters' className='flex'>
+                        <p className='my-auto px-4 font-bold'>{data['activeFilters'] + ": "}</p>
                         <PSEActiveFilter id='filter-1' onClick={() => removeFilter('filter-1')} />
                         <PSEActiveFilter id='filter-2' onClick={() => removeFilter('filter-2')} />
                         <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-3')} />
                         <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-4')} />
                         <PSEActiveFilter id='filter-3' onClick={() => removeFilter('filter-5')} />
                     </div>
+                    {/* TODO break here if horizontal space is not enough */}
                     <div className='mr-8 bg-fnbg-body ml-auto my-2'>
                         <div className="dropdown border-2 flex">
                             <button onClick={toggleDropdown} className="dropbtn ml-auto pl-auto button font-bold p-2 rounded-lg text-fnbg-text hover:text-fnbg-purple duration-300">{data['filterElement']}</button>

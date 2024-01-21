@@ -73,6 +73,7 @@
     "cpuxf": "ユーザビリティとユーザーエクスペリエンスの認定プロフェッショナル（CPUX-F）"
   },
   "periodicTableFilter": {
+    "activeFilters": "アクティブなフィルタ",
     "filterElement": "要素のフィルタリング",
     "attributAuswaehlen": "属性の選択",
     "name": "名前",

@@ -38,7 +38,7 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData }) => {
                     <p className='element-text'>{data['appearance']}: {elementData.aussehen ? elementData.aussehen : data['unknown']}</p>
                     <p className='element-text'>{data['aggregateState']}: {elementData.aggregatszustand ? elementData.aggregatszustand + ' **' : data['unknown']}</p>
                     <p className='element-text'>{data['structure']}: {elementData.struktur ? elementData.struktur + ' **' : data['unknown']}</p>
-                    <p className='element-text'>{data['hardness']}: {elementData.haerte ? elementData.haerte + data['mohs'] : data['unknown']}</p>
+                    <p className='element-text'>{data['hardness']}: {elementData.haerte ? elementData.haerte + ' ' + data['mohs'] : data['unknown']}</p>
                     <div className='flex'>
                         {elementData.volumen ? (
                             <>

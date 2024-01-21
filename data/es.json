@@ -73,6 +73,7 @@
     "cpuxf": "Profesional Certificado en Usabilidad y Experiencia del Usuario (CPUX-F)"
   },
   "periodicTableFilter": {
+    "activeFilters": "Filtros Activos",
     "filterElement": "Filtrar Elementos",
     "attributAuswaehlen": "Seleccionar Atributo",
     "name": "Nombre",
