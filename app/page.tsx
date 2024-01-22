@@ -9,7 +9,7 @@ const Homepage: React.FC = () => {
   return (
     <div className='h-screen overflow-x-hidden md:overflow-y-hidden'>
       {data && (
-        <div className='max-w-9xl'>
+        <div className='max-w-9xl mx-auto'>
           <main className='p-20 mt-20'>
             <div className="flex justify-center items-center flex-col md:flex-row">
               <img className="w-5/6 lg:w-2/6" src="imgs/W2.webp" alt={data['altPicture']} />
