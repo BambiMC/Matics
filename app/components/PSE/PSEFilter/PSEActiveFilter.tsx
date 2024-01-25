@@ -9,7 +9,7 @@ type PSEActiveFilterProps = {
 const PSEActiveFilter: React.FC<PSEActiveFilterProps> = ({ id, onClick }) => {
 
   return (
-    <Button addClasses="active-filter pointer-events-none outline hidden mx-2" id={id} onClick={onClick}>
+    <Button addClasses="active-filter pointer-events-none outline hidden mx-2 hover:bg-red-500 hover:text-fnbg-accent" id={id} onClick={onClick}>
     </Button>
   );
 };

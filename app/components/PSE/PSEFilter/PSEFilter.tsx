@@ -126,7 +126,7 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
             emptyFilter.setAttribute('searchCategory', search.searchCategory.key);
             emptyFilter.setAttribute('operator', search.operator);
             emptyFilter.setAttribute('searchValue', search.searchValue);
-            emptyFilter.innerText = search.searchCategory.key + ' ' + search.operator + ' ' + search.searchValue;
+            emptyFilter.innerHTML = search.searchCategory.key + ' ' + search.operator + ' ' + search.searchValue + '&emsp;&#x2716;';
             emptyFilter.style.pointerEvents = 'auto';
             emptyFilter.style.display = 'block';
 
