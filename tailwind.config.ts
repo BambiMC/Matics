@@ -29,7 +29,7 @@ const config: Config = {
         "18": "18",
       },
       maxWidth: {
-        "9xl": "1600px",
+        "9xl": "1400px",
       },
       colors: {
         "fnbg-purple": "var(--fnbg-purple)",
@@ -40,6 +40,7 @@ const config: Config = {
       },
     },
   },
+  screens: {},
   plugins: [],
 };
 export default config;

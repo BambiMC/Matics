@@ -1,6 +1,6 @@
 import styles from './Triangle.module.css';
 
-const Triangle = () => {
+const Triangles = () => {
     return (
         <div className={styles.container_row}>
             <div style={{ gridColumn: '1', gridRow: '1' }}>
@@ -55,4 +55,4 @@ const Triangle = () => {
     );
 };
 
-export default Triangle;
+export default Triangles;

@@ -32,7 +32,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/test/page.tsx",
-    "app/components/Triangle/Triangle.tsx",
+    "app/components/Triangle/Triangles.tsx",
     "app/components/PSE/ElementTile",
     "data/languageLoader"
   ],

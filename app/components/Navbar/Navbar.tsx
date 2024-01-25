@@ -102,7 +102,7 @@ const Navbar = () => {
             </div>
           </div>
           <div className='px-2 hidden xl:hidden' id='lang-menu'>
-            <div className="absolute top-20 right-2 border rounded border-gray-300 flex flex-row">
+            <div className="absolute top-20 right-2 border rounded border-gray-300 bg-fnbg-accent flex flex-row">
               <Button onClick={() => handleLangButtonClick('en')}>EN</Button>
               <Button onClick={() => handleLangButtonClick('de')}>DE</Button>
               <Button onClick={() => handleLangButtonClick('es')}>ES</Button>

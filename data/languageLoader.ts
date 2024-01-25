@@ -4,8 +4,10 @@ export const useLanguageData = (section: string) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const lang = localStorage.getItem("lang");
-    const language = lang || "en";
+    let language =
+      localStorage.getItem("lang") ||
+      (navigator.language || "en").split("-")[0] ||
+      "en";
 
     import(`./${language}.json`)
       .then((importedData) => {
@@ -25,12 +27,14 @@ export const useLanguageData = (section: string) => {
 };
 
 export const useLang = () => {
-  // Check if window (client side) is defined
   if (typeof window !== "undefined") {
-    const lang = localStorage.getItem("lang");
-    return lang;
+    let language =
+      localStorage.getItem("lang") ||
+      (navigator.language || "en").split("-")[0] ||
+      "en";
+
+    return language;
   } else {
-    // Handle the case when running on the server side (if needed)
     return null;
   }
 };
