@@ -94,6 +94,7 @@
     "schmelzpunkt": "Melting Point",
     "siedepunkt": "Boiling Point",
     "elektronegativitaet": "Electronegativity",
-    "flammenfarbe": "Flame Color"
+    "flammenfarbe": "Flame Color",
+    "download": "Download database"
   }
 }

@@ -17,15 +17,21 @@ const Projects: React.FC = () => {
     elements = elementsEn;
   }
 
-  const dataForPSEFilter = useLanguageData("periodicTableFilter");
+  const data = useLanguageData("periodicTableFilter");
 
   return (
 
     <main className='px-4 mx-auto w-screen max-w-9xl my-40 md:mt-20 lg:mt-24'>
-      {elements && (
+      {elements && data && (
         <div>
 
-          <PSEFilter elements={elements} dataExtern={dataForPSEFilter} />
+          <div className='flex my-4 p-4 bg-fnbg-accent'>
+            <p className='my-auto pr-2 font-bold'>{data['download'] + ": "}</p>
+            <a className='px-2 text-lg' href="https://fnbg.de/libChem/libChem_en.tsx" target='_blank'>EN</a>
+            <a className='px-2 text-lg' href="https://fnbg.de/libChem/libChem_de.tsx" target='_blank'>DE</a>
+          </div>
+
+          <PSEFilter elements={elements} dataExtern={data} />
 
           <div className="grid grid-cols-18 grid-rows-9 gap-0 sm:gap-1 lg:gap-2 xl:gap-4">
             {/* Line Number 1 */}
@@ -157,12 +163,12 @@ const Projects: React.FC = () => {
             <ElementTile addClasses='bg-pink-500' elementData={elements[100]} id='ElliTile-100' />
             <ElementTile addClasses='bg-pink-500' elementData={elements[101]} id='ElliTile-101' />
             <ElementTile addClasses='bg-pink-500' elementData={elements[102]} id='ElliTile-102' />
-
           </div>
         </div>
 
       )}
     </main>
+
   );
 };
 

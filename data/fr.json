@@ -93,6 +93,7 @@
     "schmelzpunkt": "Point de Fusion",
     "siedepunkt": "Point d'Ébullition",
     "elektronegativitaet": "Électronegativité",
-    "flammenfarbe": "Couleur de Flamme"
+    "flammenfarbe": "Couleur de Flamme",
+    "download": "Télécharger la base de données"
   }
 }
