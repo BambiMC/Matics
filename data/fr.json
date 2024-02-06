@@ -73,7 +73,8 @@
     "dsag": "Article DSAG 2019",
     "ba": "Description Brève du Mémoire de Licence",
     "psg": "Site Web PSG Amberg",
-    "cpuxf": "Professionnel Certifié en Utilisabilité et Expérience Utilisateur (CPUX-F)"
+    "cpuxf": "Professionnel Certifié en Utilisabilité et Expérience Utilisateur (CPUX-F)",
+    "masterProject": "Projet de Master : Chatbot & LLMs"
   },
   "periodicTableFilter": {
     "activeFilters": "Filtres Actifs",
