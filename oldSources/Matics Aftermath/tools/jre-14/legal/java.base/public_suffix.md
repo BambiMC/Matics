@@ -1,6 +1,7 @@
 ## Mozilla Public Suffix List
 
 ### Public Suffix Notice
+
 ```
 You are receiving a copy of the Mozilla Public Suffix List in the following
 file: <java-home>/lib/security/public_suffix_list.dat. The terms of the
@@ -17,10 +18,11 @@ at https://mozilla.org/MPL/2.0/.
 
 Software distributed under the License is distributed on an "AS IS" basis,
 WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
-for the specific language governing rights and limitations under the License. 
+for the specific language governing rights and limitations under the License.
 ```
 
 ### MPL v2.0
+
 ```
 Mozilla Public License Version 2.0
 ==================================
@@ -59,7 +61,7 @@ Mozilla Public License Version 2.0
     means any form of the work other than Source Code Form.
 
 1.7. "Larger Work"
-    means a work that combines Covered Software with other material, in 
+    means a work that combines Covered Software with other material, in
     a separate file or files, that is not Covered Software.
 
 1.8. "License"
@@ -334,7 +336,7 @@ jurisdiction, without reference to its conflict-of-law provisions.
 Nothing in this Section shall prevent a party's ability to bring
 cross-claims or counter-claims.
 
-9. Miscellaneous
+9. miscellaneous
 ----------------
 
 This License represents the complete agreement concerning the subject

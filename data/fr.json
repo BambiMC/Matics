@@ -59,11 +59,14 @@
     "yes": "Oui",
     "no": "Non",
     "mohs": "Mohs",
-    "unknown": "Inconnu"
+    "unknown": "Inconnu",
+    "physicalProperties": "Propriétés Physiques",
+    "chemicalProperties": "Propriétés Chimiques",
+    "miscellaneous": "Divers"
   },
   "projects": {
     "periodicTable": "Tableau Périodique Interactif",
-    "angrydino": "Thème du Dinosaure Enragé",
+    "angrydino": "Thème VSCode Angry Dino",
     "nonintrusivedoors": "Mod Portes Non Intrusives",
     "blog": "Blog FNBG",
     "github": "GitHub",

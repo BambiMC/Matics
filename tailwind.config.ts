@@ -37,6 +37,7 @@ const config: Config = {
         "fnbg-body": "var(--fnbg-body)",
         "fnbg-accent": "var(--fnbg-accent)",
         "fnbg-text": "var(--fnbg-text)",
+        "fnbg-text2": "var(--fnbg-text2)",
       },
     },
   },

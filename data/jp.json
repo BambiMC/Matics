@@ -59,11 +59,14 @@
     "yes": "はい",
     "no": "いいえ",
     "mohs": "モース硬度",
-    "unknown": "不明"
+    "unknown": "不明",
+    "physicalProperties": "物理的特性",
+    "chemicalProperties": "化学的特性",
+    "miscellaneous": "その他"
   },
   "projects": {
     "periodicTable": "対話型周期表",
-    "angrydino": "怒りの恐竜テーマ",
+    "angrydino": "怒っているディノVSCodeのテーマ",
     "nonintrusivedoors": "非侵襲的なドアモッド",
     "blog": "FNBG ブログ",
     "github": "GitHub",

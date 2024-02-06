@@ -7,7 +7,7 @@ const Footer = () => {
         91058 Erlangen
       </div>
       <div className="my-auto text-center">
-        © 2023 - Fabian Berger
+        © 2024 - Fabian Berger
       </div>
     </footer>
   );

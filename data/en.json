@@ -59,7 +59,10 @@
     "yes": "Yes",
     "no": "No",
     "mohs": "Mohs",
-    "unknown": "Unknown"
+    "unknown": "Unknown",
+    "physicalProperties": "Physical Properties",
+    "chemicalProperties": "Chemical Properties",
+    "miscellaneous": "Miscellaneous"
   },
   "projects": {
     "periodicTable": "Interactive Periodic Table",

@@ -16,6 +16,7 @@
   --fnbg-body: #eee3ff;
   --fnbg-accent: #c5bcf3;
   --fnbg-text: #303030;
+  --fnbg-text2: #000000;
 }
 
 :root[data-theme="dark"] {
@@ -27,6 +28,7 @@
   --fnbg-body: #404040;
   --fnbg-accent: #222222;
   --fnbg-text: #bcbcff;
+  --fnbg-text2: #fafaff;
 }
 
 :root[data-theme="light"] .dark,
