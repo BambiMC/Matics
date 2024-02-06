@@ -6,8 +6,6 @@
   border: 1px solid rgb(255, 0, 0);
 } */
 
-
-
 :root[data-theme="light"] {
   --radius-big: 40px;
   --radius-small: 20px;
