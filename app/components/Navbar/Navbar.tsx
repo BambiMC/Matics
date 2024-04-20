@@ -31,7 +31,7 @@ const Navbar = () => {
   const data = useLanguageData("navbar");
 
   return (
-    <nav className="px-4 py-1 z-20 fixed w-full">
+    <nav className="px-4 py-1 z-50 fixed w-full">
       {data && (
         <div>
           <div className="flex items-center justify-between">

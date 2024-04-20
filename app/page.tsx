@@ -13,7 +13,7 @@ const Homepage: React.FC = () => {
           <main className='p-2 md:p-20 mt-32 md:mt-20'>
             <div className="flex justify-center items-center flex-row">
               <img className="w-3/6 z-20" src="imgs/W2.webp" alt={data['altPicture']} />
-              <p className="z-10 w-2/6 p-4 md:p-8 lg:p-12 font-bold from-neutral-200 bg-fnbg-accent text-center text-xs md:text-lg">
+              <p className="z-30 w-2/6 p-4 md:p-8 lg:p-12 font-bold from-neutral-200 bg-fnbg-accent text-center text-xs md:text-lg -translate-x-12">
                 {data['welcomeText']}
               </p>
               <div className='w-1/12'>
@@ -28,3 +28,4 @@ const Homepage: React.FC = () => {
 };
 
 export default Homepage;
+// FIXME Signatur exportiert nicht!
