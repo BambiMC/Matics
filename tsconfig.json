@@ -23,7 +23,8 @@
       "@data/*": ["data/*"],
       "@app/*": ["app/*"],
       "@components/*": ["app/components/*"],
-      "@public/*": ["public/*"]
+      "@public/*": ["public/*"],
+      "@lib/*": ["lib/*"]
     }
   },
   "include": [
@@ -34,7 +35,8 @@
     "app/test/page.tsx",
     "app/components/Triangle/Triangles.tsx",
     "app/components/PSE/ElementTile",
-    "data/languageLoader"
+    "data/languageLoader",
+    "app/Wp2/page.jsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -12,7 +12,7 @@ export const useLanguageData = (section: string) => {
     import(`./${language}.json`)
       .then((importedData) => {
         if (importedData[section]) {
-          console.log(importedData[section]);
+          // console.log(importedData[section]);
           setData(importedData[section]);
         } else {
           console.error(`Section "${section}" not found in the JSON data.`);
