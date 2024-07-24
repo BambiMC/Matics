@@ -25,9 +25,10 @@ const Homepage: React.FC = () => {
           <Tile to='/Kurzbeschreibung-Bachelorthesis.pdf' newTab>{data['ba']}</Tile>
           <Tile to='https://dev.fnbg.de' newTab>{data['psg']}</Tile>
           <Tile to='/CPUX-F-Zertifikat-Fabian-Berger.pdf' newTab>{data['cpuxf']}</Tile>
+          <Tile to='/ISTQB-CTFL-Zertifikat-Fabian-Berger.pdf' newTab>{data['ctfl']}</Tile>
           <Tile to='/Expose-Master-Projekt-Fabian-Berger.pdf' newTab>{data['masterProject']}</Tile>
           {/* <Tile to='/'></Tile> */}
-
+          {/* <Tile to='/'></Tile> */}
 
 
         </div>
