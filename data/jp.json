@@ -75,7 +75,8 @@
     "psg": "PSG Amberg ウェブサイト",
     "cpuxf": "ユーザビリティとユーザーエクスペリエンスの認定プロフェッショナル (CPUX-F)",
     "ctfl": "認定テスター基礎レベル (CTFL-ISTQB)",
-    "masterProject": "マスタープロジェクト：チャットボット & LLMs"
+    "masterProject": "マスタープロジェクト：チャットボット & LLMs",
+    "openf1": "Open F1 API Frontend (WIP)"
   },
   "periodicTableFilter": {
     "activeFilters": "アクティブなフィルタ",

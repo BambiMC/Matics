@@ -72,10 +72,11 @@
     "github": "GitHub",
     "dsag": "DSAG Article 2019",
     "ba": "Brief Description Bachelor Thesis",
-    "psg": "PSG Amberg Website",
+    "psg": "PSG Amberg Website (WIP)",
     "cpuxf": "Certified Professional for Usability and User Experience (CPUX-F)",
     "ctfl": "Certified Tester Foundation Level (CTFL-ISTQB)",
-    "masterProject": "Master Project: Chatbot & LLMs"
+    "masterProject": "Master Project: Chatbot & LLMs",
+    "openf1": "Open F1 API Frontend (WIP)"
   },
 
   "periodicTableFilter": {

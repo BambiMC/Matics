@@ -75,7 +75,8 @@
     "psg": "Sitio web PSG Amberg",
     "cpuxf": "Profesional Certificado en Usabilidad y Experiencia del Usuario (CPUX-F)",
     "ctfl": "Nivel Básico de Tester Certificado (CTFL-ISTQB)",
-    "masterProject": "Proyecto de Maestría: Chatbot y LLMs"
+    "masterProject": "Proyecto de Maestría: Chatbot y LLMs",
+    "openf1": "Open F1 API Frontend (WIP)"
   },
   "periodicTableFilter": {
     "activeFilters": "Filtros Activos",
