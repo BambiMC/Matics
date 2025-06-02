@@ -113,7 +113,7 @@ const Navbar = () => {
           <div className="order-last hidden lg:hidden" id="mobile-menu">
             <div className="flex flex-row flex-wrap">
               <Link href="https://blog.fnbg.de" target="_blank" className="px-5 py-3">{data['blog']}</Link>
-              {/* <Link href="/Lebenslauf-Fabian-Berger.pdf" className="px-5 py-3" target="_blank">{data['resume']}</Link> */}
+              <Link href="/Lebenslauf-Fabian-Berger.pdf" className="px-5 py-3" target="_blank">{data['resume']}</Link>
               <Link href="/projects" className="px-5 py-3">{data['projects']}</Link>
               <a href="mailto:me@fnbg.de" className='px-5 py-3 self-center'>me@fnbg.de</a>
               <Link href="https://www.linkedin.com/in/fabian-berger-nbg/" className="px-5 py-3" target="_blank">{data['linkedin']}</Link>
