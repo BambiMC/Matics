@@ -71,12 +71,13 @@
     "blog": "FNBG ブログ",
     "github": "GitHub",
     "dsag": "DSAG 記事 2019",
-    "ba": "学士論文の簡単な説明",
+    "ba": "学士論文発表 コンポーネントテストとUX",
     "psg": "PSG Amberg ウェブサイト",
     "cpuxf": "ユーザビリティとユーザーエクスペリエンスの認定プロフェッショナル (CPUX-F)",
     "ctfl": "認定テスター基礎レベル (CTFL-ISTQB)",
     "masterProject": "マスタープロジェクト：チャットボット & LLMs",
-    "openf1": "Open F1 API Frontend (WIP)"
+    "openf1": "Open F1 API Frontend (WIP)",
+    "ma": "エクスポゼ修士論文 LLMとサイバーセキュリティ"
   },
   "periodicTableFilter": {
     "activeFilters": "アクティブなフィルタ",

@@ -71,12 +71,13 @@
     "blog": "Blog FNBG",
     "github": "GitHub",
     "dsag": "Article DSAG 2019",
-    "ba": "Description Brève du Mémoire de Licence",
+    "ba": "Exposé Bachelorthesis : Test de composants et UX",
     "psg": "Site Web PSG Amberg",
     "cpuxf": "Professionnel Certifié en Utilisabilité et Expérience Utilisateur (CPUX-F)",
     "ctfl": "Niveau de Base de Testeur Certifié (CTFL-ISTQB)",
     "masterProject": "Projet de Master : Chatbot & LLMs",
-    "openf1": "Open F1 API Frontend (WIP)"
+    "openf1": "Open F1 API Frontend (WIP)",
+    "ma": "Exposé Masterthesis : LLM et cybersécurité"
   },
   "periodicTableFilter": {
     "activeFilters": "Filtres Actifs",

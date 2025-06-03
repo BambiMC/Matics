@@ -71,12 +71,13 @@
     "blog": "FNBG Blog",
     "github": "GitHub",
     "dsag": "DSAG Artikel 2019",
-    "ba": "Kurzbeschreibung Bachelorthesis",
+    "ba": "Exposé Bachelorthesis: Component Testing & UX",
     "psg": "PSG Amberg Webseite (WIP)",
     "cpuxf": "Certified Professional für Usability und User Experience (CPUX-F)",
     "ctfl": "Certified Tester Foundation Level (CTFL-ISTQB)",
     "masterProject": "Master-Projekt: Chatbot & LLMs",
-    "openf1": "Open F1 API Frontend (WIP)"
+    "openf1": "Open F1 API Frontend (WIP)",
+    "ma": "Exposé Masterthesis: LLMs & Cybersecurity"
   },
   "periodicTableFilter": {
     "activeFilters": "Aktive Filter",
