@@ -1,4 +1,4 @@
-//TODO Lebenslauf neu machen
+//TODO Erstes Klicken auf Theme wechseln bringt nichts
 "use client"
 import Link from 'next/link';
 import Image from 'next/image';

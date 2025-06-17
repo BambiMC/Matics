@@ -6,7 +6,7 @@ import { elementsDe } from '@public/libChem/libChem_de';
 import { elementsEn } from '@public/libChem/libChem_en';
 import { useLang, useLanguageData } from '@data/languageLoader';
 
-
+//TODO mobile version does not work properly
 
 const Projects: React.FC = () => {
 
