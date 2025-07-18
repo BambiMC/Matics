@@ -52,7 +52,7 @@ const Navbar = () => {
               <Button addClasses='hidden xl:block' onClick={() => handleLangButtonClick('es')}>ES</Button>
               <Button addClasses='hidden xl:block' onClick={() => handleLangButtonClick('fr')}>FR</Button>
               <Button addClasses='hidden xl:block pr-8' onClick={() => handleLangButtonClick('jp')}>JP</Button>
-              <button onClick={toggleLangMenu} className='xl:hidden px-3 text-fnbg-purple'>
+              <button onClick={toggleLangMenu} className='xl:hidden px-3 text-fnbg-purple' title='Change Language'>
                 <svg
                   height="32"
                   width="32"
@@ -81,6 +81,7 @@ const Navbar = () => {
               <button
                 className="inline px-2 py-3 lg:hidden"
                 onClick={toggleMobileMenu}
+                title="Toggle Mobile Menu"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
