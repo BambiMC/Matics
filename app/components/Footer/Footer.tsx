@@ -8,7 +8,7 @@ const Footer = async () => {
         91058 Erlangen
       </div>
       <div className="my-auto text-center">
-        © 2024 - Fabian Berger
+        © 2025 - Fabian Berger
       </div>
       {/* <div>
         {posts.edges[0].node.title}
