@@ -77,7 +77,8 @@
     "ctfl": "Niveau de Base de Testeur Certifié (CTFL-ISTQB)",
     "masterProject": "Projet de Master : Chatbot & LLMs",
     "openf1": "Open F1 API Frontend (WIP)",
-    "ma": "Exposé Masterthesis : LLM et cybersécurité"
+    "ma": "Exposé Masterthesis : LLM et cybersécurité",
+    "xray": "Optimisation d'Images Radiographiques Accélérée par GPU"
   },
   "periodicTableFilter": {
     "activeFilters": "Filtres Actifs",
@@ -102,5 +103,27 @@
     "elektronegativitaet": "Électronegativité",
     "flammenfarbe": "Couleur de Flamme",
     "download": "Télécharger la base de données"
+  },
+  "openf1": {},
+  "xray": {
+    "title": "Optimisation d’Images Radiographiques Accélérée par GPU",
+    "upload": "Téléverser une Image",
+    "example1": "Image Exemple 1",
+    "example2": "Image Exemple 2",
+    "example3": "Image Exemple 3",
+    "algorithm1": "Correction Automatique d’Image",
+    "algorithm2": "Améliorer les Niveaux de Luminosité",
+    "algorithm3": "Cibler les Niveaux de Gris",
+    "contrast": "Contraste",
+    "sharpness": "Netteté",
+    "noise": "Bruit",
+    "hue": "Teinte",
+    "histogramLimits": "Limites de l’Histogramme",
+    "generateBrightnessHistogram": "Générer l’Histogramme de Luminosité",
+    "resetFilters": "Réinitialiser les Filtres",
+    "showModifiedVersion": "Afficher la Version Modifiée",
+    "showOriginal": "Afficher l’Original",
+    "brightness": "Luminosité",
+    "count": "Nombre"
   }
 }

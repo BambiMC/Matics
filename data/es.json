@@ -77,7 +77,8 @@
     "ctfl": "Nivel Básico de Tester Certificado (CTFL-ISTQB)",
     "masterProject": "Proyecto de Maestría: Chatbot y LLMs",
     "openf1": "Open F1 API Frontend (WIP)",
-    "ma": "Exposición Masterthesis: LLM y ciberseguridad"
+    "ma": "Exposición Masterthesis: LLM y ciberseguridad",
+    "xray": "Optimización de Imágenes de Rayos X Acelerada por GPU"
   },
   "periodicTableFilter": {
     "activeFilters": "Filtros Activos",
@@ -102,5 +103,27 @@
     "elektronegativitaet": "Electronegatividad",
     "flammenfarbe": "Color de la Llama",
     "download": "Descargar base de datos"
+  },
+  "openf1": {},
+  "xray": {
+    "title": "Optimización de Imágenes de Rayos X Acelerada por GPU",
+    "upload": "Subir Imagen",
+    "example1": "Imagen de Ejemplo 1",
+    "example2": "Imagen de Ejemplo 2",
+    "example3": "Imagen de Ejemplo 3",
+    "algorithm1": "Corrección Automática de Imagen",
+    "algorithm2": "Mejorar Niveles de Brillo",
+    "algorithm3": "Enfocar Escala de Grises",
+    "contrast": "Contraste",
+    "sharpness": "Nitidez",
+    "noise": "Ruido",
+    "hue": "Tono",
+    "histogramLimits": "Límites del Histograma",
+    "generateBrightnessHistogram": "Generar Histograma de Brillo",
+    "resetFilters": "Restablecer Filtros",
+    "showModifiedVersion": "Mostrar Versión Modificada",
+    "showOriginal": "Mostrar Original",
+    "brightness": "Brillo",
+    "count": "Cantidad"
   }
 }

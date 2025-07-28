@@ -77,7 +77,8 @@
     "ctfl": "Certified Tester Foundation Level (CTFL-ISTQB)",
     "masterProject": "Master Project: Chatbot & LLMs",
     "openf1": "Open F1 API Frontend (WIP)",
-    "ma": "Exposé Masterthesis: LLMs & Cybersecurity"
+    "ma": "Exposé Masterthesis: LLMs & Cybersecurity",
+    "xray": "GPU-Accelerated Optimization of X-Ray Images"
   },
   "periodicTableFilter": {
     "activeFilters": "Active Filters",
@@ -102,5 +103,27 @@
     "elektronegativitaet": "Electronegativity",
     "flammenfarbe": "Flame Color",
     "download": "Download database"
+  },
+  "openf1": {},
+  "xray": {
+    "title": "GPU-Accelerated Optimization of X-Ray Images",
+    "upload": "Upload Image",
+    "example1": "Sample Image 1",
+    "example2": "Sample Image 2",
+    "example3": "Sample Image 3",
+    "algorithm1": "Automatic Image Correction",
+    "algorithm2": "Enhance Brightness Levels",
+    "algorithm3": "Focus Grayscale",
+    "contrast": "Contrast",
+    "sharpness": "Sharpness",
+    "noise": "Noise",
+    "hue": "Hue",
+    "histogramLimits": "Histogram Limits",
+    "generateBrightnessHistogram": "Generate Brightness Histogram",
+    "resetFilters": "Reset Filters",
+    "showModifiedVersion": "Show Modified Version",
+    "showOriginal": "Show Original",
+    "brightness": "Brightness",
+    "count": "Count"
   }
 }

@@ -122,3 +122,7 @@ textarea {
   color: var(--cursor);
   border-radius: var(--radius-small);
 }
+
+button {
+  border-radius: var(--radius-small);
+}

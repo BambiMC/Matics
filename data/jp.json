@@ -77,7 +77,8 @@
     "ctfl": "認定テスター基礎レベル (CTFL-ISTQB)",
     "masterProject": "マスタープロジェクト：チャットボット & LLMs",
     "openf1": "Open F1 API Frontend (WIP)",
-    "ma": "エクスポゼ修士論文 LLMとサイバーセキュリティ"
+    "ma": "エクスポゼ修士論文 LLMとサイバーセキュリティ",
+    "xray": "GPUによるX線画像の最適化"
   },
   "periodicTableFilter": {
     "activeFilters": "アクティブなフィルタ",
@@ -102,5 +103,27 @@
     "elektronegativitaet": "電気陰性度",
     "flammenfarbe": "炎の色",
     "download": "データベースのダウンロード"
+  },
+  "openf1": {},
+  "xray": {
+    "title": "GPUによるX線画像の最適化",
+    "upload": "画像をアップロード",
+    "example1": "サンプル画像 1",
+    "example2": "サンプル画像 2",
+    "example3": "サンプル画像 3",
+    "algorithm1": "自動画像補正",
+    "algorithm2": "明るさレベルの強調",
+    "algorithm3": "グレースケールの強調",
+    "contrast": "コントラスト",
+    "sharpness": "シャープネス",
+    "noise": "ノイズ",
+    "hue": "色相",
+    "histogramLimits": "ヒストグラムの範囲",
+    "generateBrightnessHistogram": "明るさのヒストグラムを生成",
+    "resetFilters": "フィルターをリセット",
+    "showModifiedVersion": "変更後の画像を表示",
+    "showOriginal": "元の画像を表示",
+    "brightness": "明るさ",
+    "count": "数"
   }
 }

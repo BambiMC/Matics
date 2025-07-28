@@ -38,3 +38,24 @@ export const useLang = () => {
     return null;
   }
 };
+
+export const getLanguageData = async (section: string) => {
+  try {
+    const language =
+      localStorage.getItem("lang") ||
+      (navigator.language || "en").split("-")[0] ||
+      "en";
+
+    const importedData = await import(`./${language}.json`);
+
+    if (importedData[section]) {
+      return importedData[section];
+    } else {
+      console.error(`Section "${section}" not found in the JSON data.`);
+      return null;
+    }
+  } catch (error) {
+    console.error("Error loading language data:", error);
+    return null;
+  }
+};

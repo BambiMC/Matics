@@ -77,7 +77,8 @@
     "ctfl": "Certified Tester Foundation Level (CTFL-ISTQB)",
     "masterProject": "Master-Projekt: Chatbot & LLMs",
     "openf1": "Open F1 API Frontend (WIP)",
-    "ma": "Exposé Masterthesis: LLMs & Cybersecurity"
+    "ma": "Exposé Masterthesis: LLMs & Cybersecurity",
+    "xray": "GPU-beschleunigte Optimierung von Röntgenbildern"
   },
   "periodicTableFilter": {
     "activeFilters": "Aktive Filter",
@@ -103,5 +104,26 @@
     "flammenfarbe": "Flammenfarbe",
     "download": "Download Datenbank"
   },
-  "openf1": {}
+  "openf1": {},
+  "xray": {
+    "title": "GPU-beschleunigte Optimierung von Röntgenbildern",
+    "upload": "Bild hochladen",
+    "example1": "Beispielbild 1",
+    "example2": "Beispielbild 2",
+    "example3": "Beispielbild 3",
+    "algorithm1": "Automatische Bildkorrektur",
+    "algorithm2": "Helligkeitswerte aufweiten",
+    "algorithm3": "Grauwerte fokussieren",
+    "contrast": "Kontrast",
+    "sharpness": "Schärfe",
+    "noise": "Rauschen",
+    "hue": "Farbton",
+    "histogramLimits": "Histogram Begrenzungen",
+    "generateBrightnessHistogram": "Helligkeits-Histogramm generieren",
+    "resetFilters": "Filter zurücksetzen",
+    "showModifiedVersion": "Geänderte Version anzeigen",
+    "showOriginal": "Original anzeigen",
+    "brightness": "Helligkeit",
+    "count": "Anzahl"
+  }
 }
