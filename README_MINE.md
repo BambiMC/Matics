@@ -1,3 +1,5 @@
+npm install
+
 npx next build
 npm run dev
 

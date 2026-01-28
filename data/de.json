@@ -78,7 +78,8 @@
     "masterProject": "Master-Projekt: Chatbot & LLMs",
     "openf1": "Open F1 API Frontend (WIP)",
     "ma": "Exposé Masterthesis: LLMs & Cybersecurity",
-    "xray": "GPU-beschleunigte Optimierung von Röntgenbildern"
+    "xray": "GPU-beschleunigte Optimierung von Röntgenbildern",
+    "dAIper": "dAIper"
   },
   "periodicTableFilter": {
     "activeFilters": "Aktive Filter",
@@ -125,5 +126,8 @@
     "showOriginal": "Original anzeigen",
     "brightness": "Helligkeit",
     "count": "Anzahl"
+  },
+  "dAIper": {
+    "title": "dAIper"
   }
 }
