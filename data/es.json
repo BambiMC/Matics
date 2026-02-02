@@ -78,7 +78,8 @@
     "masterProject": "Proyecto de Maestría: Chatbot y LLMs",
     "openf1": "Open F1 API Frontend (WIP)",
     "ma": "Exposición Masterthesis: LLM y ciberseguridad",
-    "xray": "Optimización de Imágenes de Rayos X Acelerada por GPU"
+    "xray": "Optimización de Imágenes de Rayos X Acelerada por GPU",
+    "dAIper": "Segmentación de Imágenes dAIper"
   },
   "periodicTableFilter": {
     "activeFilters": "Filtros Activos",

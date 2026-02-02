@@ -78,7 +78,8 @@
     "masterProject": "マスタープロジェクト：チャットボット & LLMs",
     "openf1": "Open F1 API Frontend (WIP)",
     "ma": "エクスポゼ修士論文 LLMとサイバーセキュリティ",
-    "xray": "GPUによるX線画像の最適化"
+    "xray": "GPUによるX線画像の最適化",
+    "dAIper": "dAIper画像セグメンテーション"
   },
   "periodicTableFilter": {
     "activeFilters": "アクティブなフィルタ",
