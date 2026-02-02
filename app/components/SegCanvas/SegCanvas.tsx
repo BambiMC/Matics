@@ -46,9 +46,9 @@ const SegCanvas = forwardRef<HTMLCanvasElement, Props>(
     };
 
     return (
-      <div>
+      <div className="flex flex-col h-full">
         <p className="font-semibold mb-1">{title}</p>
-        <div style={{ overflow: "auto" }}>
+        <div style={{ overflow: "auto" }} className="flex-1 min-h-[140px]">
           <canvas
             ref={localRef}
             className={`w-full ${bgClass} ${canvasClassName}`}
@@ -56,14 +56,21 @@ const SegCanvas = forwardRef<HTMLCanvasElement, Props>(
               transform: `scale(${scale})`,
               transformOrigin: "top left",
               display: "block",
+              minHeight: 120,
             }}
           />
         </div>
         <div className="flex mt-4 gap-2 p-4 bg-fnbg-accent ">
-          <Button onClick={zoomIn} addClasses="border rounded-none">
+          <Button
+            onClick={zoomIn}
+            addClasses="border border-fnbg-purple rounded-none"
+          >
             +
           </Button>
-          <Button onClick={zoomOut} addClasses="border rounded-none">
+          <Button
+            onClick={zoomOut}
+            addClasses="border border-fnbg-purple rounded-none"
+          >
             -
           </Button>
           <div className="ml-auto">

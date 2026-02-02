@@ -126,3 +126,40 @@ textarea {
 button {
   border-radius: var(--radius-small);
 }
+
+/* Shared slider styles used across multiple components */
+.fnbg-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #3b82f6, var(--fnbg-orange, #fb923c));
+  outline: none;
+}
+.fnbg-slider::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 9999px;
+  background: transparent;
+}
+.fnbg-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  margin-top: -5px;
+}
+.fnbg-slider::-moz-range-track {
+  height: 8px;
+  border-radius: 9999px;
+  background: transparent;
+}
+.fnbg-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+}

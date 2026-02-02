@@ -7,6 +7,15 @@ export type HsvRange = {
   vMax: number;
 };
 
+const DEFAULT_HSV_RANGE: HsvRange = {
+  hMin: 0,
+  hMax: 179,
+  sMin: 0,
+  sMax: 255,
+  vMin: 0,
+  vMax: 255,
+};
+
 function rgbToHsvCv(r: number, g: number, b: number) {
   const rNorm = r / 255;
   const gNorm = g / 255;
@@ -90,41 +99,14 @@ export function segmentByHsv(
 }
 
 export function autoSegmentHsv(sourceCanvas: HTMLCanvasElement): HsvRange {
-  if (!sourceCanvas) {
-    return {
-      hMin: 0,
-      hMax: 179,
-      sMin: 0,
-      sMax: 255,
-      vMin: 0,
-      vMax: 255,
-    };
-  }
+  if (!sourceCanvas) return DEFAULT_HSV_RANGE;
 
   const ctx = sourceCanvas.getContext("2d");
-  if (!ctx) {
-    return {
-      hMin: 0,
-      hMax: 179,
-      sMin: 0,
-      sMax: 255,
-      vMin: 0,
-      vMax: 255,
-    };
-  }
+  if (!ctx) return DEFAULT_HSV_RANGE;
 
   const width = sourceCanvas.width;
   const height = sourceCanvas.height;
-  if (!width || !height) {
-    return {
-      hMin: 0,
-      hMax: 179,
-      sMin: 0,
-      sMax: 255,
-      vMin: 0,
-      vMax: 255,
-    };
-  }
+  if (!width || !height) return DEFAULT_HSV_RANGE;
 
   const imageData = ctx.getImageData(0, 0, width, height);
   const data = imageData.data;
@@ -245,6 +227,7 @@ export function segmentByKMeans(
   k: number = 4,
   maxIter: number = 12,
   sampleStep: number = 6,
+  visible?: boolean[],
 ): KMeansResult | null {
   if (!sourceCanvas || !segmentedCanvas) return null;
 
@@ -388,10 +371,18 @@ export function segmentByKMeans(
     }
 
     const cent = centroids[best];
-    outData.data[i] = cent.r;
-    outData.data[i + 1] = cent.g;
-    outData.data[i + 2] = cent.b;
-    outData.data[i + 3] = 255;
+    if (visible && visible.length > best && !visible[best]) {
+      // hide this cluster in output
+      outData.data[i] = 0;
+      outData.data[i + 1] = 0;
+      outData.data[i + 2] = 0;
+      outData.data[i + 3] = 0; // transparent
+    } else {
+      outData.data[i] = cent.r;
+      outData.data[i + 1] = cent.g;
+      outData.data[i + 2] = cent.b;
+      outData.data[i + 3] = 255;
+    }
   }
 
   segmentedCanvas.width = width;
@@ -410,4 +401,159 @@ export function segmentByKMeans(
       count: 0,
     })),
   } as KMeansResult;
+}
+
+export type RegionGrowOptions = {
+  h: number;
+  s: number;
+  v: number;
+  connectivity?: 4 | 8; // 4- or 8-connected neighbors
+  minSize?: number; // minimum pixels to keep region
+};
+
+/**
+ * Simple region growing (seed fill) in HSV space.
+ * Starts at seedX/seedY and includes neighbors whose HSV
+ * difference to the seed is below threshold. Supports 4/8 connectivity
+ * and optional minimum region size to discard small regions.
+ */
+export function segmentByRegionGrow(
+  sourceCanvas: HTMLCanvasElement,
+  maskCanvas: HTMLCanvasElement,
+  segmentedCanvas: HTMLCanvasElement,
+  seedX: number,
+  seedY: number,
+  options: RegionGrowOptions = {
+    h: 15,
+    s: 40,
+    v: 40,
+    connectivity: 4,
+    minSize: 1,
+  },
+): void {
+  if (!sourceCanvas || !maskCanvas || !segmentedCanvas) return;
+
+  const width = sourceCanvas.width;
+  const height = sourceCanvas.height;
+  if (!width || !height) return;
+
+  const srcCtx = sourceCanvas.getContext("2d");
+  const maskCtx = maskCanvas.getContext("2d");
+  const segCtx = segmentedCanvas.getContext("2d");
+  if (!srcCtx || !maskCtx || !segCtx) return;
+
+  const imageData = srcCtx.getImageData(0, 0, width, height);
+  const data = imageData.data;
+
+  // clamp seed inside image
+  const sx = Math.max(0, Math.min(width - 1, Math.floor(seedX)));
+  const sy = Math.max(0, Math.min(height - 1, Math.floor(seedY)));
+  const seedIdx = (sy * width + sx) * 4;
+  const sr = data[seedIdx];
+  const sg = data[seedIdx + 1];
+  const sb = data[seedIdx + 2];
+  const [sh, ss, sv] = rgbToHsvCv(sr, sg, sb);
+
+  const maskData = maskCtx.createImageData(width, height);
+  const outData = segCtx.createImageData(width, height);
+
+  // visited: processed pixels; queued: pixels already pushed to stack
+  const visited = new Uint8Array(width * height);
+  const queued = new Uint8Array(width * height);
+  const stack: number[] = [];
+
+  // push seed and mark queued
+  const seedCoord = sy * width + sx;
+  stack.push(sx, sy);
+  queued[seedCoord] = 1;
+
+  const conn = options.connectivity === 8 ? 8 : 4;
+  let includedCount = 0;
+
+  while (stack.length > 0) {
+    const y = stack.pop() as number;
+    const x = stack.pop() as number;
+    if (x < 0 || x >= width || y < 0 || y >= height) continue;
+    const idx = y * width + x;
+    if (visited[idx]) continue;
+
+    const i4 = idx * 4;
+    const r = data[i4];
+    const g = data[i4 + 1];
+    const b = data[i4 + 2];
+    const [hCv, sCv, vCv] = rgbToHsvCv(r, g, b);
+
+    // circular hue distance (h range 0..179)
+    const rawDh = Math.abs(hCv - sh);
+    const dh = Math.min(rawDh, 180 - rawDh);
+    const ds = Math.abs(sCv - ss);
+    const dv = Math.abs(vCv - sv);
+
+    if (dh <= options.h && ds <= options.s && dv <= options.v) {
+      // include
+      maskData.data[i4] = 255;
+      maskData.data[i4 + 1] = 255;
+      maskData.data[i4 + 2] = 255;
+      maskData.data[i4 + 3] = 255;
+
+      outData.data[i4] = r;
+      outData.data[i4 + 1] = g;
+      outData.data[i4 + 2] = b;
+      outData.data[i4 + 3] = 255;
+
+      includedCount++;
+
+      // push neighbors (only if not already queued or visited)
+      const tryPush = (nx: number, ny: number) => {
+        const nIdx = ny * width + nx;
+        if (!visited[nIdx] && !queued[nIdx]) {
+          stack.push(nx, ny);
+          queued[nIdx] = 1;
+        }
+      };
+
+      if (x > 0) tryPush(x - 1, y);
+      if (x < width - 1) tryPush(x + 1, y);
+      if (y > 0) tryPush(x, y - 1);
+      if (y < height - 1) tryPush(x, y + 1);
+      if (conn === 8) {
+        if (x > 0 && y > 0) tryPush(x - 1, y - 1);
+        if (x < width - 1 && y > 0) tryPush(x + 1, y - 1);
+        if (x > 0 && y < height - 1) tryPush(x - 1, y + 1);
+        if (x < width - 1 && y < height - 1) tryPush(x + 1, y + 1);
+      }
+    }
+
+    visited[idx] = 1;
+  }
+
+  // If region too small, clear outputs but still draw the red seed marker
+  const minSize = options.minSize || 1;
+  if (includedCount < minSize) {
+    maskCtx.clearRect(0, 0, width, height);
+    segCtx.clearRect(0, 0, width, height);
+  } else {
+    maskCanvas.width = width;
+    maskCanvas.height = height;
+    segmentedCanvas.width = width;
+    segmentedCanvas.height = height;
+    maskCtx.putImageData(maskData, 0, 0);
+    segCtx.putImageData(outData, 0, 0);
+  }
+
+  // Draw a single red circle marker (50px radius) centered at the seed
+  try {
+    const radius = 50;
+    [maskCtx, segCtx].forEach((ctx) => {
+      ctx.save();
+      ctx.beginPath();
+      ctx.strokeStyle = "red";
+      ctx.lineWidth = 8;
+      ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+    });
+  } catch (e) {
+    console.error("Failed to draw seed marker", e);
+  }
 }

@@ -1,6 +1,6 @@
 {
   "homepage": {
-    "welcomeText": "Hey, Ich bin Fabian Berger, ein 24 jähriger Master-Student. Ich studiere momentan Informatik an der Friedrich Alexander Universität in Erlangen.",
+    "welcomeText": "Hey, Ich bin Fabian Berger, ein 25 jähriger Master-Student. Ich studiere momentan Informatik an der Friedrich Alexander Universität in Erlangen.",
     "altPicture": "Bild von Fabian Berger"
   },
   "navbar": {
@@ -79,7 +79,7 @@
     "openf1": "Open F1 API Frontend (WIP)",
     "ma": "Exposé Masterthesis: LLMs & Cybersecurity",
     "xray": "GPU-beschleunigte Optimierung von Röntgenbildern",
-    "dAIper": "dAIper"
+    "dAIper": "dAIper-Bildsegmentierung"
   },
   "periodicTableFilter": {
     "activeFilters": "Aktive Filter",
@@ -128,6 +128,51 @@
     "count": "Anzahl"
   },
   "dAIper": {
-    "title": "dAIper"
+    "title": "dAIper-Bildsegmentierung",
+    "description1": "Diese Webapplikation soll beispielhaft zeigen, wie mit verschiedenen Image Segmentation Algorithmen das Saugpad einer Windel während des Produktionsprozesses analysiert werden kann.",
+    "description2": "Das Beispielbild 1 erzeugt bessere Ergebnisse wegen des besseren Kontrastes im Saugkörper, die Standardwerte der Algorithmen sind auf dieses Bild eingestellt.",
+    "upload": "Bild hochladen",
+    "example1": "Beispielbild 1",
+    "example2": "Beispielbild 2",
+    "example3": "Beispielbild 3",
+    "algorithm1": "Automatische Bildkorrektur",
+    "algorithm2": "Helligkeitswerte aufweiten",
+    "algorithm3": "Grauwerte fokussieren",
+    "contrast": "Kontrast",
+    "sharpness": "Schärfe",
+    "blur": "Weichzeichnen",
+    "noise": "Rauschen",
+    "hue": "Farbton",
+    "histogramLimits": "Histogram Begrenzungen",
+    "generateBrightnessHistogram": "Helligkeits-Histogramm generieren",
+    "resetFilters": "Filter zurücksetzen",
+    "showModifiedVersion": "Geänderte Version anzeigen",
+    "showOriginal": "Original anzeigen",
+    "brightness": "Helligkeit",
+    "count": "Anzahl",
+    "segment_hsv": "HSV Segmentierung",
+    "segment_kmeans": "K-Means Segmentierung",
+    "segment_region": "Region Growing Segmentierung",
+    "original_image": "Originalbild",
+    "segmented_image": "Segmentiertes Bild",
+    "mask": "Maske",
+    "reset": "Zurücksetzen",
+    "auto_segment": "Automatische Segmentierung",
+    "run_hsv": "HSV Segmentierung ausführen",
+    "clusters_k": "Cluster (k)",
+    "cluster_k_means": "Cluster (K-Means)",
+    "region_grow_seed": "Startpunkt (Seed)",
+    "h_threshold": "H Schwellenwert",
+    "s_treshold": "S Schwellenwert",
+    "v_threshold": "V Schwellenwert",
+    "connectivity": "Konnektivität",
+    "4_connected": "4-verbunden",
+    "8_connected": "8-verbunden",
+    "min_size": "Minimale Größe",
+    "click_on_image": "Klicken Sie auf das Bild...",
+    "select_seed": "Startpunkt auswählen",
+    "run_region_grow": "Region Growing ausführen",
+    "last_seed": "Letzter Startpunkt",
+    "no_seed_yet": "Noch kein Startpunkt ausgewählt"
   }
 }

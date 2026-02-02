@@ -5,7 +5,12 @@ import SegCanvas from "@app/components/SegCanvas/SegCanvas";
 import FiltersPanel from "@app/components/FiltersPanel/FiltersPanel";
 import SegmentMenu from "@app/components/SegmentMenu/SegmentMenu";
 import * as imageProcessing from "@lib/imageProcessing";
-import { segmentByHsv, autoSegmentHsv, segmentByKMeans } from "@lib/algorithms";
+import {
+  segmentByHsv,
+  autoSegmentHsv,
+  segmentByKMeans,
+  segmentByRegionGrow,
+} from "@lib/algorithms";
 import { useLanguageData } from "@data/languageLoader";
 
 const DEFAULT_HSV = {
@@ -29,6 +34,7 @@ const Projects: React.FC = () => {
   const [contrast, setContrast] = useState(1);
   const [sharpen, setSharpen] = useState(0);
   const [noise, setNoise] = useState(0);
+  const [blur, setBlur] = useState(0);
   const [hue, setHue] = useState(0);
 
   const [histogramMinValue, setHistogramMinValue] = useState(0);
@@ -36,7 +42,6 @@ const Projects: React.FC = () => {
 
   const [scale, setScale] = useState(1);
   const zoomIn = () => setScale((prev) => Math.min(prev + 0.1, 5));
-  // Prevent zooming out below 100% (scale 1)
   const zoomOut = () => setScale((prev) => Math.max(prev - 0.1, 1));
 
   const [hMin, setHMin] = useState(DEFAULT_HSV.hMin);
@@ -54,6 +59,15 @@ const Projects: React.FC = () => {
   );
   const [kClusters, setKClusters] = useState(4);
   const [kCentroids, setKCentroids] = useState<any[]>([]);
+  const [visibleCentroids, setVisibleCentroids] = useState<boolean[]>([]);
+  const [regionHThresh, setRegionHThresh] = useState(70);
+  const [regionSThresh, setRegionSThresh] = useState(200);
+  const [regionVThresh, setRegionVThresh] = useState(200);
+  const [regionConnectivity, setRegionConnectivity] = useState<4 | 8>(4);
+  const [regionMinSize, setRegionMinSize] = useState(1);
+  const [lastSeed, setLastSeed] = useState<{ x: number; y: number } | null>(
+    null,
+  );
 
   const resetFilters = () => {
     setContrast(1);
@@ -71,6 +85,129 @@ const Projects: React.FC = () => {
 
     if (originalImageSrc) {
       setImageSrc(originalImageSrc);
+    }
+  };
+
+  const ensureStyleSize = (c: HTMLCanvasElement | null) => {
+    if (!c) return;
+    // revert to CSS-controlled sizing to avoid forcing large pixel sizes
+    try {
+      c.style.width = "";
+      c.style.height = "";
+    } catch (e) {
+      /* ignore */
+    }
+  };
+  const runRegionAtSeed = (x?: number, y?: number) => {
+    if (
+      !canvasRef.current ||
+      !maskCanvasRef.current ||
+      !segmentedCanvasRef.current
+    ) {
+      console.warn("runRegionAtSeed: canvases not ready");
+      return;
+    }
+    const sx = x ?? lastSeed?.x;
+    const sy = y ?? lastSeed?.y;
+    if (sx == null || sy == null) {
+      console.warn("runRegionAtSeed: no seed provided");
+      return;
+    }
+
+    try {
+      // draw marker on mask to indicate seed
+      const mctx = maskCanvasRef.current.getContext("2d");
+      if (mctx) {
+        mctx.save();
+        mctx.fillStyle = "rgba(255,0,0,0.9)";
+        mctx.beginPath();
+        mctx.arc(sx, sy, 3, 0, Math.PI * 2);
+        mctx.fill();
+        mctx.restore();
+      }
+
+      segmentByRegionGrow(
+        canvasRef.current,
+        maskCanvasRef.current,
+        segmentedCanvasRef.current,
+        sx,
+        sy,
+        {
+          h: regionHThresh,
+          s: regionSThresh,
+          v: regionVThresh,
+          connectivity: regionConnectivity,
+          minSize: regionMinSize,
+        },
+      );
+
+      ensureStyleSize(maskCanvasRef.current);
+      ensureStyleSize(segmentedCanvasRef.current);
+
+      // inspect result
+      const sctx = segmentedCanvasRef.current.getContext("2d");
+      if (sctx) {
+        const id = sctx.getImageData(
+          0,
+          0,
+          segmentedCanvasRef.current.width,
+          segmentedCanvasRef.current.height,
+        );
+        let count = 0;
+        let minX = Infinity,
+          minY = Infinity,
+          maxX = -Infinity,
+          maxY = -Infinity;
+        for (let i = 0; i < id.data.length; i += 4) {
+          if (
+            id.data[i] !== 0 ||
+            id.data[i + 1] !== 0 ||
+            id.data[i + 2] !== 0
+          ) {
+            const px = (i / 4) % segmentedCanvasRef.current.width;
+            const py = Math.floor(i / 4 / segmentedCanvasRef.current.width);
+            minX = Math.min(minX, px);
+            minY = Math.min(minY, py);
+            maxX = Math.max(maxX, px);
+            maxY = Math.max(maxY, py);
+            count++;
+          }
+        }
+        if (count > 0 && isFinite(minX)) {
+          // draw bbox to make region visible (ensure full stroke is inside canvas)
+          sctx.save();
+          sctx.strokeStyle = "red";
+          const strokeW = 8;
+          sctx.lineWidth = strokeW;
+          const half = strokeW / 2;
+          const rawX = Math.floor(minX - 1);
+          const rawY = Math.floor(minY - 1);
+          const rawW = Math.ceil(maxX - minX + 3);
+          const rawH = Math.ceil(maxY - minY + 3);
+          const rx = Math.max(half, rawX);
+          const ry = Math.max(half, rawY);
+          const rwidth = Math.max(
+            0,
+            Math.min(
+              rawW,
+              Math.floor(segmentedCanvasRef.current.width - rx - half),
+            ),
+          );
+          const rheight = Math.max(
+            0,
+            Math.min(
+              rawH,
+              Math.floor(segmentedCanvasRef.current.height - ry - half),
+            ),
+          );
+          sctx.strokeRect(rx, ry, rwidth, rheight);
+          sctx.restore();
+        }
+      }
+
+      setSelectedAlgorithm("segment_region");
+    } catch (err) {
+      console.error("runRegionAtSeed failed", err);
     }
   };
 
@@ -106,7 +243,7 @@ const Projects: React.FC = () => {
     if (!canvasRef.current) return;
 
     const link = document.createElement("a");
-    link.download = "xray_image.png";
+    link.download = "dAIper_image.png";
     link.href = canvasRef.current.toDataURL("image/png");
     link.click();
   };
@@ -120,16 +257,6 @@ const Projects: React.FC = () => {
     setSMax(range.sMax);
     setVMin(range.vMin);
     setVMax(range.vMax);
-  };
-
-  const handleKMeans = () => {
-    if (!canvasRef.current || !segmentedCanvasRef.current) return;
-    const res = segmentByKMeans(
-      canvasRef.current,
-      segmentedCanvasRef.current,
-      kClusters,
-    );
-    if (res) setKCentroids(res.centroids || []);
   };
 
   // Run segmentation on demand (only when user requests)
@@ -153,6 +280,8 @@ const Projects: React.FC = () => {
         vMax,
       },
     );
+    ensureStyleSize(maskCanvasRef.current);
+    ensureStyleSize(segmentedCanvasRef.current);
     setSelectedAlgorithm("segment_hsv");
   };
 
@@ -163,8 +292,14 @@ const Projects: React.FC = () => {
 
     const doSeg = (source: HTMLCanvasElement) => {
       const res = segmentByKMeans(source, targetCanvas, kClusters);
-      if (res) setKCentroids(res.centroids || []);
+      if (res) {
+        setKCentroids(res.centroids || []);
+        // initialize visibility for new centroids
+        setVisibleCentroids(new Array(res.centroids.length).fill(true));
+        // paint using returned centroids (segmentByKMeans already wrote output)
+      }
       setSelectedAlgorithm("segment_kmeans");
+      ensureStyleSize(targetCanvas);
     };
 
     if (srcCanvas && srcCanvas.width > 0 && srcCanvas.height > 0) {
@@ -185,6 +320,70 @@ const Projects: React.FC = () => {
     }
   };
 
+  // paint segmented output from stored centroids without recomputing clusters
+  const paintFromCentroids = (visible?: boolean[]) => {
+    if (!canvasRef.current || !segmentedCanvasRef.current) return;
+    if (!kCentroids || kCentroids.length === 0) return;
+    const src = canvasRef.current;
+    const tgt = segmentedCanvasRef.current;
+    const width = src.width;
+    const height = src.height;
+    if (!width || !height) return;
+    const sctx = src.getContext("2d");
+    const tctx = tgt.getContext("2d");
+    if (!sctx || !tctx) return;
+    const imageData = sctx.getImageData(0, 0, width, height);
+    const data = imageData.data;
+    const out = tctx.createImageData(width, height);
+
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i];
+      const g = data[i + 1];
+      const b = data[i + 2];
+      let best = 0;
+      let bestDist = Infinity;
+      for (let c = 0; c < kCentroids.length; c++) {
+        const cent = kCentroids[c];
+        const dr = cent.r - r;
+        const dg = cent.g - g;
+        const db = cent.b - b;
+        const dist = dr * dr + dg * dg + db * db;
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = c;
+        }
+      }
+      const vis = visible && visible.length > best ? visible[best] : true;
+      if (!vis) {
+        out.data[i] = 0;
+        out.data[i + 1] = 0;
+        out.data[i + 2] = 0;
+        out.data[i + 3] = 0;
+      } else {
+        const cent = kCentroids[best];
+        out.data[i] = cent.r;
+        out.data[i + 1] = cent.g;
+        out.data[i + 2] = cent.b;
+        out.data[i + 3] = 255;
+      }
+    }
+
+    tgt.width = width;
+    tgt.height = height;
+    tctx.putImageData(out, 0, 0);
+  };
+
+  const toggleCentroid = (index: number) => {
+    if (!kCentroids || index < 0 || index >= kCentroids.length) return;
+    const next = [...visibleCentroids];
+    // ensure length
+    if (next.length !== kCentroids.length) next.length = kCentroids.length;
+    next[index] = !next[index];
+    setVisibleCentroids(next);
+    // repaint using existing centroids
+    paintFromCentroids(next);
+  };
+
   const runAutoSegment = () => {
     const srcCanvas = canvasRef.current;
     const applyRange = (source: HTMLCanvasElement, range: any) => {
@@ -202,6 +401,8 @@ const Projects: React.FC = () => {
           segmentedCanvasRef.current,
           range,
         );
+        ensureStyleSize(maskCanvasRef.current);
+        ensureStyleSize(segmentedCanvasRef.current);
       }
     };
 
@@ -222,6 +423,114 @@ const Projects: React.FC = () => {
         const range = autoSegmentHsv(tmp);
         if (range) applyRange(tmp, range);
       };
+    }
+  };
+
+  const [awaitingSeed, setAwaitingSeed] = useState(false);
+
+  const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    if (!canvasRef.current) return;
+    if (!awaitingSeed) return;
+
+    const rect = canvasRef.current.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const clickY = e.clientY - rect.top;
+
+    // convert CSS coords to canvas pixel coords
+    const canvasX = Math.round((clickX * canvasRef.current.width) / rect.width);
+    const canvasY = Math.round(
+      (clickY * canvasRef.current.height) / rect.height,
+    );
+
+    if (!maskCanvasRef.current || !segmentedCanvasRef.current) {
+      console.warn("mask or segmented canvas not available for region grow");
+      setAwaitingSeed(false);
+      return;
+    }
+
+    try {
+      // draw a small marker on the visible canvas to confirm seed position
+      const vctx = canvasRef.current.getContext("2d");
+      if (vctx) {
+        vctx.save();
+        vctx.fillStyle = "rgba(255,0,0,0.8)";
+        vctx.beginPath();
+        vctx.arc(canvasX, canvasY, 3, 0, Math.PI * 2);
+        vctx.fill();
+        vctx.restore();
+      }
+
+      // store last seed for manual apply
+      setLastSeed({ x: canvasX, y: canvasY });
+
+      // use UI-configured thresholds
+      segmentByRegionGrow(
+        canvasRef.current,
+        maskCanvasRef.current,
+        segmentedCanvasRef.current,
+        canvasX,
+        canvasY,
+        {
+          h: regionHThresh,
+          s: regionSThresh,
+          v: regionVThresh,
+          connectivity: regionConnectivity,
+          minSize: regionMinSize,
+        },
+      );
+
+      // make sure canvases display at their pixel size
+      ensureStyleSize(maskCanvasRef.current);
+      ensureStyleSize(segmentedCanvasRef.current);
+
+      // verify segmented output non-empty; if empty, retry with looser thresholds
+      try {
+        const sctx = segmentedCanvasRef.current.getContext("2d");
+        if (sctx) {
+          const id = sctx.getImageData(
+            0,
+            0,
+            segmentedCanvasRef.current.width,
+            segmentedCanvasRef.current.height,
+          );
+          let hasPixels = false;
+          for (let i = 3; i < id.data.length; i += 4) {
+            if (id.data[i] !== 0) {
+              hasPixels = true;
+              break;
+            }
+          }
+          if (!hasPixels) {
+            console.info(
+              "region grow produced empty output; retrying with looser thresholds",
+            );
+            segmentByRegionGrow(
+              canvasRef.current,
+              maskCanvasRef.current,
+              segmentedCanvasRef.current,
+              canvasX,
+              canvasY,
+              {
+                h: Math.min(179, regionHThresh * 2),
+                s: Math.min(255, regionSThresh * 2),
+                v: Math.min(255, regionVThresh * 2),
+                connectivity: regionConnectivity,
+                minSize: regionMinSize,
+              },
+            );
+            ensureStyleSize(maskCanvasRef.current);
+            ensureStyleSize(segmentedCanvasRef.current);
+          }
+        }
+      } catch (e) {
+        console.warn("failed to inspect segmented output", e);
+      }
+
+      setSelectedAlgorithm("segment_region");
+    } catch (err) {
+      console.error("region grow failed", err);
+    } finally {
+      setAwaitingSeed(false);
     }
   };
   useEffect(() => {
@@ -259,12 +568,14 @@ const Projects: React.FC = () => {
               : Math.max(0, Math.min(3, contrast));
             const safeSharpen = Math.max(0, Math.min(1, sharpen));
             const safeNoise = Math.max(0, Math.min(1, noise));
+            const safeBlur = Math.max(0, Math.min(50, blur));
             const safeHue = Math.max(-180, Math.min(180, hue)) / 360; // Normalize to -0.5 ~ 0.5
 
             // Apply all GPU-based filters in order
             if (safeContrast !== 1)
               fxCanvas = fxCanvas.brightnessContrast(0, safeContrast - 1);
             if (safeHue !== 0) fxCanvas = fxCanvas.hueSaturation(safeHue, 0);
+            if (safeBlur > 0) fxCanvas = fxCanvas.triangleBlur(safeBlur);
             if (safeSharpen > 0)
               fxCanvas = fxCanvas.unsharpMask(20, safeSharpen * 2);
             if (safeNoise > 0) fxCanvas = fxCanvas.noise(safeNoise * 0.5);
@@ -293,6 +604,9 @@ const Projects: React.FC = () => {
             maskCanvasRef.current.height = img.height;
             segmentedCanvasRef.current.width = img.width;
             segmentedCanvasRef.current.height = img.height;
+            // sync CSS size so canvases are visible at full resolution
+            ensureStyleSize(maskCanvasRef.current);
+            ensureStyleSize(segmentedCanvasRef.current);
             const mctx = maskCanvasRef.current.getContext("2d");
             const sctx = segmentedCanvasRef.current.getContext("2d");
             if (mctx) mctx.clearRect(0, 0, img.width, img.height);
@@ -312,6 +626,15 @@ const Projects: React.FC = () => {
           visibleCtx.drawImage(tempCanvas, 0, 0);
           // remember this image as the last processed image
           prevImageSrcRef.current = imageSrc;
+          // generate histogram for the newly drawn image so it's visible on startup/load
+          try {
+            imageProcessing.generateHistogram(
+              histogramMinValue,
+              histogramMaxValue,
+            );
+          } catch (err) {
+            console.warn("generateHistogram failed on image load:", err);
+          }
         } catch (error) {
           console.error("Error during glfx image processing:", error);
         }
@@ -324,6 +647,7 @@ const Projects: React.FC = () => {
   }, [
     imageSrc,
     sharpen,
+    blur,
     noise,
     contrast,
     hue,
@@ -336,13 +660,16 @@ const Projects: React.FC = () => {
     vMax,
   ]);
 
-  const data = useLanguageData("xray");
+  const data = useLanguageData("dAIper");
 
   return (
     <main className="px-4 mx-auto w-screen max-w-9xl my-40 md:mt-20 lg:mt-24">
       {data && (
         <div>
           <h1 className="font-bold text-2xl my-4">{data["title"]}</h1>
+
+          <h2 className="mb-4">{data["description1"]}</h2>
+          <h2 className="mb-4">{data["description2"]}</h2>
 
           <div className="my-4 p-4 bg-fnbg-accent">
             <div className="flex flex-wrap items-center">
@@ -379,18 +706,28 @@ const Projects: React.FC = () => {
                   setSelectedAlgorithm("segment_hsv");
                   runSegmentHsv();
                 }}
-                addClasses={`border rounded-none`}
+                addClasses={`border border-fnbg-purple rounded-none`}
               >
-                segment_hsv
+                {data["segment_hsv"]}
               </Button>
               <Button
                 onClick={() => {
                   setSelectedAlgorithm("segment_kmeans");
                   runKMeans();
                 }}
-                addClasses={`border rounded-none`}
+                addClasses={`border border-fnbg-purple rounded-none`}
               >
-                segment_kmeans
+                {data["segment_kmeans"]}
+              </Button>
+              <Button
+                onClick={() => {
+                  setSelectedAlgorithm("segment_region");
+                  // next canvas click will be used as seed
+                  setAwaitingSeed(true);
+                }}
+                addClasses={`border border-fnbg-purple rounded-none`}
+              >
+                {data["segment_region"]}
               </Button>
             </div>
           </div>
@@ -404,6 +741,8 @@ const Projects: React.FC = () => {
                   setContrast={setContrast}
                   sharpen={sharpen}
                   setSharpen={setSharpen}
+                  blur={blur}
+                  setBlur={setBlur}
                   noise={noise}
                   setNoise={setNoise}
                   hue={hue}
@@ -445,6 +784,22 @@ const Projects: React.FC = () => {
                   kClusters={kClusters}
                   setKClusters={setKClusters}
                   kCentroids={kCentroids}
+                  visibleCentroids={visibleCentroids}
+                  toggleCentroid={toggleCentroid}
+                  regionHThresh={regionHThresh}
+                  setRegionHThresh={setRegionHThresh}
+                  regionSThresh={regionSThresh}
+                  setRegionSThresh={setRegionSThresh}
+                  regionVThresh={regionVThresh}
+                  setRegionVThresh={setRegionVThresh}
+                  awaitingSeed={awaitingSeed}
+                  setAwaitingSeed={setAwaitingSeed}
+                  regionConnectivity={regionConnectivity}
+                  setRegionConnectivity={setRegionConnectivity}
+                  regionMinSize={regionMinSize}
+                  setRegionMinSize={setRegionMinSize}
+                  lastSeed={lastSeed}
+                  runRegionAtSeed={runRegionAtSeed}
                   data={data}
                 />
               </div>
@@ -454,13 +809,16 @@ const Projects: React.FC = () => {
                   className="flex flex-row gap-4 overflow-auto border border-fnbg-purple border-2 max-w-full max-h-[90vh]"
                   style={{ minWidth: "300px", minHeight: "300px" }}
                 >
-                  <div className="flex-1 min-w-[300px] flex flex-col items-start justify-center p-2">
-                    <p className="font-semibold mb-1">Original Image</p>
+                  <div className="flex-1 min-w-[300px] flex flex-col items-start justify-start p-2">
+                    <p className="font-semibold mb-1">
+                      {data["original_image"]}
+                    </p>
                     <div className="w-full h-full max-w-full max-h-[70vh] overflow-hidden flex items-center justify-center">
                       <canvas
                         id="imageCanvas"
                         className="block object-contain"
                         ref={canvasRef}
+                        onClick={handleCanvasClick}
                         style={{
                           transform: `scale(${scale})`,
                           transformOrigin: "center center",
@@ -475,13 +833,13 @@ const Projects: React.FC = () => {
                         <div className="flex gap-2 ml-2">
                           <Button
                             onClick={zoomIn}
-                            addClasses="border rounded-none text-xl font-bold"
+                            addClasses="border border-fnbg-purple rounded-none text-xl font-bold"
                           >
                             +
                           </Button>
                           <Button
                             onClick={zoomOut}
-                            addClasses="border rounded-none text-xl font-bold"
+                            addClasses="border border-fnbg-purple rounded-none text-xl font-bold"
                           >
                             -
                           </Button>
@@ -503,11 +861,12 @@ const Projects: React.FC = () => {
                   </div>
 
                   {(selectedAlgorithm === "segment_hsv" ||
-                    selectedAlgorithm === "auto_segment_hsv") && (
+                    selectedAlgorithm === "auto_segment_hsv" ||
+                    selectedAlgorithm === "segment_region") && (
                     <div className="flex-1 min-w-[260px] p-2">
                       <SegCanvas
                         ref={maskCanvasRef as any}
-                        title="HSV Mask"
+                        title={data["mask"]}
                         bgClass="bg-fnbg-body"
                         downloadFilename="mask.png"
                       />
@@ -517,7 +876,7 @@ const Projects: React.FC = () => {
                   <div className="flex-1 min-w-[260px] p-2">
                     <SegCanvas
                       ref={segmentedCanvasRef as any}
-                      title="Segmented Output"
+                      title={data["segmented_image"]}
                       bgClass="bg-fnbg-body"
                       downloadFilename="segmented.png"
                     />

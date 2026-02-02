@@ -1,12 +1,15 @@
 "use client";
 import React from "react";
 import Button from "@app/components/Button/Button";
+import RangeControl from "@app/components/RangeControl/RangeControl";
 
 type Props = {
   contrast: number;
   setContrast: (v: number) => void;
   sharpen: number;
   setSharpen: (v: number) => void;
+  blur: number;
+  setBlur: (v: number) => void;
   noise: number;
   setNoise: (v: number) => void;
   hue: number;
@@ -29,6 +32,8 @@ export default function FiltersPanel({
   setSharpen,
   noise,
   setNoise,
+  blur,
+  setBlur,
   hue,
   setHue,
   histogramMinValue,
@@ -43,57 +48,50 @@ export default function FiltersPanel({
 }: Props) {
   return (
     <>
-      <label>
-        {data?.["contrast"] ?? "Contrast"}: {contrast.toFixed(2)}
-        <input
-          className="w-full fnbg-slider"
-          type="range"
-          min="0"
-          max="3"
-          step="0.01"
-          value={contrast}
-          onChange={(e) => setContrast(Number(e.target.value))}
-        />
-      </label>
+      <RangeControl
+        label={data?.["contrast"] ?? "Contrast"}
+        value={contrast}
+        onChange={setContrast}
+        min={0}
+        max={3}
+        step={0.01}
+      />
 
-      <label>
-        {data?.["sharpness"] ?? "Sharpness"}: {sharpen.toFixed(2)}
-        <input
-          className="w-full fnbg-slider"
-          type="range"
-          min="0"
-          max="1"
-          step="0.01"
-          value={sharpen}
-          onChange={(e) => setSharpen(Number(e.target.value))}
-        />
-      </label>
+      <RangeControl
+        label={data?.["sharpness"] ?? "Sharpness"}
+        value={sharpen}
+        onChange={setSharpen}
+        min={0}
+        max={1}
+        step={0.01}
+      />
 
-      <label>
-        {data?.["noise"] ?? "Noise"}: {noise.toFixed(2)}
-        <input
-          className="w-full fnbg-slider"
-          type="range"
-          min="0"
-          max="1"
-          step="0.01"
-          value={noise}
-          onChange={(e) => setNoise(Number(e.target.value))}
-        />
-      </label>
+      <RangeControl
+        label={data?.["blur"] ?? "Blur"}
+        value={blur}
+        onChange={setBlur}
+        min={0}
+        max={50}
+        step={1}
+      />
 
-      <label>
-        {data?.["hue"] ?? "Hue"}: {hue.toFixed(0)}°
-        <input
-          className="w-full fnbg-slider"
-          type="range"
-          min="-180"
-          max="180"
-          step="1"
-          value={hue}
-          onChange={(e) => setHue(Number(e.target.value))}
-        />
-      </label>
+      <RangeControl
+        label={data?.["noise"] ?? "Noise"}
+        value={noise}
+        onChange={setNoise}
+        min={0}
+        max={1}
+        step={0.01}
+      />
+
+      <RangeControl
+        label={data?.["hue"] ?? "Hue"}
+        value={hue}
+        onChange={setHue}
+        min={-180}
+        max={180}
+        step={1}
+      />
       <div className="flex gap-2 mt-4">
         <Button
           onClick={resetFilters}
@@ -143,47 +141,6 @@ export default function FiltersPanel({
       </div>
 
       <canvas id="histogramCanvas" className="mt-2"></canvas>
-      <style jsx>{`
-        .fnbg-slider {
-          -webkit-appearance: none;
-          appearance: none;
-          height: 8px;
-          border-radius: 9999px;
-          background: linear-gradient(
-            90deg,
-            #3b82f6,
-            var(--fnbg-orange, #fb923c)
-          );
-          outline: none;
-        }
-        .fnbg-slider::-webkit-slider-runnable-track {
-          height: 8px;
-          border-radius: 9999px;
-          background: transparent;
-        }
-        .fnbg-slider::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
-          width: 18px;
-          height: 18px;
-          border-radius: 50%;
-          background: #fff;
-          border: 2px solid rgba(0, 0, 0, 0.15);
-          margin-top: -5px;
-        }
-        .fnbg-slider::-moz-range-track {
-          height: 8px;
-          border-radius: 9999px;
-          background: transparent;
-        }
-        .fnbg-slider::-moz-range-thumb {
-          width: 18px;
-          height: 18px;
-          border-radius: 50%;
-          background: #fff;
-          border: 2px solid rgba(0, 0, 0, 0.15);
-        }
-      `}</style>
     </>
   );
 }
