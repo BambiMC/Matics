@@ -1,6 +1,6 @@
 {
   "homepage": {
-    "welcomeText": "Hola, soy Fabian Berger, un estudiante de maestría de 25 años. Actualmente estoy estudiando informática en la Universidad Friedrich Alexander en Erlangen.",
+    "welcomeText": "Hola, soy Fabian Berger, un consultor de TI de 25 años especializado en LLMs.",
     "altPicture": "Imagen de Fabian Berger"
   },
   "navbar": {
@@ -79,7 +79,8 @@
     "openf1": "Open F1 API Frontend (WIP)",
     "ma": "Exposición Masterthesis: LLM y ciberseguridad",
     "xray": "Optimización de Imágenes de Rayos X Acelerada por GPU",
-    "dAIper": "Segmentación de Imágenes dAIper"
+    "dAIper": "Segmentación de Imágenes dAIper",
+    "gregdex": "GregDex"
   },
   "periodicTableFilter": {
     "activeFilters": "Filtros Activos",

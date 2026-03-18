@@ -1,6 +1,6 @@
 {
   "homepage": {
-    "welcomeText": "Hey, Ich bin Fabian Berger, ein 25 jähriger Master-Student. Ich studiere momentan Informatik an der Friedrich Alexander Universität in Erlangen.",
+    "welcomeText": "Hey, Ich bin Fabian Berger, ein 25 jähriger IT-Consultant mit Schwerpunkt LLMs.",
     "altPicture": "Bild von Fabian Berger"
   },
   "navbar": {
@@ -79,7 +79,8 @@
     "openf1": "Open F1 API Frontend (WIP)",
     "ma": "Exposé Masterthesis: LLMs & Cybersecurity",
     "xray": "GPU-beschleunigte Optimierung von Röntgenbildern",
-    "dAIper": "dAIper-Bildsegmentierung"
+    "dAIper": "dAIper-Bildsegmentierung",
+    "gregdex": "GregDex"
   },
   "periodicTableFilter": {
     "activeFilters": "Aktive Filter",

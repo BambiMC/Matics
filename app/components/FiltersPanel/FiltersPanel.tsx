@@ -95,20 +95,20 @@ export default function FiltersPanel({
       <div className="flex gap-2 mt-4">
         <Button
           onClick={resetFilters}
-          addClasses="border border-fnbg-purple rounded-none"
+          addClasses="rounded-none"
         >
           {data?.["resetFilters"] ?? "Reset Filters"}
         </Button>
         <Button
           onClick={toggleShowOriginal}
-          addClasses="border border-fnbg-purple rounded-none"
+          addClasses="rounded-none"
         >
           {showOriginal
             ? (data?.["showModifiedVersion"] ?? "Show Modified")
             : (data?.["showOriginal"] ?? "Show Original")}
         </Button>
       </div>
-      <hr className="border border-fnbg-orange my-4" />
+      <hr className="my-4" />
       <div className="flex items-center flex-wrap gap-2">
         <span className="font-bold mr-20">
           {data?.["histogramLimits"] ?? "Histogram limits"}
@@ -120,7 +120,7 @@ export default function FiltersPanel({
           step="1"
           value={histogramMinValue}
           onChange={(e) => setHistogramMinValue(Number(e.target.value))}
-          className="w-16 border border-gray-300 rounded px-2"
+          className="w-16 rounded px-2"
         />
         <span>-</span>
         <input
@@ -130,11 +130,11 @@ export default function FiltersPanel({
           step="1"
           value={histogramMaxValue}
           onChange={(e) => setHistogramMaxValue(Number(e.target.value))}
-          className="w-16 border border-gray-300 rounded px-2"
+          className="w-16 rounded px-2"
         />
         <Button
           onClick={generateHistogram}
-          addClasses="border border-fnbg-purple rounded-none "
+          addClasses="rounded-none "
         >
           {data?.["generateBrightnessHistogram"] ?? "Generate Histogram"}
         </Button>

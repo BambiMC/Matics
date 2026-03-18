@@ -6,15 +6,13 @@
   border: 1px solid rgb(255, 0, 0);
 } */
 
-
-
 :root[data-theme="light"] {
-  --radius-big: 40px;
-  --radius-small: 20px;
-  --fnbg-purple: #303030;
+  --radius-big: 20px;
+  --radius-small: 10px;
+  --fnbg-purple: #c5bcf3;
   --fnbg-orange: #303030;
-  --fnbg-body: #eee3ff;
-  --fnbg-accent: #c5bcf3;
+  --fnbg-body: #a5b4fc;
+  --fnbg-accent: #a5b4fc;
   --fnbg-text: #303030;
   --fnbg-text2: #000000;
 }
@@ -22,18 +20,35 @@
 :root[data-theme="dark"] {
   --radius-big: 0;
   --radius-small: 0;
-  /* --fnbg-purple: #8774e1; */
-  --fnbg-purple: #8b7bdd;
+  --fnbg-purple: #1a1a2e;
   --fnbg-orange: #fb923c;
-  --fnbg-body: #404040;
-  --fnbg-accent: #222222;
-  --fnbg-text: #bcbcff;
-  --fnbg-text2: #fafaff;
+  --fnbg-body: #1a1a2e;
+  --fnbg-accent: #1a1a2e;
+  --fnbg-text: #FBFBFB;
+  --fnbg-text2: #000000;
 }
 
 :root[data-theme="light"] .dark,
 :root[data-theme="dark"] .light {
   display: none;
+}
+
+[data-theme="dark"] body {
+  background: linear-gradient(135deg,
+      #0f172a 0%,
+      #1e1b4b 25%,
+      #3730a3 50%,
+      #4f46e5 75%,
+      #6366f1 100%);
+}
+
+[data-theme="light"] body {
+  background: linear-gradient(135deg,
+      #f8fafc 0%,
+      #e0e7ff 30%,
+      #c7d2fe 55%,
+      #a5b4fc 80%,
+      #818cf8 100%);
 }
 
 *:hover,
@@ -48,10 +63,7 @@ button:hover {
   transform: scale(1.08) !important;
 }
 
-/* Text */
-body {
-  background-color: var(--fnbg-body);
-}
+
 
 p {
   color: var(--fnbg-text);
@@ -64,32 +76,31 @@ p {
 
 /* Logo */
 svg > line {
-  stroke: var(--fnbg-purple);
-  fill: var(--fnbg-purple);
-  color: var(--fnbg-purple);
+  stroke: var(--fnbg-text);
+  fill: var(--fnbg-text);
+  color: var(--fnbg-text);
 }
 [lang-icon] svg > path {
-  fill: var(--fnbg-purple);
+  fill: var(--fnbg-text);
 }
 
 #sun > path,
 #moon > path {
-  fill: var(--fnbg-purple);
-  color: var(--fnbg-purple);
-  stroke: var(--fnbg-purple);
+  fill: var(--fnbg-text);
+  color: var(--fnbg-text);
+  stroke: var(--fnbg-text);
 }
-
-/** Ab hier ist old fnbg.css*/
 
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 25%, #ede9fe 50%, #e0e7ff 75%, #f3e8ff 100%);
 }
 
 a {
   font-size: 14px;
-  color: var(--fnbg-purple) !important;
+  color: var(--fnbg-text) !important;
 }
 
 Link,
@@ -104,26 +115,26 @@ label {
 
 img:not(#logo) {
   border-radius: var(--radius-big);
+  color: var(--fnbg-text);
 }
 
 nav,
 section,
 footer {
-  background-color: var(--fnbg-accent);
-  box-shadow: 0 2px 5px hsla(0, 0%, 0%, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    0 2px 5px hsla(0, 0%, 0%, 0.5),
+    0 -1px 0 hsla(0, 0%, 0%, 0.05);
+  color: var(--fnbg-text);
 }
 
 input,
 select,
 textarea {
-  background-color: var(--fnbg-accent);
-  border-color: var(--fnbg-accent);
+  border-color: transparent;
   caret-color: var(--cursor);
   color: var(--cursor);
-  border-radius: var(--radius-small);
-}
-
-button {
   border-radius: var(--radius-small);
 }
 

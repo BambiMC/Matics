@@ -39,7 +39,7 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData }) => {
 
 
 
-                    <p className='font-bold mt-2 text-fnbg-text2 text-lg'>{data['physicalProperties']}</p>
+                    <p className='font-bold mt-2 text-fnbg-orange text-lg'>{data['physicalProperties']}</p>
                     <div className='flex'>
                         {elementData.volumen ? (
                             <>
@@ -74,7 +74,7 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData }) => {
                     <p className="pl-2 text-sm">{data['boilingPoint']}: {elementData.siedepunkt ? elementData.siedepunkt + " °C" : data['unknown']}</p>
 
 
-                    <p className='font-bold mt-2 text-fnbg-text2 text-lg'>{data['chemicalProperties']}</p>
+                    <p className='font-bold mt-2 text-fnbg-orange text-lg'>{data['chemicalProperties']}</p>
 
 
                     <p className="pl-2 text-sm">{data['radioactive']}: {elementData.radioaktiv ? data['yes'] : data['no']}</p>
@@ -85,7 +85,7 @@ const ElementPopUp: React.FC<PopUpProps> = ({ onClose, elementData }) => {
                     <p className="pl-2 text-sm">{data['electronegativity']}: {elementData.elektronegativitaet ? elementData.elektronegativitaet + " ***" : data['unknown']}</p>
 
 
-                    <p className='font-bold mt-2 text-fnbg-text2 text-lg'>{data['miscellaneous']}</p>
+                    <p className='font-bold mt-2 text-lg text-fnbg-orange'>{data['miscellaneous']}</p>
 
 
                     <p className="pl-2 text-sm">{data['flameColor']}: {elementData.flammenfarbe ? elementData.flammenfarbe : data['unknown']}</p>

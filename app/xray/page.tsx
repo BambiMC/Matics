@@ -188,19 +188,19 @@ const Projects: React.FC = () => {
           <div className="my-4 p-4 bg-fnbg-accent">
             <div className="flex flex-wrap items-center">
               <input type="file" accept="image/*" ref={fileInputRef} onChange={handleFileChange} className="hidden" aria-label="Upload Image" />
-              <Button onClick={handleButtonClick} addClasses="border border-fnbg-purple rounded-none mx-2 mr-4">{data['upload']}</Button>
-              <Button onClick={() => loadExampleImage(0)} addClasses="border border-fnbg-purple rounded-none mx-2">{data['example1']}</Button>
-              <Button onClick={() => loadExampleImage(1)} addClasses="border border-fnbg-purple rounded-none mx-2">{data['example2']}</Button>
-              <Button onClick={() => loadExampleImage(2)} addClasses="border border-fnbg-purple rounded-none mx-2">{data['example3']}</Button>
+              <Button onClick={handleButtonClick} addClasses="mx-2 mr-4">{data['upload']}</Button>
+              <Button onClick={() => loadExampleImage(0)} addClasses="mx-2">{data['example1']}</Button>
+              <Button onClick={() => loadExampleImage(1)} addClasses="mx-2">{data['example2']}</Button>
+              <Button onClick={() => loadExampleImage(2)} addClasses="mx-2">{data['example3']}</Button>
             </div>
             <div className="flex mt-4 mx-2 gap-4">
-              <Button onClick={() => setAppliedAlgorithms([...appliedAlgorithms, 'algorithm1'])} addClasses={`border rounded-none`}>{data['algorithm1']}</Button>
+              <Button onClick={() => setAppliedAlgorithms([...appliedAlgorithms, 'algorithm1'])} addClasses={``}>{data['algorithm1']}</Button>
               <Button onClick={() => {
                 setAppliedAlgorithms([...appliedAlgorithms, 'algorithm2'])
-              }} addClasses={`border rounded-none`}>{data['algorithm2']}</Button>
+              }} addClasses={``}>{data['algorithm2']}</Button>
               <Button onClick={() => {
                 setAppliedAlgorithms([...appliedAlgorithms, 'algorithm3'])
-              }} addClasses={`border rounded-none`}>{data['algorithm3']}</Button>
+              }} addClasses={``}>{data['algorithm3']}</Button>
 
             </div>
           </div>
@@ -288,7 +288,7 @@ const Projects: React.FC = () => {
                   />
                   <Button
                     onClick={() => imageProcessing.generateHistogram(histogramMinValue, histogramMaxValue)}
-                    addClasses="border border-fnbg-purple rounded-none "
+                    addClasses=""
                   >
                     {data['generateBrightnessHistogram']}
                   </Button>
@@ -318,27 +318,35 @@ const Projects: React.FC = () => {
                 </div>
 
                 <div className="flex mt-4 gap-2 p-4 bg-fnbg-accent">
-                  <Button onClick={resetFilters} addClasses="border border-fnbg-purple rounded-none">
+                  <Button onClick={resetFilters} addClasses="">
                     {data['resetFilters']}
                   </Button>
                   <Button
                     onClick={() => setShowOriginal(prev => !prev)}
-                    addClasses="border border-fnbg-purple rounded-none"
+                    addClasses=""
                   >
                     {showOriginal ? data['showModifiedVersion'] : data['showOriginal']}
                   </Button>
-                  <Button onClick={zoomIn} addClasses="border rounded-none text-xl font-bold">+</Button>
-                  <Button onClick={zoomOut} addClasses="border rounded-none text-xl font-bold">-</Button>
+                  <Button onClick={zoomIn} addClasses=" text-xl font-bold">+</Button>
+                  <Button onClick={zoomOut} addClasses=" text-xl font-bold">-</Button>
 
-                  <div className="ml-auto">
-                    <Button
-                      onClick={handleDownload}
-                      addClasses="border border-fnbg-purple rounded-none"
-                    >
-                      <img
-                        src="../imgs/dl_icon.png"
-                        alt="Download"
-                        className="w-6 h-6"
+                  <div className="ml-auto fnbg">
+                    <Button onClick={handleDownload} aria-label={data['download'] || 'Download image'}>
+                      <span className="sr-only">{data['download'] || 'Download'}</span>
+                      <span
+                        className="w-6 h-6 inline-block bg-fnbg-text"
+                        role="img"
+                        aria-hidden="true"
+                        style={{
+                          WebkitMaskImage: `url(../imgs/dl_icon.png)`,
+                          WebkitMaskSize: 'contain',
+                          WebkitMaskRepeat: 'no-repeat',
+                          WebkitMaskPosition: 'center',
+                          maskImage: `url(../imgs/dl_icon.png)`,
+                          maskSize: 'contain',
+                          maskRepeat: 'no-repeat',
+                          maskPosition: 'center',
+                        }}
                       />
                     </Button>
                   </div>

@@ -103,9 +103,13 @@ const Homepage: React.FC = () => {
                         ))}
                     </div>
 
-                    <div className='mb-4 p-4 bg-fnbg-accent flex'>
-                        <p className='pr-4 pt-2 font-bold'>Query</p>
+                    <div className='mb-4 p-4 bg-fnbg-accent flex items-center'>
+                        <label htmlFor="openf1-query" className='pr-4 pt-2 font-bold'>Query</label>
                         <input
+                            id="openf1-query"
+                            aria-label="OpenF1 query"
+                            title="Enter OpenF1 API query string"
+                            placeholder="e.g. driver_number=55&session_key=9159"
                             className='p-1 border-2 border-fnbg-orange rounded-lg w-full'
                             type="text"
                             value={queryTexts[getSelectedCategoryIndex()]}

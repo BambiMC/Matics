@@ -63,25 +63,37 @@ const SegCanvas = forwardRef<HTMLCanvasElement, Props>(
         <div className="flex mt-4 gap-2 p-4 bg-fnbg-accent ">
           <Button
             onClick={zoomIn}
-            addClasses="border border-fnbg-purple rounded-none"
+            addClasses="rounded-none"
           >
             +
           </Button>
           <Button
             onClick={zoomOut}
-            addClasses="border border-fnbg-purple rounded-none"
+            addClasses="rounded-none"
           >
             -
           </Button>
           <div className="ml-auto">
             <Button
               onClick={download}
-              addClasses="border border-fnbg-purple rounded-none"
+              addClasses="rounded-none"
+              aria-label={downloadFilename || 'Download image'}
             >
-              <img
-                src="../imgs/dl_icon.png"
-                alt="Download"
-                className="w-6 h-6"
+              <span className="sr-only">{downloadFilename || 'Download'}</span>
+              <span
+                className="w-6 h-6 inline-block bg-fnbg-text"
+                role="img"
+                aria-hidden="true"
+                style={{
+                  WebkitMaskImage: `url(../imgs/dl_icon.png)`,
+                  WebkitMaskSize: 'contain',
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskPosition: 'center',
+                  maskImage: `url(../imgs/dl_icon.png)`,
+                  maskSize: 'contain',
+                  maskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                }}
               />
             </Button>
           </div>

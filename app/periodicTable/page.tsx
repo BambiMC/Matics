@@ -27,8 +27,8 @@ const Projects: React.FC = () => {
 
           <div className='flex my-4 p-4 bg-fnbg-accent'>
             <p className='my-auto pr-2 font-bold'>{data['download'] + ": "}</p>
-            <a className='px-2 text-lg' href="https://fnbg.de/libChem/libChem_en.tsx" target='_blank'>EN</a>
-            <a className='px-2 text-lg' href="https://fnbg.de/libChem/libChem_de.tsx" target='_blank'>DE</a>
+            <a className='px-2 text-lg' rel="noopener" href="https://fnbg.de/libChem/libChem_en.tsx" target='_blank'>EN</a>
+            <a className='px-2 text-lg' rel="noopener" href="https://fnbg.de/libChem/libChem_de.tsx" target='_blank'>DE</a>
           </div>
 
           <PSEFilter elements={elements} dataExtern={data} />

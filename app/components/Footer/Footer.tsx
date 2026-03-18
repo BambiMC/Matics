@@ -2,8 +2,7 @@ const Footer = async () => {
   const year = new Date().getFullYear();
   return (
     <footer
-      className="footer mt-auto flex justify-around py-3 relative z-20 text-fnbg-purple font-bold"
-      style={{ bottom: "0", width: "100%" }}
+      className="footer mt-auto flex justify-around py-3 relative z-20  font-bold"
     >
       <div>
         Fabian Berger

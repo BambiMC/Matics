@@ -218,7 +218,16 @@ const PSEFilter: React.FC<PSEFilterProps> = ({ elements }) => {
                                     <div className='flex'>
                                         <Dropdown options={options} onSelect={handleDropdownSelect} />
                                         <ToggleOperator id='filter-toggle' currentType={selectedAttribute!.type} />
-                                        <input type="text" className='w-24' id='filter-input' onKeyDown={handlePossibleEnterInInput} />
+                                        <label htmlFor='filter-input' className='sr-only'>Filter value</label>
+                                        <input
+                                            type="text"
+                                            className='w-24'
+                                            id='filter-input'
+                                            aria-label='Filter value'
+                                            title='Enter value to filter by'
+                                            placeholder='Value'
+                                            onKeyDown={handlePossibleEnterInInput}
+                                        />
                                         <Button onClick={() => applyFilter(new Search(options[selectedAttribute!.value], (document.getElementById('filter-toggle') as HTMLInputElement).innerText, (document.getElementById('filter-input') as HTMLInputElement).value))} id='execute-button' addClasses='p-2'>✓</Button>
                                     </div>
                                 </div>

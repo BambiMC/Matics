@@ -40,7 +40,7 @@ const ElementTile: React.FC<ElementTileProps> = ({
       id={id}
       onClick={handleClick}
     >
-      <p className='text-black'>{elementData ? elementData.kurzsymbol : '↓'}</p>
+      <p className='text-fnbg-text2'>{elementData ? elementData.kurzsymbol : '↓'}</p>
 
       {isPopUpVisible && <ElementPopUp onClose={togglePopUp} elementData={elementData} />}
     </div>

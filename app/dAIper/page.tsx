@@ -683,19 +683,19 @@ const Projects: React.FC = () => {
               />
               <Button
                 onClick={handleButtonClick}
-                addClasses="border border-fnbg-purple rounded-none mx-2 mr-4"
+                addClasses="rounded-none mx-2 mr-4"
               >
                 {data["upload"]}
               </Button>
               <Button
                 onClick={() => loadExampleImage(0)}
-                addClasses="border border-fnbg-purple rounded-none mx-2"
+                addClasses="rounded-none mx-2"
               >
                 {data["example1"]}
               </Button>
               <Button
                 onClick={() => loadExampleImage(1)}
-                addClasses="border border-fnbg-purple rounded-none mx-2"
+                addClasses="rounded-none mx-2"
               >
                 {data["example2"]}
               </Button>
@@ -706,7 +706,7 @@ const Projects: React.FC = () => {
                   setSelectedAlgorithm("segment_hsv");
                   runSegmentHsv();
                 }}
-                addClasses={`border border-fnbg-purple rounded-none`}
+                addClasses={`rounded-none`}
               >
                 {data["segment_hsv"]}
               </Button>
@@ -715,7 +715,7 @@ const Projects: React.FC = () => {
                   setSelectedAlgorithm("segment_kmeans");
                   runKMeans();
                 }}
-                addClasses={`border border-fnbg-purple rounded-none`}
+                addClasses={`rounded-none`}
               >
                 {data["segment_kmeans"]}
               </Button>
@@ -725,7 +725,7 @@ const Projects: React.FC = () => {
                   // next canvas click will be used as seed
                   setAwaitingSeed(true);
                 }}
-                addClasses={`border border-fnbg-purple rounded-none`}
+                addClasses={`rounded-none`}
               >
                 {data["segment_region"]}
               </Button>
@@ -806,7 +806,7 @@ const Projects: React.FC = () => {
               {/* Right Column: All three canvases side-by-side */}
               <div className="flex-1 w-full md:w-3/4 flex flex-col gap-4">
                 <div
-                  className="flex flex-row gap-4 overflow-auto border border-fnbg-purple border-2 max-w-full max-h-[90vh]"
+                  className="flex flex-row gap-4 overflow-auto max-w-full max-h-[90vh]"
                   style={{ minWidth: "300px", minHeight: "300px" }}
                 >
                   <div className="flex-1 min-w-[300px] flex flex-col items-start justify-start p-2">
@@ -833,13 +833,13 @@ const Projects: React.FC = () => {
                         <div className="flex gap-2 ml-2">
                           <Button
                             onClick={zoomIn}
-                            addClasses="border border-fnbg-purple rounded-none text-xl font-bold"
+                            addClasses="rounded-none text-xl font-bold"
                           >
                             +
                           </Button>
                           <Button
                             onClick={zoomOut}
-                            addClasses="border border-fnbg-purple rounded-none text-xl font-bold"
+                            addClasses="rounded-none text-xl font-bold"
                           >
                             -
                           </Button>
@@ -848,12 +848,24 @@ const Projects: React.FC = () => {
                       <div className="ml-auto">
                         <Button
                           onClick={handleDownload}
-                          addClasses="border border-fnbg-purple rounded-none"
+                          addClasses="rounded-none"
+                          aria-label={data['download'] || 'Download image'}
                         >
-                          <img
-                            src="../imgs/dl_icon.png"
-                            alt="Download"
-                            className="w-6 h-6"
+                          <span className="sr-only">{data['download'] || 'Download'}</span>
+                          <span
+                            className="w-6 h-6 inline-block bg-fnbg-text"
+                            role="img"
+                            aria-hidden="true"
+                            style={{
+                              WebkitMaskImage: `url(../imgs/dl_icon.png)`,
+                              WebkitMaskSize: 'contain',
+                              WebkitMaskRepeat: 'no-repeat',
+                              WebkitMaskPosition: 'center',
+                              maskImage: `url(../imgs/dl_icon.png)`,
+                              maskSize: 'contain',
+                              maskRepeat: 'no-repeat',
+                              maskPosition: 'center',
+                            }}
                           />
                         </Button>
                       </div>
@@ -863,15 +875,15 @@ const Projects: React.FC = () => {
                   {(selectedAlgorithm === "segment_hsv" ||
                     selectedAlgorithm === "auto_segment_hsv" ||
                     selectedAlgorithm === "segment_region") && (
-                    <div className="flex-1 min-w-[260px] p-2">
-                      <SegCanvas
-                        ref={maskCanvasRef as any}
-                        title={data["mask"]}
-                        bgClass="bg-fnbg-body"
-                        downloadFilename="mask.png"
-                      />
-                    </div>
-                  )}
+                      <div className="flex-1 min-w-[260px] p-2">
+                        <SegCanvas
+                          ref={maskCanvasRef as any}
+                          title={data["mask"]}
+                          bgClass="bg-fnbg-body"
+                          downloadFilename="mask.png"
+                        />
+                      </div>
+                    )}
 
                   <div className="flex-1 min-w-[260px] p-2">
                     <SegCanvas
