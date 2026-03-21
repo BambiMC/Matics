@@ -31,12 +31,12 @@ const Navbar = () => {
   const data = useLanguageData("navbar");
 
   return (
-    <nav className="px-4 py-1 z-50 fixed w-full">
+    <nav className="px-4 py-1 z-[100] fixed w-full">
       {data && (
         <div>
           <div className="flex items-center justify-between dark:">
             <Link href="/">
-              <Image className="h-16 max-w-xs min-w-xs dark:" src="/svg/fnbg-logo8.svg" alt="" id="logo" width={109} height={64} />
+              <Image className="h-16 max-w-xs min-w-xs dark: z-50" src="/svg/fnbg-logo8.svg" alt="" id="logo" width={109} height={64} />
             </Link>
             <div className="hidden gap-2 lg:flex items-center">
               <Link href="https://blog.fnbg.de" target="_blank" className="px-5 py-3">{data['blog']}</Link>
